@@ -1,6 +1,22 @@
 #results-grid {
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: calc(50% - 11px) calc(50% - 11px);
+  grid-template-rows: 120px 120px 120px 120px 120px 120px; 
+  grid-column-gap: 20px;
+  grid-row-gap: 25px;
+}
+
+.result-placeholder {
+  background-position: center center;
+  background-size: cover;
+  position: relative;
+  width: 100%;
+
+  &::before {
+    content: "";
+    display: block;
+    padding-bottom: 76%;
+  }
 }
 
 #try-again, #ouch-img {
@@ -12,13 +28,13 @@
   width: 34%;
 }
 
-.result-item {
-  max-width: 40%;
-}
-
 @media(min-width: 1024px) {
+
   #results-grid {
-    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-columns: calc(25% - 15px) calc(25% - 15px) calc(25% - 15px) calc(25% - 15px);
+    grid-template-rows: 200px 200px 200px 200px; 
+    grid-column-gap: 20px;
+    grid-row-gap: 25px;
   }
   
 }

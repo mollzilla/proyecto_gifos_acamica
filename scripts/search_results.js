@@ -1,7 +1,7 @@
 // const apiKey="VZ4N6ebz6BSdgrhUNiKAAU0dNYws5GSn";
 let offset=0;
 
-let submitButton=document.querySelector("#submit");
+let submitButton=document.querySelector("#search-icon");
 let viewMore=document.querySelector("#view-more");
 viewMore.style.display="none";
 let noResults=document.querySelector("#no-results");
@@ -9,6 +9,7 @@ let noResults=document.querySelector("#no-results");
 
 let searchInputValue=document.querySelector("#search-input");
 let resultsGrid=document.querySelector('#results-grid');
+resultsGrid.style.display="none";
 
 let tryAgain=document.querySelector("#try-again");
 let ouchImg=document.querySelector('#ouch-img');
@@ -19,6 +20,8 @@ async function search(e) {
 
   e.preventDefault();
   let searchResults;
+
+  resultsGrid.style.display="none";
 
   noResults.style.display="none";
 
@@ -48,18 +51,25 @@ async function search(e) {
       ouchImg.style.display="block";
       tryAgain.style.display="block";
       noResults.style.display="block";
+    } else {
+      resultsGrid.style.display="grid";
     }
 
     searchResults.data.forEach(result => {
-      let resultItem=document.createElement('div');
-      resultItem.setAttribute('id', `result-item-${offset}`)
-      resultItem.setAttribute('class', 'result-item')
 
-      let resultGif=document.createElement('iframe');
-      resultGif.setAttribute("src", result.embed_url);
+      // let resultGif=document.createElement('img');
+      
+      // resultGif.setAttribute("src", result.images.fixed_width.url);
 
-      resultItem.appendChild(resultGif);
-      resultsGrid.appendChild(resultItem);
+      // resultGif.classList.add("result-gif")
+
+      // resultsGrid.appendChild(resultGif);
+
+      let resultGif=document.createElement("div");
+      resultGif.classList.add("result-placeholder");
+      resultGif.setAttribute('id', `result-item-${offset}`)
+      resultGif.style.backgroundImage=`url("${result.images.fixed_width.url}")`
+      resultsGrid.appendChild(resultGif)
 
       offset++;
     });

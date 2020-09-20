@@ -5,11 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/main.css">
+
+  <!-- RecordRTC -->
+
+  <script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>
+
+  <!-- opcional para compatibilidad crossbrowser -->
+  <script src="https://cdn.webrtc-experiment.com/gumadapter.js"></script>
+
+
+
   <title>Proyecto GIFOS</title>
 </head>
 <body class="index">
 
-  <header>
+  <header class="container">
     <div class="first-stripe">
       <div class="logo">
         <img src="./assets/logo-mobile.svg" alt="logo GIFOS">
@@ -26,22 +36,24 @@
       </nav>
     </div>
 
-    <h2>
-      Inspírate, busca, guarda, y crea los mejores <span id="gifos-green">GIFOS</span>
-    </h2>
+    <h1>
+      Inspírate, busca, guarda, y crea<br/> los mejores <span id="gifos-green">GIFOS</span>
+    </h1>
   </header>
 
-    <section class="search">
-      <img src="\assets\ilustra_header.svg" class="happy-dudes" alt="">
-      <div class="search-border">
-        <label for="search-input"></label>
-        <input type="text" name="search-input" id="search-input" placeholder="Busca GIFOS y más">
-        <!-- <label for="submit" id="submit"></label> -->
-          <img src="/assets/icon-search.svg" alt="" id="search-icon">
-        <img src="/assets/close.svg" alt="" id="close-search">
-          <input type="submit" id="submit" class="submit">
+    <section class="search container">
+
+      <div class="search-bundle">
+        <img src="\assets\ilustra_header.svg" class="happy-dudes" alt="">
+        <div class="search-border">
+
+          <input type="text" name="search-input" id="search-input" placeholder="Busca GIFOS y más">
+          <label for="submit" id="submit"></label>
+            <img src="/assets/icon-search.svg" alt="" id="search-icon">
+            <img src="/assets/close.svg" alt="" id="close-search">
+        </div>
+        <img src="" alt="">
       </div>
-      <img src="" alt="">
 
       <h3>Trending:</h3>
       <h4 class="trending-stuff">
@@ -50,7 +62,8 @@
     </section>
 
 
-    <section class="search-results">
+    <section class="search-results container">
+
       <h3 id="search-argument"></h3>
 
       <div id="no-results">
@@ -72,12 +85,12 @@
     <section class="create">
       <div class="create">
         <input type="submit" value="crear" id="create">
-        <video src=""id="captured-gif"></video>
+        <video controls autoplay src=""id="gif-captor"></video>
       </div>
     </section>
 
 
-    <section class="trending">
+    <section class="trending container">
       <h2>Trending GIFOS</h2>
       <h3 class="mira">Mira los últimos GIFOS de nuestra comunidad</h3>
       <!-- con overflow scroll? -->
@@ -110,6 +123,6 @@
   <script src="scripts/search_results.js"></script>
   <script src="scripts/create.js"></script>
   <script src="scripts/carousel.js"></script>
-  
+
 </body>
 </html>

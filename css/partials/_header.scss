@@ -1,26 +1,31 @@
 .first-stripe {
-  // display: flex;
-  // flex-direction: row;
-  // justify-content: space-between;
-  // align-items: center;
   @include behave-horizontal;
+  justify-content: space-between;
   height: 95px;
-  padding: 0 5%;
+
+  .logo, nav {
+    margin: unset;
+  }
 
   .links {
     display: none;
   }
 }
 
-h2 {
+.search-bundle {
+  margin: 30px auto;
+}
+
+h1 {
   @include word-bundle(25px, auto, medium, 33px);
   font-family: Montserrat, sans-serif;
-  // font-weight: medium;
-  // font-size: 25px;
   color: $blue;
   text-align: center;
-  // line-height: 33px;
-  width: 72.5%;
+  width: 286px;
+
+  br {
+    display: none;
+  }
 }
 
 #gifos-green {
@@ -28,18 +33,13 @@ h2 {
 }
 
 .happy-dudes {
-  width: 273px;
+  width: 72%;
+  max-width: 400px;
 }
 
 .search-border {
   @include fancy-border;
-  width: 334px;
-  // border: 1px solid $purple;
-  // border-radius: 25px;
-  // width: 334px;
-  // line-height: 50px;
-  // display: flex;
-  // justify-content: space-between;
+  max-width: 550px;
 
   input {
     border: none;
@@ -61,3 +61,33 @@ h2 {
     display: none;
   }
 }
+
+@media(min-width: 1440px){
+  header {
+
+    .first-stripe {
+      .links {
+        display: flex;
+        a {
+          margin-left: 50px;
+          text-transform: uppercase;
+          font-weight: bold;
+          font-size: .8125rem;
+        }
+      }
+      nav img {
+        display: none;
+      }
+    }
+
+    h1 {
+      @include word-bundle(35px, auto, bold, 50px);
+      width: unset;
+      br  {
+        display: unset;
+      }
+    }
+
+
+  }
+} 

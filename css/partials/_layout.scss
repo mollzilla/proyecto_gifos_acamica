@@ -2,8 +2,13 @@
   color: $purple;
   font-family: "Montserrat", sans-serif !important;
   text-align: center;
-  margin: 0 auto !important;
+  margin: 0 auto;
   
+}
+
+.container {
+  padding-left: 21px;
+  padding-right: 21px;
 }
   
 .index {
@@ -13,4 +18,16 @@
 
 a {
   text-decoration: none;
+}
+
+@media(min-width: 1440px) {
+  
+.container {
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  max-width: 1130px;
+  width: 1130px;
+}
+
 }
