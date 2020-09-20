@@ -1,9 +1,6 @@
 footer {
+  @include behave-vertical;
   padding: 3rem 0 1rem 0;
-  display: flex;
-  flex-flow: column wrap;
-  justify-content: center;
-  align-items: center;
 
   .share-width {
     font-family: $normal;
@@ -12,11 +9,16 @@ footer {
 
   .social-media {
     margin-top: 24px;
+    margin-bottom: 47px;
     display: flex;
     justify-content: space-between;
     width: 20%;
   }
 
+  .copyright {
+    @include word-bundle(14px, #000, 400, 20px);
+    font-family: $normal;
+  }
 
 
 }

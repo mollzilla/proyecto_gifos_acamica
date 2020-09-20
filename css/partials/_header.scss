@@ -43,11 +43,8 @@ h1 {
 
   input {
     border: none;
+    line-height: 50px;
   }
-
-  // .submit {
-  //   display: none;
-  // }
 
   &::-webkit-input-placeholder {
     font-family: $normal;
@@ -66,6 +63,8 @@ h1 {
   header {
 
     .first-stripe {
+      margin-bottom: 76px;
+
       .links {
         display: flex;
         a {

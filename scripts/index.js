@@ -35,24 +35,45 @@ let suggestion=document.createElement('div');
 
 async function suggestions() {
   let searchInput = document.getElementById("search-input");
+  let closeIcon=document.querySelector("#close-search");
+  let searchIcon=document.querySelector("#search-icon");
 
   let laData;
 
-  searchInput.addEventListener('keyup', async function () {
+  searchInput.addEventListener('keyup', async function (e) {
 
     try {
 
+      if (e.keyCode === 13)
+      {
+        e.stopPropagation();
+        search(e);
+        return;
+      }
+        
+
       suggestion.innerHTML="";
       
+      if(this.value.trim()=="")
+        {
+          searchIcon.style.display="inline";
+          closeIcon.style.display="none";
+          return;
+        }
+
+
       const elFetch = await fetch(`https://api.giphy.com/v1/gifs/search/tags?q=${this.value}?&api_key=${apiKey}`);
-      laData = await elFetch.json()
+      laData = await elFetch.json();
 
-      let searchIcon=document.querySelector("#search-icon");
-      let closeIcon=document.querySelector("#close-search");
-
-      searchIcon.style.transform="translate(-900%)";
+      searchIcon.style.display="none";
       closeIcon.style.display="initial";
-      closeIcon.addEventListener('click', () => searchInput.value="");
+
+      closeIcon.addEventListener('click', function() {
+        searchInput.value="";
+        searchIcon.style.display="initial";
+        this.style.display="none";
+        suggestion.innerHTML="";
+      });
 
       laData.data.forEach(data => {
 
@@ -69,9 +90,10 @@ async function suggestions() {
 
         suggestion.appendChild(oneSuggestion);
 
-        oneSuggestion.addEventListener('click', () => { 
+        oneSuggestion.addEventListener('click', (e) => { 
           searchInput.value=suggestionName.textContent;
           suggestion.innerHTML="";
+          search(e);
         });     
 
       })

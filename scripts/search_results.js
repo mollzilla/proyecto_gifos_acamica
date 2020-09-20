@@ -20,12 +20,20 @@ async function search(e) {
 
   e.preventDefault();
   let searchResults;
+  console.log(searchInputValue.value)
 
   resultsGrid.style.display="none";
 
   noResults.style.display="none";
-
-  if (e.path[0].id==submitButton.id) {
+  if (e.path[0].id==viewMore.id)
+  {
+    const searchFetch= await fetch(`https://api.giphy.com/v1/gifs/search?q=${searchInputValue.value}?&api_key=${apiKey}&limit=12&offset=${offset}`);
+    searchResults = await searchFetch.json();
+    appendSearchResults();
+    viewMore.style.display="block";
+  }
+  else
+  {
     offset=0;
 
     const searchFetch= await fetch(`https://api.giphy.com/v1/gifs/search?q=${searchInputValue.value}?&api_key=${apiKey}&limit=12`);
@@ -34,13 +42,7 @@ async function search(e) {
     appendSearchResults();
     viewMore.style.display="block";
   }
-  else
-  {
-    const searchFetch= await fetch(`https://api.giphy.com/v1/gifs/search?q=${searchInputValue.value}?&api_key=${apiKey}&limit=12&offset=${offset}`);
-    searchResults = await searchFetch.json();
-    appendSearchResults();
-    viewMore.style.display="block";
-  }
+   
 
   function appendSearchResults() {
     let searchArgument=document.querySelector("#search-argument");
@@ -57,14 +59,6 @@ async function search(e) {
 
     searchResults.data.forEach(result => {
 
-      // let resultGif=document.createElement('img');
-      
-      // resultGif.setAttribute("src", result.images.fixed_width.url);
-
-      // resultGif.classList.add("result-gif")
-
-      // resultsGrid.appendChild(resultGif);
-
       let resultGif=document.createElement("div");
       resultGif.classList.add("result-placeholder");
       resultGif.setAttribute('id', `result-item-${offset}`)
@@ -78,7 +72,8 @@ async function search(e) {
   suggestion.innerHTML="";
   lastValue=searchInputValue.value;
 
-  console.log(searchResults);
+  /* uses navigation anchor to go to new result (last offset - pagination) */
+  location.hash = "#" + `result-item-${offset-12}`;
 };
 
 submitButton.addEventListener('click', (e => search(e)));
