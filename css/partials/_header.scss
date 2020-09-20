@@ -1,0 +1,63 @@
+.first-stripe {
+  // display: flex;
+  // flex-direction: row;
+  // justify-content: space-between;
+  // align-items: center;
+  @include behave-horizontal;
+  height: 95px;
+  padding: 0 5%;
+
+  .links {
+    display: none;
+  }
+}
+
+h2 {
+  @include word-bundle(25px, auto, medium, 33px);
+  font-family: Montserrat, sans-serif;
+  // font-weight: medium;
+  // font-size: 25px;
+  color: $blue;
+  text-align: center;
+  // line-height: 33px;
+  width: 72.5%;
+}
+
+#gifos-green {
+  color: $green;
+}
+
+.happy-dudes {
+  width: 273px;
+}
+
+.search-border {
+  @include fancy-border;
+  width: 334px;
+  // border: 1px solid $purple;
+  // border-radius: 25px;
+  // width: 334px;
+  // line-height: 50px;
+  // display: flex;
+  // justify-content: space-between;
+
+  input {
+    border: none;
+  }
+
+  // .submit {
+  //   display: none;
+  // }
+
+  &::-webkit-input-placeholder {
+    font-family: $normal;
+  }
+
+  #search-icon {
+    display: initial;
+  }
+
+  #close-search {
+    display: none;
+  }
+}

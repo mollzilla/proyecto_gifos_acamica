@@ -1,0 +1,24 @@
+#results-grid {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+#try-again, #ouch-img {
+  display: none;
+}
+
+#view-more {
+  @include fancy-border;
+  width: 34%;
+}
+
+.result-item {
+  max-width: 40%;
+}
+
+@media(min-width: 1024px) {
+  #results-grid {
+    grid-template-columns: 25% 25% 25% 25%;
+  }
+  
+}

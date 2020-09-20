@@ -1,0 +1,23 @@
+footer {
+  padding: 3rem 0 1rem 0;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+
+  .share-width {
+    font-family: $normal;
+    color: #000;
+  }
+
+  .social-media {
+    margin-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    width: 20%;
+  }
+
+
+
+}
+

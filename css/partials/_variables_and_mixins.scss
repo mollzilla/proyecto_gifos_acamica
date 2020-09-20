@@ -1,0 +1,38 @@
+$title_fonts: "Montserrat";
+
+$normal: "Roboto";
+
+$green: #50E3C2;
+$blue: #572EE5;
+$purple: #572EE5;
+$gray: #F3F5F8;
+$night-gray: #37383C;
+$night-trending-gray: #222326;
+
+
+@mixin behave-vertical {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin behave-horizontal {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin word-bundle($font-size, $color, $font-weight, $line-height) {
+  font-size: $font-size;
+  color: $color;
+  font-weight: $font-weight;
+  line-height: $line-height;
+}
+
+@mixin fancy-border {
+  border: 1px solid $purple;
+  border-radius: 25px;
+  line-height: 50px;
+}

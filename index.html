@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <title>Proyecto GIFOS</title>
+</head>
+<body class="index">
+
+  <header>
+    <div class="first-stripe">
+      <div class="logo">
+        <img src="./assets/logo-mobile.svg" alt="logo GIFOS">
+      </div>
+      <nav>
+        <img src="./assets/burger.svg" alt="">
+        <div class="links">
+          <a href="" id="modo-nocturno">Modo Nocturno</a>
+          <a href="" id="favoritos">Favoritos</a>
+          <a href="" id="mis-gifos">Mis GIFOS</a>
+        </div>
+      </nav>
+
+      </nav>
+    </div>
+
+    <h2>
+      Inspírate, busca, guarda, y crea los mejores <span id="gifos-green">GIFOS</span>
+    </h2>
+  </header>
+
+    <section class="search">
+      <img src="\assets\ilustra_header.svg" class="happy-dudes" alt="">
+      <div class="search-border">
+        <label for="search-input"></label>
+        <input type="text" name="search-input" id="search-input" placeholder="Busca GIFOS y más">
+        <!-- <label for="submit" id="submit"></label> -->
+          <img src="/assets/icon-search.svg" alt="" id="search-icon">
+        <img src="/assets/close.svg" alt="" id="close-search">
+          <input type="submit" id="submit" class="submit">
+      </div>
+      <img src="" alt="">
+
+      <h3>Trending:</h3>
+      <h4 class="trending-stuff">
+        
+      </h4>
+    </section>
+
+
+    <section class="search-results">
+      <h3 id="search-argument"></h3>
+
+      <div id="no-results">
+        <img src="assets/icon-busqueda-sin-resultado.svg" alt="" id="ouch-img">
+        <h4 id="try-again">Intenta con otra búsqueda</h4>
+      </div>
+      
+
+      <div id="results-grid">
+        <!-- insert result gifs with javascript -->
+
+      </div>
+      <div class="view-more">
+        <a href="" id="view-more" class="search-border">VER MÁS</a>
+      </div>
+
+    </section>
+
+    <section class="create">
+      <div class="create">
+        <input type="submit" value="crear" id="create">
+        <video src=""id="captured-gif"></video>
+      </div>
+    </section>
+
+
+    <section class="trending">
+      <h2>Trending GIFOS</h2>
+      <h3 class="mira">Mira los últimos GIFOS de nuestra comunidad</h3>
+      <!-- con overflow scroll? -->
+
+      <div class="carrousel">
+        <div class="carrousel-item">
+          <img src="assets/gatito.gif" alt="">
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <h5 class="share-width">Compatir en:</h5>
+      <div class="icons">
+
+      </div>
+
+
+    <div class="social-media">
+      <a href=""><img src="assets/icon_facebook.svg" alt="share-facebook"></a>
+      <a href=""><img src="assets/icon-twitter.svg" alt="share-twitter"></a>
+      <a href=""><img src="assets/icon_instagram.svg" alt="share-instagram"></a>
+    </div>
+
+
+    <p>© GIFOS 2020 All Rights Reserved.</p>
+  </footer>
+
+  <script src="scripts/index.js"></script>
+  <script src="scripts/search_results.js"></script>
+  <script src="scripts/create.js"></script>
+  <script src="scripts/carousel.js"></script>
+  
+</body>
+</html>
