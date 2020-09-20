@@ -30,6 +30,9 @@ a {
 }
 
 @media (max-width: 1023px) {
+  header .links {
+    display: none;
+  }
   .drawer {
     background-color: #572EE5;
     opacity: .9;
@@ -161,22 +164,20 @@ h1 br {
 }
 
 @media (min-width: 1024px) {
-  .drawer .links {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-  }
-  .drawer .links .drawer-line {
+  .drawer {
     display: none;
   }
-  .drawer .links a {
+  .drawer .links {
+    display: none;
+  }
+  header .first-stripe {
+    margin-bottom: 76px;
+  }
+  header .first-stripe a {
     margin-left: 50px;
     text-transform: uppercase;
     font-weight: bold;
     font-size: .8125rem;
-  }
-  header .first-stripe {
-    margin-bottom: 76px;
   }
   header .first-stripe nav img {
     display: none;
@@ -191,10 +192,6 @@ h1 br {
   header h1 br {
     display: unset;
   }
-}
-
-.search-results {
-  padding-bottom: 79px;
 }
 
 .search-results #search-argument {
@@ -243,16 +240,20 @@ h1 br {
   font-weight: bold;
   line-height: auto;
   width: 34%;
+  margin-bottom: 79px;
 }
 
 @media (min-width: 1024px) {
   .search-results #results-grid {
     -ms-grid-columns: calc(25% - 15px) calc(25% - 15px) calc(25% - 15px) calc(25% - 15px);
         grid-template-columns: calc(25% - 15px) calc(25% - 15px) calc(25% - 15px) calc(25% - 15px);
-    -ms-grid-rows: 200px 200px 200px 200px;
-        grid-template-rows: 200px 200px 200px 200px;
+    -ms-grid-rows: 200px 200px 200px;
+        grid-template-rows: 200px 200px 200px;
     grid-column-gap: 20px;
     grid-row-gap: 25px;
+  }
+  .search-results #view-more {
+    width: 127px;
   }
 }
 

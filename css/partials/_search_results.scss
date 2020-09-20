@@ -1,7 +1,5 @@
 .search-results {
 
-  padding-bottom: 79px;
-
   #search-argument {
     @include word-bundle(25px, auto, bold, 40px);
     text-transform: capitalize;
@@ -38,8 +36,8 @@
     @include fancy-border;
     @include word-bundle(13px, auto, bold, auto);
     width: 34%;
+    margin-bottom: 79px;
   }
-
 }
 
 @media(min-width: 1024px) {
@@ -48,9 +46,13 @@
 
     #results-grid {
       grid-template-columns: calc(25% - 15px) calc(25% - 15px) calc(25% - 15px) calc(25% - 15px);
-      grid-template-rows: 200px 200px 200px 200px; 
+      grid-template-rows: 200px 200px 200px; 
       grid-column-gap: 20px;
       grid-row-gap: 25px;
+    }
+
+    #view-more {
+      width: 127px;
     }
   }
 

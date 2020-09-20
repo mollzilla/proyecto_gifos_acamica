@@ -57,28 +57,24 @@ h1 {
 
 @media(min-width: 1024px){
 
-  .drawer {
-
-    .links {
-      display: flex;
-
-      .drawer-line {
+      .drawer {
         display: none;
+        .links {
+          display: none;
+        }
       }
-      a {
-        margin-left: 50px;
-        text-transform: uppercase;
-        font-weight: bold;
-        font-size: .8125rem;
-      }
-    }
-  }
 
   header {
   
     .first-stripe {
       margin-bottom: 76px;
 
+      a {
+        margin-left: 50px;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: .8125rem;
+      }
 
       nav img {
         display: none;

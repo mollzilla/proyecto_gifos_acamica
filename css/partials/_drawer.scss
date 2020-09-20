@@ -1,5 +1,9 @@
 @media(max-width: 1023px)
 {
+  header .links {
+    display: none;
+  }
+
   .drawer {
   background-color: $purple;
   opacity: .9;
