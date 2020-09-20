@@ -6,10 +6,6 @@
   .logo, nav {
     margin: unset;
   }
-
-  .links {
-    display: none;
-  }
 }
 
 .search-bundle {
@@ -59,21 +55,31 @@ h1 {
   }
 }
 
-@media(min-width: 1440px){
-  header {
+@media(min-width: 1024px){
 
+  .drawer {
+
+    .links {
+      display: flex;
+
+      .drawer-line {
+        display: none;
+      }
+      a {
+        margin-left: 50px;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: .8125rem;
+      }
+    }
+  }
+
+  header {
+  
     .first-stripe {
       margin-bottom: 76px;
 
-      .links {
-        display: flex;
-        a {
-          margin-left: 50px;
-          text-transform: uppercase;
-          font-weight: bold;
-          font-size: .8125rem;
-        }
-      }
+
       nav img {
         display: none;
       }

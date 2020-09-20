@@ -1,14 +1,42 @@
-.drawer {
-  background-color: #FFF;
+@media(max-width: 1023px)
+{
+  .drawer {
+  background-color: $purple;
+  opacity: .9;
   position: fixed;
-  top: 0;
+  top: 95px;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 150vw;
+  height: 40vh;
+  border-radius: 0 0 50% 50%;
   z-index: 1000;
 
-  transform: translateX(-100%);
-  transition: transform .5s ease-in-out;
-  
+  transform: translate(-100%, -100%);
+  transition: transform .8s ease-in-out, height .8s ease-in-out;
+
+  .links {
+    padding-top: 17px;
+    position: absolute;
+    @include behave-vertical;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    a {
+      @include word-bundle(15px, #FFF, bold, 60px);
+    }
+
+    .drawer-line {
+      width: 50px;
+      border-color: #999;
+    }
+  }
+
+  }
+
+.visible {
+  transform: translateX(-16.66%);
+  height: 120vh;
+  }
 
 }
