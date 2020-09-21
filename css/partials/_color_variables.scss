@@ -1,0 +1,23 @@
+html {
+  --green: #50E3C2;
+  --purple: #572EE5;
+  --gray: #F3F5F8;
+
+  --background: #FFF;
+  --trending_background: #F3F5F8;
+  --main_text_color: #572EE5;
+  --small_text_color: #000;
+  --drawer_background: #572EE5;
+  --body_border: #572EE5;
+  --fancy_border: #572EE5;
+}
+
+html[data-theme='dark'] {
+  --background: #37383C;
+  --trending_background: #222326;
+  --main_text_color: #FFF;
+  --small_text_color: #FFF;
+  --drawer_background: #000;
+  --body_border: #000;
+  --fancy_border: #FFF;
+}

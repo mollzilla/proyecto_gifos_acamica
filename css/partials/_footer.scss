@@ -4,7 +4,7 @@ footer {
 
   .share-width {
     font-family: $normal;
-    color: #000;
+    color: var(--small_text_color);
   }
 
   .social-media {
@@ -16,7 +16,7 @@ footer {
   }
 
   .copyright {
-    @include word-bundle(14px, #000, 400, 20px);
+    @include word-bundle(14px, var(--small_text_color), 400, 20px);
     font-family: $normal;
   }
 

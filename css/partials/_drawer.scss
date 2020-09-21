@@ -5,7 +5,7 @@
   }
 
   .drawer {
-  background-color: $purple;
+  background-color: var(--drawer_background);
   opacity: .9;
   position: fixed;
   top: 95px;
@@ -19,9 +19,9 @@
   transition: transform .8s ease-in-out, height .8s ease-in-out;
 
   .links {
+    @include behave-vertical;
     padding-top: 17px;
     position: absolute;
-    @include behave-vertical;
     top: 0;
     left: 0;
     width: 100%;

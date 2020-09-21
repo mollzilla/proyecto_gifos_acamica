@@ -52,7 +52,7 @@
     left: 0;
     height: 100%;
     width: 100%;
-    background-color: transparentize($purple, .3);
+    background-color: transparentize(#572EE5, .3);
     transform: translateY(-100%);
     transition: transform .4s ease-in-out;
   }

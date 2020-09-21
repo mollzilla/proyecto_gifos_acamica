@@ -14,8 +14,6 @@
 
 h1 {
   @include word-bundle(25px, auto, medium, 33px);
-  font-family: Montserrat, sans-serif;
-  color: $blue;
   text-align: center;
   width: 286px;
 
@@ -25,7 +23,7 @@ h1 {
 }
 
 #gifos-green {
-  color: $green;
+  color: var(--green);
 }
 
 .happy-dudes {
@@ -34,12 +32,17 @@ h1 {
 }
 
 .search-border {
+
   @include fancy-border;
   max-width: 550px;
 
   input {
+    @include word-bundle(1rem, #6B7989, 400, 50px);
     border: none;
-    line-height: 50px;
+    font-family: $normal;
+    width: 75%;
+    max-width: 450px;
+    background-color: var(--background);
   }
 
   &::-webkit-input-placeholder {
@@ -88,7 +91,5 @@ h1 {
         display: unset;
       }
     }
-
-
   }
 } 

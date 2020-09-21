@@ -13,7 +13,7 @@
 
 .trending {
   @include behave-vertical;
-  background-color: $gray;
+  background-color: var(--trending_background);
   padding-top: 46px;
   padding-bottom: 82px;
 
@@ -23,7 +23,7 @@
   }
 
   .mira {
-    @include word-bundle(16px, #000, 400, 23px);
+    @include word-bundle(16px, var(--small_text_color), 400, 23px);
     font-family: "Roboto", sans-serif;
     text-align: center;
   }
