@@ -20,6 +20,13 @@
     background-size: cover;
     position: relative;
     width: 100%;
+    overflow: hidden;
+
+    &:hover {
+      .overlay {
+        transform: translateY(0);
+      }
+    }
 
     &::before {
       content: "";
@@ -38,6 +45,76 @@
     width: 34%;
     margin-bottom: 79px;
   }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: transparentize($purple, .3);
+    transform: translateY(-100%);
+    transition: transform .4s ease-in-out;
+  }
+
+  .action-icons {
+    @include overlay-baby;
+    @include behave-horizontal;
+    top: 0;
+    justify-content: flex-end;
+    
+  }
+
+  .action-icon{
+    margin: unset;
+    margin-right: 10px;
+    margin-top: 10px;
+    display: inline-block;
+    height: 32px;
+    width: 32px;
+    background-size: contain;
+
+    &:nth-child(1) {
+      background-image: url("../../assets/icon-fav.svg");
+      &:hover {
+        background-image: url("../../assets/icon-fav-hover.svg");
+      }
+    }
+    &:nth-child(2) {
+      background-image: url("../../assets/icon-download.svg");
+      &:hover {
+        background-image: url("../../assets/icon-download-hover.svg");
+      }
+    }
+    &:nth-child(3) {
+      background-image: url("../../assets/icon-max-normal.svg");
+      &:hover {
+        background-image: url("../../assets/icon-max-hover.svg");
+      };
+    }
+  }
+
+  .gif-title{
+    @include overlay-baby;
+    bottom: 0;
+    height: 40%;
+
+
+    .username, .title {
+      font-family: $normal;
+      text-align: left;
+      margin-left: 13px;
+    }
+
+    .username {
+      @include word-bundle(15px, #FFF, 400, 18px);
+    }
+
+    .title {
+      @include word-bundle(16px, #FFF, bold, 19px);
+    }
+  }
+
 }
 
 @media(min-width: 1024px) {

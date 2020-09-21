@@ -36,3 +36,9 @@ $night-trending-gray: #222326;
   border-radius: 25px;
   line-height: 50px;
 }
+
+@mixin overlay-baby {
+  width: 100%;
+  position: absolute;
+  left: 0;
+}

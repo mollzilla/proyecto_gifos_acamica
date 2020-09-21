@@ -219,6 +219,12 @@ h1 br {
   background-size: cover;
   position: relative;
   width: 100%;
+  overflow: hidden;
+}
+
+.search-results .result-placeholder:hover .overlay {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
 }
 
 .search-results .result-placeholder::before {
@@ -241,6 +247,106 @@ h1 br {
   line-height: auto;
   width: 34%;
   margin-bottom: 79px;
+}
+
+.search-results .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(87, 46, 229, 0.7);
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
+  -webkit-transition: -webkit-transform .4s ease-in-out;
+  transition: -webkit-transform .4s ease-in-out;
+  transition: transform .4s ease-in-out;
+  transition: transform .4s ease-in-out, -webkit-transform .4s ease-in-out;
+}
+
+.search-results .action-icons {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  top: 0;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.search-results .action-icon {
+  margin: unset;
+  margin-right: 10px;
+  margin-top: 10px;
+  display: inline-block;
+  height: 32px;
+  width: 32px;
+  background-size: contain;
+}
+
+.search-results .action-icon:nth-child(1) {
+  background-image: url("../../assets/icon-fav.svg");
+}
+
+.search-results .action-icon:nth-child(1):hover {
+  background-image: url("../../assets/icon-fav-hover.svg");
+}
+
+.search-results .action-icon:nth-child(2) {
+  background-image: url("../../assets/icon-download.svg");
+}
+
+.search-results .action-icon:nth-child(2):hover {
+  background-image: url("../../assets/icon-download-hover.svg");
+}
+
+.search-results .action-icon:nth-child(3) {
+  background-image: url("../../assets/icon-max-normal.svg");
+}
+
+.search-results .action-icon:nth-child(3):hover {
+  background-image: url("../../assets/icon-max-hover.svg");
+}
+
+.search-results .gif-title {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 40%;
+}
+
+.search-results .gif-title .username, .search-results .gif-title .title {
+  font-family: "Roboto";
+  text-align: left;
+  margin-left: 13px;
+}
+
+.search-results .gif-title .username {
+  font-size: 15px;
+  color: #FFF;
+  font-weight: 400;
+  line-height: 18px;
+}
+
+.search-results .gif-title .title {
+  font-size: 16px;
+  color: #FFF;
+  font-weight: bold;
+  line-height: 19px;
 }
 
 @media (min-width: 1024px) {
