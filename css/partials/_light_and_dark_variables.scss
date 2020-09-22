@@ -10,6 +10,9 @@ html {
   --drawer_background: #572EE5;
   --body_border: #572EE5;
   --fancy_border: #572EE5;
+
+  --logo-mobile: url("../../assets/logo-mobile.svg");
+  --logo-desktop: url("../../assets/logo-desktop.svg");
 }
 
 html[data-theme='dark'] {
@@ -20,4 +23,7 @@ html[data-theme='dark'] {
   --drawer_background: #000;
   --body_border: #000;
   --fancy_border: #FFF;
+
+  --logo-mobile: url("../../assets/logo-mobile-modo-noct.svg");
+  --logo-desktop: url("../../assets/logo-modo-noc.svg");
 }

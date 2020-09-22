@@ -11,20 +11,15 @@ function themeToggler(e) {
   if(document.documentElement.getAttribute("data-theme")=="light")
   {
     document.documentElement.setAttribute("data-theme", "dark");
-
     themeToggleLinkSm.textContent="Modo Diurno";
     themeToggleLinkLg.textContent="Modo Diurno";
 
-    document.querySelector(".logo img").setAttribute("src", "assets/Logo-modo-noc.svg");
-    // console.log(mili)
   }
   else if(document.documentElement.getAttribute("data-theme")=="dark")
   {
     document.documentElement.setAttribute("data-theme", "light");
     themeToggleLinkSm.textContent="Modo Nocturno";
     themeToggleLinkLg.textContent="Modo Nocturno";
-
-    document.querySelector(".logo img").setAttribute("src", "assets/logo-mobile.svg");
   }
     
 };

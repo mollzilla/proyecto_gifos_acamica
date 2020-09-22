@@ -8,6 +8,15 @@
   }
 }
 
+.logo {
+        background-image: var(--logo-mobile);
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 60px;
+        height: auto;
+        padding-top: 48.8px /* (img-height / img-width * container-width) */
+}
+
 .search-bundle {
   margin: 30px auto;
 }
@@ -71,6 +80,18 @@ h1 {
   
     .first-stripe {
       margin-bottom: 76px;
+
+      .logo {
+        // There is a very nice and cool way to make a background image work like an img element so it adjust its height automatically. You need to know the image width and height ratio. Set the height of the container to 0 and set the padding-top as percentage based upon the image ratio.
+        // It will look like the following:
+
+        background-image: var(--logo-desktop);
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 65px;
+        height: auto;
+        padding-top: 59.1px /* (img-height / img-width * container-width) */
+        }
 
       a {
         margin-left: 50px;

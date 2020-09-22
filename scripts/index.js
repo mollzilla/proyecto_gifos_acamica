@@ -32,9 +32,6 @@ let searchInput=document.querySelector("#search-input");
 let suggestion=document.createElement('div');
 
 
-
-async function suggestions() {
-  let searchInput = document.getElementById("search-input");
   let closeIcon=document.querySelector("#close-search");
   let searchIcon=document.querySelector("#search-icon");
 
@@ -51,7 +48,6 @@ async function suggestions() {
         return;
       }
         
-
       suggestion.innerHTML="";
       
       if(this.value.trim()=="")
@@ -104,8 +100,6 @@ async function suggestions() {
     }
     
   });
-}
-suggestions();
 
 
 document.addEventListener('click', (e) => {
