@@ -43,6 +43,59 @@ async function search(e) {
     searchResults = await searchFetch.json();
     viewMore.style.display="block";
     appendSearchResults();
+
+
+    function createOverlay(gifItem) {
+
+      /* adds a child div to a gifItem positioned absolutely that behaves as an overlay, containing both icons and title */
+
+      let overlay=document.createElement("div");
+      overlay.classList.add("overlay");
+
+      /* Icons */
+      let actionIcons=document.createElement("div");
+      actionIcons.classList.add("action-icons");
+
+      let like=document.createElement("a");
+      like.addEventListener('click', likeAction);
+
+      let download=document.createElement("a");
+
+      let expand=document.createElement("a");
+
+      [like, download, expand].forEach(a => {
+
+        a.id=gifItem.id;
+        a.classList.add("action-icon");
+
+        actionIcons.appendChild(a);
+
+      });
+
+      /* username and title*/
+
+      let username=document.createElement("p");
+      username.classList.add("username");
+      username.textContent=gifItem.username || "Anon";
+
+      let gifTitle=document.createElement("div");
+      gifTitle.classList.add("gif-title");
+
+      let title=document.createElement("p");
+      title.classList.add("title");
+      title.textContent=gifItem.title || "Sin nombre";
+
+      /* Append to the overlayed div */
+
+      gifTitle.appendChild(username);
+      gifTitle.appendChild(title);
+      
+      overlay.appendChild(actionIcons);
+      overlay.appendChild(gifTitle);
+      return overlay;
+    }
+
+    /* 
    
 
   /* appending search results to the grid */
@@ -73,55 +126,14 @@ async function search(e) {
 
       offset++;
     });
-
-    function createOverlay(gifItem) {
-
-      /* adds a child div to a gifItem positioned absolutely that behaves as an overlay, containing both icons and title */
-      let overlay=document.createElement("div");
-      overlay.classList.add("overlay");
-
-      /* Icons */
-      let actionIcons=document.createElement("div");
-      actionIcons.classList.add("action-icons");
-
-      let like=document.createElement("a");
-      let download=document.createElement("a");
-      let expand=document.createElement("a");
-
-      [like, download, expand].forEach(a => {
-        a.classList.add("action-icon");
-        actionIcons.appendChild(a);
-      });
-
-      /* username and title*/
-
-      let username=document.createElement("p");
-      username.classList.add("username");
-      username.textContent=gifItem.username || "Anon";
-
-      let gifTitle=document.createElement("div");
-      gifTitle.classList.add("gif-title");
-
-      let title=document.createElement("p");
-      title.classList.add("title");
-      title.textContent=gifItem.title || "Sin nombre";
-
-      /* Append to the overlayed div */
-
-      gifTitle.appendChild(username);
-      gifTitle.appendChild(title);
-      
-      overlay.appendChild(actionIcons);
-      overlay.appendChild(gifTitle);
-      return overlay;
-    }
  
+    suggestion.innerHTML="";
+    lastValue=searchInputValue.value;
+  
+    /* uses navigation anchor to go to new result (last offset - pagination) */
+    location.hash = "#" + `result-item-${offset-12}`;
   }
-  suggestion.innerHTML="";
-  lastValue=searchInputValue.value;
 
-  /* uses navigation anchor to go to new result (last offset - pagination) */
-  location.hash = "#" + `result-item-${offset-12}`;
 };
 
 submitButton.addEventListener('click', (e => search(e)));

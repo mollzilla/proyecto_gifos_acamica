@@ -98,6 +98,9 @@ h1 {
         text-transform: uppercase;
         font-weight: bold;
         font-size: .8125rem;
+        &:hover {
+          border-bottom: 2px solid var(--green)
+        }
       }
 
       nav img {

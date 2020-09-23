@@ -18,11 +18,25 @@ async function appendTrendings() {
     }
   }
 
-  let content = await getTrendings()
+  let content = await getTrendings();
+  let trendingStuff=document.querySelector(".trending-stuff")
 
-  content=content.join(", ")
-  document.querySelector(".trending-stuff").textContent=content;
+  content.forEach(word => {
+
+    let span=document.createElement("span");
+
+    span.textContent = word==content[content.length-1] ? word : `${word},`;
+    word=span.textContent.replace(",", "");
+
+    trendingStuff.appendChild(span);
+
+    span.addEventListener("click", (e) => { 
+      searchInput.value=span.textContent.replace(",", "");
+      search(e);
+    }); 
+  })
 }
+
 appendTrendings();
 
 let searchContainer=document.querySelector(".search-border");
@@ -106,3 +120,44 @@ document.addEventListener('click', (e) => {
   if(!searchContainer.contains(e.target))
     suggestion.innerHTML="";
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* para hacerlo con template */
+
+function template(gif, container) {
+  let gifTemplate=document.getElementById("gif-template").content.firstElementChild; // declararla global y no en la funcion
+
+  let elgifTemplate=gifTemplate.cloneNode(true);
+  console.log(elgifTemplate);
+
+  console.log(elgifTemplate.children[0].children[0])
+
+  //children[0].children[1].src, etc
+
+  container.appendChild(elgifTemplate);
+}
+
+// template();
+
+// parsear y apendear json.forEach(element => template(element, container))

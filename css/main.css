@@ -242,6 +242,9 @@ h1 br {
     font-weight: bold;
     font-size: .8125rem;
   }
+  header .first-stripe a:hover {
+    border-bottom: 2px solid var(--green);
+  }
   header .first-stripe nav img {
     display: none;
   }
