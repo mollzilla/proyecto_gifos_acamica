@@ -40,6 +40,13 @@ function createOverlay(gifItem) {
 
       a.id=gifItem.id;
       a.classList.add("action-icon");
+      
+      if(a==like && (localStorage.getItem('favorites') && (localStorage.getItem('favorites').split(",")).includes(gifItem.id)))
+      {
+        a.style.backgroundImage="url(../../assets/icon-fav-active.svg)";
+        a.style.width="30px";
+        a.style.height="27px";
+      }
 
       actionIcons.appendChild(a);
     });
