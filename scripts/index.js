@@ -25,13 +25,11 @@ async function appendTrendings() {
 
     let span=document.createElement("span");
 
-    span.textContent = word==content[content.length-1] ? word : `${word},`;
-    word=span.textContent.replace(",", "");
-
+    span.textContent = word==content[content.length-1] ? word : `${word}, `;
     trendingStuff.appendChild(span);
 
     span.addEventListener("click", (e) => { 
-      searchInput.value=span.textContent.replace(",", "");
+      searchInput.value=span.textContent.replace(", ", "");
       search(e);
     }); 
   })
@@ -103,8 +101,8 @@ let suggestion=document.createElement('div');
 
         let suggestionName=document.createElement('p');
         suggestionName.textContent=data.name;
-        oneSuggestion.appendChild(suggestionName); 
 
+        oneSuggestion.appendChild(suggestionName); 
         suggestion.appendChild(oneSuggestion);
 
         oneSuggestion.addEventListener('click', (e) => { 

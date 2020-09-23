@@ -72,7 +72,13 @@ function appendSearchResults(searchResults) {
 
   searchArgument.textContent=searchInputValue.value;
 
-  searchResults.data.forEach(result => {
+  let data = []
+  if (searchResults.data.length==undefined)
+    data.push(searchResults.data)
+  else
+    data=searchResults.data;
+
+  data.forEach(result => {
 
     let resultGif=document.createElement("div");
     resultGif.classList.add("result-placeholder");
@@ -106,13 +112,13 @@ async function search(e) {
   e.preventDefault();
   let searchResults;
 
-  resultsGrid.style.display="none";
+  // resultsGrid.style.display="none";
   let searchFetch;
 
   noResults.style.display="none";
 
   /*if the id of the first element path of the event clicked is view more, fetch will equal a paginated search with offset */
-  
+
   if (e.path[0].id==viewMore.id)
   {
     searchFetch = await fetch(`https://api.giphy.com/v1/gifs/search?q=${searchInputValue.value}?&api_key=${apiKey}&limit=12&offset=${offset}`);
@@ -122,8 +128,8 @@ async function search(e) {
     if (localStorage.getItem('favorites'))
     {
       let queryString = localStorage.getItem("favorites").split(",").length==1  ?
-                    (`https://api.giphy.com/v1/gifs/${localStorage.getItem("favorites")}?api_key=${apiKey}`)
-                   : (`https://api.giphy.com/v1/gifs?ids=${localStorage.getItem("favorites")}?&api_key=${apiKey}`);
+                    (`https://api.giphy.com/v1/gifs/${localStorage.getItem("favorites")}?&api_key=${apiKey}`)
+                   : (`https://api.giphy.com/v1/gifs?ids=${localStorage.getItem("favorites")}&api_key=${apiKey}`);
 
       searchFetch = await fetch(queryString);
       searchInputValue.value="Favoritos";
@@ -131,6 +137,7 @@ async function search(e) {
     }
     else
     {
+      resultsGrid.innerHTML="";
       searchArgument.textContent="Por ahora no tienes favoritos. Dale like a alguno de los GIFOS!";
       return;
     }
@@ -139,17 +146,18 @@ async function search(e) {
   {
     offset=0;
 
-    searchFetch = await fetch(`https://api.giphy.com/v1/gifs/search?q=${searchInputValue.value}?&api_key=${apiKey}&limit=12`);
+    searchFetch = await fetch(`https://api.giphy.com/v1/gifs/search?q=${searchInputValue.value}&api_key=${apiKey}&limit=12`);
     resultsGrid.innerHTML="";
   }
 
   searchResults = await searchFetch.json();
 
-  appendSearchResults(searchResults);
-  
-  viewMore.style.display= searchResults.pagination.total_count>offset ? "block" : "none";
+  await appendSearchResults(searchResults);
 
-  if (searchResults.pagination.total_count==0)
+  viewMore.style.display= searchResults.pagination &&
+                          searchResults.pagination.total_count>offset ? "block" : "none";
+
+  if (searchResults.pagination && searchResults.pagination.total_count==0)
     ouch();
 }
 
