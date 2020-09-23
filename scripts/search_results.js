@@ -3,22 +3,105 @@ let offset=0;
 
 let submitButton=document.querySelector("#search-icon");
 let viewMore=document.querySelector("#view-more");
+
+let searchArgument=document.querySelector("#search-argument");
+
+let favoritesButtonSm=document.querySelector("#favoritos-sm");
+let favoritesButtonLg=document.querySelector("#favoritos-lg");
+
 viewMore.style.display="none";
 let noResults=document.querySelector("#no-results");
-
 
 let searchInputValue=document.querySelector("#search-input");
 let resultsGrid=document.querySelector('#results-grid');
 resultsGrid.style.display="none";
 
-let tryAgain=document.querySelector("#try-again");
-let ouchImg=document.querySelector('#ouch-img');
-
 let lastValue=searchInputValue.value;
+
+function createOverlay(gifItem) {
+
+  /* adds a child div to a gifItem positioned absolutely that behaves as an overlay, containing both icons and title */
+
+    let overlay=document.createElement("div");
+    overlay.classList.add("overlay");
+
+    /* Icons */
+    let actionIcons=document.createElement("div");
+    actionIcons.classList.add("action-icons");
+
+    let like=document.createElement("a");
+    like.addEventListener('click', likeAction);
+
+    let download=document.createElement("a");
+
+    let expand=document.createElement("a");
+
+    [like, download, expand].forEach(a => {
+
+      a.id=gifItem.id;
+      a.classList.add("action-icon");
+
+      actionIcons.appendChild(a);
+    });
+
+    /* username and title*/
+
+    let username=document.createElement("p");
+    username.classList.add("username");
+    username.textContent=gifItem.username || "Anon";
+
+    let gifTitle=document.createElement("div");
+    gifTitle.classList.add("gif-title");
+
+    let title=document.createElement("p");
+    title.classList.add("title");
+    title.textContent=gifItem.title || "Sin nombre";
+
+    /* Append to the overlayed div */
+
+    gifTitle.appendChild(username);
+    gifTitle.appendChild(title);
+    
+    overlay.appendChild(actionIcons);
+    overlay.appendChild(gifTitle);
+    return overlay;
+  } 
+
+
+function appendSearchResults(searchResults) {
+
+  searchArgument.textContent=searchInputValue.value;
+
+  searchResults.data.forEach(result => {
+
+    let resultGif=document.createElement("div");
+    resultGif.classList.add("result-placeholder");
+    resultGif.setAttribute('id', `result-item-${offset}`);
+    resultGif.style.backgroundImage=`url("${result.images.fixed_width.url}")`;
+    
+    resultGif.appendChild(createOverlay(result));
+    resultsGrid.appendChild(resultGif);
+    resultsGrid.style.display="grid";
+
+    offset++;
+  });
+
+suggestion.innerHTML="";
+lastValue=searchInputValue.value;
+
+/* uses navigation anchor to go to new result (last offset - pagination) */
+location.hash = "#" + `result-item-${offset-12}`;
+}
+
+ouch = () => {
+  document.querySelector('#ouch-img').style.display="block";
+  document.querySelector("#try-again").style.display="block";
+  noResults.style.display="block";
+}
 
 async function search(e) {
 
-  /* Two different values for let fetch depending on the need for an offset (view more clicked) */
+  /* Three different values for let fetch depending on the need for an offset and the origin of the search parameter (view more/search/favorites) */
 
   e.preventDefault();
   let searchResults;
@@ -29,115 +112,45 @@ async function search(e) {
   noResults.style.display="none";
 
   /*if the id of the first element path of the event clicked is view more, fetch will equal a paginated search with offset */
+  
   if (e.path[0].id==viewMore.id)
   {
-    searchFetch= await fetch(`https://api.giphy.com/v1/gifs/search?q=${searchInputValue.value}?&api_key=${apiKey}&limit=12&offset=${offset}`);
+    searchFetch = await fetch(`https://api.giphy.com/v1/gifs/search?q=${searchInputValue.value}?&api_key=${apiKey}&limit=12&offset=${offset}`);
+  }
+  else if (e.path[0].id==favoritesButtonSm.id || e.path[0].id==favoritesButtonLg.id)
+  {
+    if (localStorage.getItem('favorites'))
+    {
+      let queryString = localStorage.getItem("favorites").split(",").length==1  ?
+                    (`https://api.giphy.com/v1/gifs/${localStorage.getItem("favorites")}?api_key=${apiKey}`)
+                   : (`https://api.giphy.com/v1/gifs?ids=${localStorage.getItem("favorites")}?&api_key=${apiKey}`);
+
+      searchFetch = await fetch(queryString);
+      searchInputValue.value="Favoritos";
+      resultsGrid.innerHTML="";
+    }
+    else
+    {
+      searchArgument.textContent="Por ahora no tienes favoritos. Dale like a alguno de los GIFOS!";
+      return;
+    }
   }
   else
   {
     offset=0;
 
-    searchFetch= await fetch(`https://api.giphy.com/v1/gifs/search?q=${searchInputValue.value}?&api_key=${apiKey}&limit=12`);
+    searchFetch = await fetch(`https://api.giphy.com/v1/gifs/search?q=${searchInputValue.value}?&api_key=${apiKey}&limit=12`);
     resultsGrid.innerHTML="";
   }
-    searchResults = await searchFetch.json();
-    viewMore.style.display="block";
-    appendSearchResults();
 
+  searchResults = await searchFetch.json();
 
-    function createOverlay(gifItem) {
-
-      /* adds a child div to a gifItem positioned absolutely that behaves as an overlay, containing both icons and title */
-
-      let overlay=document.createElement("div");
-      overlay.classList.add("overlay");
-
-      /* Icons */
-      let actionIcons=document.createElement("div");
-      actionIcons.classList.add("action-icons");
-
-      let like=document.createElement("a");
-      like.addEventListener('click', likeAction);
-
-      let download=document.createElement("a");
-
-      let expand=document.createElement("a");
-
-      [like, download, expand].forEach(a => {
-
-        a.id=gifItem.id;
-        a.classList.add("action-icon");
-
-        actionIcons.appendChild(a);
-
-      });
-
-      /* username and title*/
-
-      let username=document.createElement("p");
-      username.classList.add("username");
-      username.textContent=gifItem.username || "Anon";
-
-      let gifTitle=document.createElement("div");
-      gifTitle.classList.add("gif-title");
-
-      let title=document.createElement("p");
-      title.classList.add("title");
-      title.textContent=gifItem.title || "Sin nombre";
-
-      /* Append to the overlayed div */
-
-      gifTitle.appendChild(username);
-      gifTitle.appendChild(title);
-      
-      overlay.appendChild(actionIcons);
-      overlay.appendChild(gifTitle);
-      return overlay;
-    }
-
-    /* 
-   
-
-  /* appending search results to the grid */
+  appendSearchResults(searchResults);
   
-  function appendSearchResults() {
-    let searchArgument=document.querySelector("#search-argument");
-    searchArgument.textContent=searchInputValue.value;
+  viewMore.style.display= searchResults.pagination.total_count>offset ? "block" : "none";
 
-    if(searchResults.data.length==0)
-    {
-      ouchImg.style.display="block";
-      tryAgain.style.display="block";
-      noResults.style.display="block";
-    } else {
-      resultsGrid.style.display="grid";
-    }
+  if (searchResults.pagination.total_count==0)
+    ouch();
+}
 
-    searchResults.data.forEach(result => {
-
-      let resultGif=document.createElement("div");
-      resultGif.classList.add("result-placeholder");
-      resultGif.setAttribute('id', `result-item-${offset}`);
-      resultGif.style.backgroundImage=`url("${result.images.fixed_width.url}")`;
-      
-      resultGif.appendChild(createOverlay(result));
-
-      resultsGrid.appendChild(resultGif);
-
-      offset++;
-    });
- 
-    suggestion.innerHTML="";
-    lastValue=searchInputValue.value;
-  
-    /* uses navigation anchor to go to new result (last offset - pagination) */
-    location.hash = "#" + `result-item-${offset-12}`;
-  }
-
-};
-
-submitButton.addEventListener('click', (e => search(e)));
-viewMore.addEventListener('click', e => search(e));
-
-
-
+[submitButton, favoritesButtonSm, favoritesButtonLg, viewMore].forEach(button =>  button.addEventListener('click', e => search(e)));

@@ -87,6 +87,13 @@ let suggestion=document.createElement('div');
 
       laData.data.forEach(data => {
 
+        let createBot = (elementName, tag, className, textContent) => {
+          elementName=document.createElement(tag);
+          elementName.textContent=textContent;
+          elementName.classList.add(className);
+          return elementName;
+        }
+
         let oneSuggestion=document.createElement('div');
         oneSuggestion.style.display="flex";
         let suggestionImg=document.createElement('img');
