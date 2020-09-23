@@ -289,8 +289,9 @@ h1 br {
 }
 
 .search-results .result-placeholder:hover .overlay {
-  -webkit-transform: translateY(0);
-          transform: translateY(0);
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
+  opacity: 1;
 }
 
 .search-results .result-placeholder::before {
@@ -322,12 +323,13 @@ h1 br {
   height: 100%;
   width: 100%;
   background-color: rgba(87, 46, 229, 0.7);
-  -webkit-transform: translateY(-100%);
-          transform: translateY(-100%);
-  -webkit-transition: -webkit-transform .4s ease-in-out;
-  transition: -webkit-transform .4s ease-in-out;
-  transition: transform .4s ease-in-out;
-  transition: transform .4s ease-in-out, -webkit-transform .4s ease-in-out;
+  -webkit-transform: translate(-100%, -100%);
+          transform: translate(-100%, -100%);
+  opacity: 0;
+  -webkit-transition: opacity .6s ease-in-out, -webkit-transform .4s ease-in-out;
+  transition: opacity .6s ease-in-out, -webkit-transform .4s ease-in-out;
+  transition: transform .4s ease-in-out, opacity .6s ease-in-out;
+  transition: transform .4s ease-in-out, opacity .6s ease-in-out, -webkit-transform .4s ease-in-out;
 }
 
 .search-results .action-icons {
