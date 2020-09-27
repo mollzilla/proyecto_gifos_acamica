@@ -13,6 +13,45 @@ html {
 
   --logo-mobile: url("../../assets/logo-mobile.svg");
   --logo-desktop: url("../../assets/logo-desktop.svg");
+  --burger: url("../../assets/burger.svg");
+  --close: url("../../assets/close.svg");
+
+  --icon-facebook: url("../../assets/icon_facebook.svg");
+  --icon-facebook-hover: url("../../assets/icon_facebook_hover.svg");
+
+  --icon-instagram: url("../../assets/icon_instagram.svg");
+  --icon-instagram-hover: url("../../assets/icon_instagram-hover.svg");
+
+  --icon-link-normal: url("../../assets/icon-max-normal.svg");
+  --icon-link-hover: url("../../assets/icon-max-hover.svg");
+
+  --icon-max-normal: url("../../assets/icon-max-normal.svg");
+  --icon-max-hover: url("../../assets/icon-max-hover.svg");
+
+  --icon-mis-gifos: url("../../assets/icon-max-hover.svg");
+  --icon-mis-gifos-sin-contenido: url("../../assets/icon-max-hover.svg");
+
+  --icon-search: url("../../assets/icon-search.svg");
+  --icon-search-suggestion: url("../../assets/icon-search-suggestion.svg");
+
+  --icon-trash-normal: url("../../assets/icon-trash-normal.svg");
+  --icon-trash-hover: url("../../assets/icon-trash-hovers.svg");
+
+  --icon-trash-normal: url("../../assets/icon-search.svg");
+  --icon-trash-suggestion: url("../../assets/icon-search-suggestion.svg");
+
+  --ok: url("../../assets/ok.svg");
+
+  --paso-a-paso: url("../../assets/paso-a-paso.svg");
+  --paso-a-pas-o-hover: url("../../assets/paso-a-paso-hover.svg");
+
+  --pelicula: url("../../assets/pelicula.svg");
+
+  --crear: url("../../assets/button-crear-gifo.svg");
+
+  // --path
+
+  
 }
 
 html[data-theme='dark'] {
@@ -26,4 +65,17 @@ html[data-theme='dark'] {
 
   --logo-mobile: url("../../assets/logo-mobile-modo-noct.svg");
   --logo-desktop: url("../../assets/logo-modo-noc.svg");
+  --burger: url("../../assets/burger-modo-noct.svg");
+  --close: url("../../assets/sclose-modo-noc.svg");
+
+  --icon-facebook: url("../../assets/icon_facebook_noc.svg");
+  --icon-instagram: url("../../assets/icon_instagram_noc.svg");
+
+  --icon-search: url("../../assets/icon-search-modo-noct.svg");
+
+  --paso-a-paso: url("../../assets/paso-a-paso.svg");
+  --paso-a-paso-hover: url("../../assets/paso-a-paso-hover.svg");
+
+  --pelicula: url("../../assets/pelicula-modo-noc.svg");
+
 }

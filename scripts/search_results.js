@@ -33,6 +33,9 @@ function createOverlay(gifItem) {
     like.addEventListener('click', likeAction);
 
     let download=document.createElement("a");
+    download.classList.add(gifItem.title.replaceAll(" ", "_"));
+    download.addEventListener('click', downloadAction);
+
 
     let expand=document.createElement("a");
 

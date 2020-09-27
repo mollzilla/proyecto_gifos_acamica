@@ -160,6 +160,8 @@ function template(gif, container) {
 
   //children[0].children[1].src, etc
 
+  gifCardTemplateClone.children[0].children[0].src="bla"
+
   container.appendChild(elgifTemplate);
 }
 
