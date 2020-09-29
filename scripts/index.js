@@ -93,7 +93,8 @@ let suggestion=document.createElement('div');
         }
 
         let oneSuggestion=document.createElement('div');
-        oneSuggestion.style.display="flex";
+        oneSuggestion.classList.add("one-suggestion");
+
         let suggestionImg=document.createElement('img');
 
         suggestionImg.setAttribute('src', "/assets/icon-search-suggestion.svg");
@@ -125,46 +126,3 @@ document.addEventListener('click', (e) => {
   if(!searchContainer.contains(e.target))
     suggestion.innerHTML="";
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* para hacerlo con template */
-
-function template(gif, container) {
-  let gifTemplate=document.getElementById("gif-template").content.firstElementChild; // declararla global y no en la funcion
-
-  let elgifTemplate=gifTemplate.cloneNode(true);
-  console.log(elgifTemplate);
-
-  console.log(elgifTemplate.children[0].children[0])
-
-  //children[0].children[1].src, etc
-
-  gifCardTemplateClone.children[0].children[0].src="bla"
-
-  container.appendChild(elgifTemplate);
-}
-
-// template();
-
-// parsear y apendear json.forEach(element => template(element, container))

@@ -46,12 +46,14 @@ h1 {
   max-width: 550px;
 
   input {
-    @include word-bundle(1rem, #6B7989, 400, 50px);
+    @include word-bundle(1rem, #6B7989, 400, 30px);
     border: none;
     font-family: $normal;
     width: 75%;
     max-width: 450px;
     background-color: var(--background);
+    padding-bottom: 16px;
+    border-bottom: 1px solid #9CAFC3;
   }
 
   &::-webkit-input-placeholder {
@@ -64,6 +66,36 @@ h1 {
 
   #close-search {
     display: none;
+  }
+
+  .one-suggestion {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+    height: 2rem;
+
+    &:first-child {
+      margin-top: 14px;
+    }
+
+    &:last-child {
+      margin-bottom: 18px;
+    }
+
+    img {
+      margin: 0;
+      height: 1rem;
+      margin-left: 23.36px;
+    }
+
+    p {
+      margin: 0;
+      text-align: left;
+      margin-left: 13px;
+      @include word-bundle(1rem, #9CAFC3, 400, 19px);
+      font-family: $normal;
+    }
   }
 }
 
@@ -106,19 +138,36 @@ h1 {
         font-weight: bold;
         font-size: .8125rem;
         &:hover {
-          border-bottom: 2px solid var(--green)
+          border-bottom: 2px solid var(--green);
         }
+
+        &:active {
+          color: #9CAFC3;
+          border-bottom: unset;
+        }
+
       }
 
       #crear {
         background-image: var(--crear);
         display: inline-block;
-                        cursor: pointer;
-                        width: 54px;
-                        height: 54px;
-                        border-radius: 50px;
-                        border: 1px solid var(--purple);
-                        background-color: var(--green);
+        cursor: pointer;
+        width: 54px;
+        height: 54px;
+        border-radius: 50px;
+        border: 1px solid var(--purple);
+        // background-color: var(--green);
+
+        &:active {
+          background-image: var(--crear-active);
+          border: 1px solid #9CAFC3;
+        }
+        
+        &:hover {
+          background-image: var(--crear-hover);
+          border: 1px solid #9CAFC3;
+        }
+          
       }
 
       nav img {

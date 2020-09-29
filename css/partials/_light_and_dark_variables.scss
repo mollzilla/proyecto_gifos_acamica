@@ -14,7 +14,7 @@ html {
   --logo-mobile: url("../../assets/logo-mobile.svg");
   --logo-desktop: url("../../assets/logo-desktop.svg");
   --burger: url("../../assets/burger.svg");
-  --close: url("../../assets/close.svg");
+  --close-burger: url("../../assets/close.svg");
 
   --icon-facebook: url("../../assets/icon_facebook.svg");
   --icon-facebook-hover: url("../../assets/icon_facebook_hover.svg");
@@ -48,6 +48,8 @@ html {
   --pelicula: url("../../assets/pelicula.svg");
 
   --crear: url("../../assets/button-crear-gifo.svg");
+  --crear-active: url("../../assets/CTA-crear-gifo-active.svg");
+  --crear-hover: url("../../assets/CTA-crear-gifo-hover.svg");
 
   // --path
 
@@ -66,7 +68,7 @@ html[data-theme='dark'] {
   --logo-mobile: url("../../assets/logo-mobile-modo-noct.svg");
   --logo-desktop: url("../../assets/logo-modo-noc.svg");
   --burger: url("../../assets/burger-modo-noct.svg");
-  --close: url("../../assets/sclose-modo-noc.svg");
+  --close-burger: url("../../assets/close-modo-noc.svg");
 
   --icon-facebook: url("../../assets/icon_facebook_noc.svg");
   --icon-instagram: url("../../assets/icon_instagram_noc.svg");
@@ -77,5 +79,11 @@ html[data-theme='dark'] {
   --paso-a-paso-hover: url("../../assets/paso-a-paso-hover.svg");
 
   --pelicula: url("../../assets/pelicula-modo-noc.svg");
+  
+  --crear: url("../../assets/CTA-crear-gifo-modo-noc.svg");
+  --crear-active: url("../../assets/CTA-crear-gifo-active-modo-noc.svg");
+  --crear-hover: url("../../assets/CTA-crear-gifo-hover-modo-noc.svg");
+
+
 
 }
