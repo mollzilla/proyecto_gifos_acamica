@@ -7,21 +7,42 @@ const apiKey="VZ4N6ebz6BSdgrhUNiKAAU0dNYws5GSn";
 
 async function appendTrendings() {
 
-  async function getTrendings() {
-    try {
-      const trendingEndPoint= await fetch(`https://api.giphy.com/v1/trending/searches?&api_key=${apiKey}`);
-      const trendingFetch = await trendingEndPoint.json();
-      trendingData = trendingFetch.data.splice(0,5);
-      return trendingData;
-    } catch (err) {
-      console.log(err);
+  // async function getTrendings() {
+  //   try {
+  //     const trendingEndPoint= await fetch(`https://api.giphy.com/v1/trending/searches?&api_key=${apiKey}`);
+  //     const trendingFetch = await trendingEndPoint.json();
+  //     trendingData = trendingFetch.data.splice(0,5);
+  //     return trendingData;
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+
+    async function getTrendings() {
+      try {
+        const [trendingKeyWords, trendingGifs] = await Promise.all([
+          fetch(`https://api.giphy.com/v1/trending/searches?&api_key=${apiKey}`),
+          fetch(`https://api.giphy.com/v1/gifs/trending?&api_key=${apiKey}`),
+        ]);
+        const trendingkeyWordsData = await trendingKeyWords.json();
+        const trendingGifsData = await trendingGifs.json();
+
+        return [trendingkeyWordsData, trendingGifsData]
+
+      } catch (err) {
+        console.log(err);
+      }
     }
-  }
 
   let content = await getTrendings();
   let trendingStuff=document.querySelector(".trending-stuff")
+console.log(content[1].data)
 
-  content.forEach(word => {
+
+
+  content[0].data.forEach((word, i) => {
+
+    if(i>4)
+      return
 
     let span=document.createElement("span");
 
@@ -85,13 +106,6 @@ let suggestion=document.createElement('div');
 
       laData.data.forEach(data => {
 
-        let createBot = (elementName, tag, className, textContent) => {
-          elementName=document.createElement(tag);
-          elementName.textContent=textContent;
-          elementName.classList.add(className);
-          return elementName;
-        }
-
         let oneSuggestion=document.createElement('div');
         oneSuggestion.classList.add("one-suggestion");
 
@@ -113,6 +127,7 @@ let suggestion=document.createElement('div');
         });     
 
       })
+      
       searchContainer.appendChild(suggestion);
 
     } catch (error) {

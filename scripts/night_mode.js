@@ -14,14 +14,17 @@ function themeToggler(e) {
     themeToggleLinkSm.textContent="Modo Diurno";
     themeToggleLinkLg.textContent="Modo Diurno";
 
+    document.querySelector("#burger").setAttribute("src", "../assets/close-modo-noct.svg");
   }
   else if(document.documentElement.getAttribute("data-theme")=="dark")
   {
     document.documentElement.setAttribute("data-theme", "light");
     themeToggleLinkSm.textContent="Modo Nocturno";
     themeToggleLinkLg.textContent="Modo Nocturno";
+
+    document.querySelector("#burger").setAttribute("src", "../assets/close.svg");
   }
-    
+
 };
 
 let trans = () => {
