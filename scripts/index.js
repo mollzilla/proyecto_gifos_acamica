@@ -1,21 +1,10 @@
-/* API */
+let carousel=document.querySelector(".carousel");
+let allIcons=Array.from(document.querySelectorAll('[id^="icon"]'));
 
-// una api key, deberia conseguir la mia
+/* API */
 const apiKey="VZ4N6ebz6BSdgrhUNiKAAU0dNYws5GSn";
 
-/* trending search terms */
-
 async function appendTrendings() {
-
-  // async function getTrendings() {
-  //   try {
-  //     const trendingEndPoint= await fetch(`https://api.giphy.com/v1/trending/searches?&api_key=${apiKey}`);
-  //     const trendingFetch = await trendingEndPoint.json();
-  //     trendingData = trendingFetch.data.splice(0,5);
-  //     return trendingData;
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
 
     async function getTrendings() {
       try {
@@ -34,10 +23,11 @@ async function appendTrendings() {
     }
 
   let content = await getTrendings();
-  let trendingStuff=document.querySelector(".trending-stuff")
-console.log(content[1].data)
+  let trendingStuff=document.querySelector(".trending-stuff");
 
+  console.log(content[1].data)
 
+  appendSearchResults((content[1].data.splice(0,10)), carousel);
 
   content[0].data.forEach((word, i) => {
 
@@ -53,7 +43,7 @@ console.log(content[1].data)
       searchInput.value=span.textContent.replace(", ", "");
       search(e);
     }); 
-  })
+  });
 }
 
 appendTrendings();
@@ -65,8 +55,8 @@ let searchInput=document.querySelector("#search-input");
 let suggestion=document.createElement('div');
 
 
-  let closeIcon=document.querySelector("#close-search");
-  let searchIcon=document.querySelector("#search-icon");
+  let closeIcon=document.querySelector("#icon_close");
+  let searchIcon=document.querySelector("#icon_search");
 
   let laData;
 
@@ -111,7 +101,7 @@ let suggestion=document.createElement('div');
 
         let suggestionImg=document.createElement('img');
 
-        suggestionImg.setAttribute('src', "/assets/icon-search-suggestion.svg");
+        suggestionImg.setAttribute('src', "/assets/icon_search_suggestion.svg");
         oneSuggestion.appendChild(suggestionImg);
 
         let suggestionName=document.createElement('p');
@@ -127,7 +117,7 @@ let suggestion=document.createElement('div');
         });     
 
       })
-      
+
       searchContainer.appendChild(suggestion);
 
     } catch (error) {

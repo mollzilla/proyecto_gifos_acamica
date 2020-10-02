@@ -13,6 +13,10 @@ footer {
     display: flex;
     justify-content: space-between;
     width: 20%;
+
+    a &:hover {
+      color: var(--purple);
+    }
   }
 
   .copyright {
@@ -20,6 +24,24 @@ footer {
     font-family: $normal;
   }
 
+}
 
+@media(min-width:1024px) {
+  footer {
+    @include behave-horizontal;
+    justify-content: space-evenly;
+
+    .social-media {
+      margin: 0;
+      justify-content: center;
+      width: 5rem;
+      margin-left: 1rem;
+    }
+
+    .copyright {
+      flex-grow: 1;
+      text-align: right;
+    }
+  }
 }
 

@@ -13,18 +13,19 @@ function themeToggler(e) {
     document.documentElement.setAttribute("data-theme", "dark");
     themeToggleLinkSm.textContent="Modo Diurno";
     themeToggleLinkLg.textContent="Modo Diurno";
+    allIcons.map(icon => icon.setAttribute('src', `assets/${icon.id}_modo_noc.svg`))
 
-    document.querySelector("#burger").setAttribute("src", "../assets/close-modo-noct.svg");
+    document.querySelector("#burger").setAttribute("src", "../assets/icon_close_modo_noc.svg");
   }
   else if(document.documentElement.getAttribute("data-theme")=="dark")
   {
     document.documentElement.setAttribute("data-theme", "light");
     themeToggleLinkSm.textContent="Modo Nocturno";
     themeToggleLinkLg.textContent="Modo Nocturno";
+    allIcons.map(icon => icon.setAttribute('src', `assets/${icon.id}_modo_noc.svg`))
 
-    document.querySelector("#burger").setAttribute("src", "../assets/close.svg");
+    document.querySelector("#burger").setAttribute("src", "assets/icon_close.svg");
   }
-
 };
 
 let trans = () => {

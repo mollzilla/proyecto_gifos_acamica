@@ -77,21 +77,21 @@
     background-size: contain;
 
     &:nth-child(1) {
-      background-image: url("../../assets/icon-fav.svg");
+      background-image: url("../../assets/icon_fav.svg");
       &:hover {
-        background-image: url("../../assets/icon-fav-hover.svg");
+        background-image: url("../../assets/icon_fav_hover.svg");
       }
     }
     &:nth-child(2) {
-      background-image: url("../../assets/icon-download.svg");
+      background-image: url("../../assets/icon_download.svg");
       &:hover {
-        background-image: url("../../assets/icon-download-hover.svg");
+        background-image: url("../../assets/icon_download_hover.svg");
       }
     }
     &:nth-child(3) {
-      background-image: url("../../assets/icon-max-normal.svg");
+      background-image: url("../../assets/icon_max.svg");
       &:hover {
-        background-image: url("../../assets/icon-max-hover.svg");
+        background-image: url("../../assets/icon_max_hover.svg");
       };
     }
   }

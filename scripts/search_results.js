@@ -1,7 +1,7 @@
 // const apiKey="VZ4N6ebz6BSdgrhUNiKAAU0dNYws5GSn";
 let offset=0;
 
-let submitButton=document.querySelector("#search-icon");
+let submitButton=document.querySelector("#icon_search");
 let viewMore=document.querySelector("#view-more");
 
 let searchArgument=document.querySelector("#search-argument");
@@ -46,7 +46,7 @@ function createOverlay(gifItem) {
       
       if(a==like && (localStorage.getItem('favorites') && (localStorage.getItem('favorites').split(",")).includes(gifItem.id)))
       {
-        a.style.backgroundImage="url(../../assets/icon-fav-active.svg)";
+        a.style.backgroundImage="url(../../assets/icon_fav_active.svg)";
         a.style.width="30px";
         a.style.height="27px";
       }
@@ -78,15 +78,15 @@ function createOverlay(gifItem) {
   } 
 
 
-function appendSearchResults(searchResults) {
+function appendSearchResults(searchResults, container) {
 
   searchArgument.textContent=searchInputValue.value;
 
   let data = []
-  if (searchResults.data.length==undefined)
-    data.push(searchResults.data)
+  if (searchResults.length==undefined)
+    data.push(searchResults)
   else
-    data=searchResults.data;
+    data=searchResults;
 
   data.forEach(result => {
 
@@ -96,8 +96,8 @@ function appendSearchResults(searchResults) {
     resultGif.style.backgroundImage=`url("${result.images.fixed_width.url}")`;
     
     resultGif.appendChild(createOverlay(result));
-    resultsGrid.appendChild(resultGif);
-    resultsGrid.style.display="grid";
+    container.appendChild(resultGif);
+    container.style.display="grid";
 
     offset++;
   });
@@ -162,7 +162,7 @@ async function search(e) {
 
   searchResults = await searchFetch.json();
 
-  await appendSearchResults(searchResults);
+  await appendSearchResults(searchResults.data, resultsGrid);
 
   viewMore.style.display= searchResults.pagination &&
                           searchResults.pagination.total_count>offset ? "block" : "none";

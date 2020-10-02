@@ -60,11 +60,11 @@ h1 {
     font-family: $normal;
   }
 
-  #search-icon {
+  #icon_search {
     display: initial;
   }
 
-  #close-search {
+  #icon_close {
     display: none;
   }
 
@@ -159,12 +159,12 @@ h1 {
         // background-color: var(--green);
 
         &:active {
-          background-image: var(--crear-active);
+          background-image: var(--crear_active);
           border: 1px solid #9CAFC3;
         }
         
         &:hover {
-          background-image: var(--crear-hover);
+          background-image: var(--crear_hover);
           border: 1px solid #9CAFC3;
         }
           

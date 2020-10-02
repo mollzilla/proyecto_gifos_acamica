@@ -13,29 +13,29 @@ html {
   --logo-desktop: url("../../assets/logo-desktop.svg");
   --burger: url("../../assets/burger.svg");
   --close-burger: url("../../assets/close.svg");
-  --icon-facebook: url("../../assets/icon_facebook.svg");
-  --icon-facebook-hover: url("../../assets/icon_facebook_hover.svg");
-  --icon-instagram: url("../../assets/icon_instagram.svg");
-  --icon-instagram-hover: url("../../assets/icon_instagram-hover.svg");
-  --icon-link-normal: url("../../assets/icon-max-normal.svg");
-  --icon-link-hover: url("../../assets/icon-max-hover.svg");
-  --icon-max-normal: url("../../assets/icon-max-normal.svg");
-  --icon-max-hover: url("../../assets/icon-max-hover.svg");
-  --icon-mis-gifos: url("../../assets/icon-max-hover.svg");
-  --icon-mis-gifos-sin-contenido: url("../../assets/icon-max-hover.svg");
-  --icon-search: url("../../assets/icon-search.svg");
-  --icon-search-suggestion: url("../../assets/icon-search-suggestion.svg");
-  --icon-trash-normal: url("../../assets/icon-trash-normal.svg");
-  --icon-trash-hover: url("../../assets/icon-trash-hovers.svg");
-  --icon-trash-normal: url("../../assets/icon-search.svg");
-  --icon-trash-suggestion: url("../../assets/icon-search-suggestion.svg");
+  --icon_facebook: url("../../assets/icon_facebook.svg");
+  --icon_facebook_hover: url("../../assets/icon_facebook_hover.svg");
+  --icon_instagram: url("../../assets/icon_instagram.svg");
+  --icon_instagram_hover: url("../../assets/icon_instagram_hover.svg");
+  --icon_link: url("../../assets/icon_max.svg");
+  --icon_link_hover: url("../../assets/icon_max_hover.svg");
+  --icon_max: url("../../assets/icon_max.svg");
+  --icon_max_hover: url("../../assets/icon_max_hover.svg");
+  --icon_mis-gifos: url("../../assets/icon_max_hover.svg");
+  --icon_mis-gifos-sin-contenido: url("../../assets/icon_max_hover.svg");
+  --icon_search: url("../../assets/icon_search.svg");
+  --icon_search-suggestion: url("../../assets/icon_search-suggestion.svg");
+  --icon_trash: url("../../assets/icon_trash.svg");
+  --icon_trash_hover: url("../../assets/icon_trash_hovers.svg");
+  --icon_trash: url("../../assets/icon_search.svg");
+  --icon_trash-suggestion: url("../../assets/icon_search-suggestion.svg");
   --ok: url("../../assets/ok.svg");
   --paso-a-paso: url("../../assets/paso-a-paso.svg");
-  --paso-a-pas-o-hover: url("../../assets/paso-a-paso-hover.svg");
+  --paso-a-pas-o_hover: url("../../assets/paso-a-paso_hover.svg");
   --pelicula: url("../../assets/pelicula.svg");
   --crear: url("../../assets/button-crear-gifo.svg");
   --crear-active: url("../../assets/CTA-crear-gifo-active.svg");
-  --crear-hover: url("../../assets/CTA-crear-gifo-hover.svg");
+  --crear_hover: url("../../assets/CTA_crear_gifo_hover.svg");
 }
 
 html[data-theme='dark'] {
@@ -50,15 +50,15 @@ html[data-theme='dark'] {
   --logo-desktop: url("../../assets/logo-modo-noc.svg");
   --burger: url("../../assets/burger-modo-noct.svg");
   --close-burger: url("../../assets/close-modo-noc.svg");
-  --icon-facebook: url("../../assets/icon_facebook_noc.svg");
-  --icon-instagram: url("../../assets/icon_instagram_noc.svg");
-  --icon-search: url("../../assets/icon-search-modo-noct.svg");
+  --icon_facebook: url("../../assets/icon_facebook_noc.svg");
+  --icon_instagram: url("../../assets/icon_instagram_noc.svg");
+  --icon_search: url("../../assets/icon_search-modo-noc.svg");
   --paso-a-paso: url("../../assets/paso-a-paso.svg");
-  --paso-a-paso-hover: url("../../assets/paso-a-paso-hover.svg");
+  --paso-a-paso_hover: url("../../assets/paso-a-paso_hover.svg");
   --pelicula: url("../../assets/pelicula-modo-noc.svg");
   --crear: url("../../assets/CTA-crear-gifo-modo-noc.svg");
   --crear-active: url("../../assets/CTA-crear-gifo-active-modo-noc.svg");
-  --crear-hover: url("../../assets/CTA-crear-gifo-hover-modo-noc.svg");
+  --crear_hover: url("../../assets/CTA-crear-gifo_hover-modo-noc.svg");
 }
 
 html.themeTransition,
@@ -248,11 +248,11 @@ h1 br {
   font-family: "Roboto";
 }
 
-.search-border #search-icon {
+.search-border #icon_search {
   display: initial;
 }
 
-.search-border #close-search {
+.search-border #icon_close {
   display: none;
 }
 
@@ -346,11 +346,11 @@ h1 br {
     border: 1px solid var(--purple);
   }
   header .first-stripe #crear:active {
-    background-image: var(--crear-active);
+    background-image: var(--crear_active);
     border: 1px solid #9CAFC3;
   }
   header .first-stripe #crear:hover {
-    background-image: var(--crear-hover);
+    background-image: var(--crear_hover);
     border: 1px solid #9CAFC3;
   }
   header .first-stripe nav img {
@@ -474,27 +474,27 @@ h1 br {
 }
 
 .search-results .action-icon:nth-child(1) {
-  background-image: url("../../assets/icon-fav.svg");
+  background-image: url("../../assets/icon_fav.svg");
 }
 
 .search-results .action-icon:nth-child(1):hover {
-  background-image: url("../../assets/icon-fav-hover.svg");
+  background-image: url("../../assets/icon_fav_hover.svg");
 }
 
 .search-results .action-icon:nth-child(2) {
-  background-image: url("../../assets/icon-download.svg");
+  background-image: url("../../assets/icon_download.svg");
 }
 
 .search-results .action-icon:nth-child(2):hover {
-  background-image: url("../../assets/icon-download-hover.svg");
+  background-image: url("../../assets/icon_download_hover.svg");
 }
 
 .search-results .action-icon:nth-child(3) {
-  background-image: url("../../assets/icon-max-normal.svg");
+  background-image: url("../../assets/icon_max.svg");
 }
 
 .search-results .action-icon:nth-child(3):hover {
-  background-image: url("../../assets/icon-max-hover.svg");
+  background-image: url("../../assets/icon_max_hover.svg");
 }
 
 .search-results .gif-title {
@@ -597,6 +597,15 @@ h1 br {
   max-width: 65%;
 }
 
+.carousel {
+  -ms-grid-columns: 25% 25% 25%;
+      grid-template-columns: 25% 25% 25%;
+  -ms-grid-rows: 100%;
+      grid-template-rows: 100%;
+  width: 1000px;
+  overflow: hidden;
+}
+
 footer {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -631,11 +640,50 @@ footer .social-media {
   width: 20%;
 }
 
+a footer .social-media:hover {
+  color: var(--purple);
+}
+
 footer .copyright {
   font-size: 14px;
   color: var(--small_text_color);
   font-weight: 400;
   line-height: 20px;
   font-family: "Roboto";
+}
+
+@media (min-width: 1024px) {
+  footer {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: row wrap;
+            flex-flow: row wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+  }
+  footer .social-media {
+    margin: 0;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    width: 5rem;
+    margin-left: 1rem;
+  }
+  footer .copyright {
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+    text-align: right;
+  }
 }
 /*# sourceMappingURL=main.css.map */
