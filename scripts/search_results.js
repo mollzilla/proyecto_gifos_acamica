@@ -106,7 +106,7 @@ suggestion.innerHTML="";
 lastValue=searchInputValue.value;
 
 /* uses navigation anchor to go to new result (last offset - pagination) */
-location.hash = "#" + `result-item-${offset-12}`;
+// location.hash = "#" + `result-item-${offset-12}`;
 }
 
 ouch = () => {

@@ -348,6 +348,7 @@ h1 br {
   header .first-stripe #crear:active {
     background-image: var(--crear_active);
     border: 1px solid #9CAFC3;
+    background-color: 1px solid #9CAFC3;
   }
   header .first-stripe #crear:hover {
     background-image: var(--crear_hover);
@@ -584,7 +585,7 @@ h1 br {
   margin-bottom: 7px;
 }
 
-.trending .mira {
+.mira {
   font-size: 16px;
   color: var(--small_text_color);
   font-weight: 400;
@@ -604,6 +605,202 @@ h1 br {
       grid-template-rows: 100%;
   width: 1000px;
   overflow: hidden;
+}
+
+.inner-create {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0;
+  justify-content: center;
+}
+
+.inner-create .camera {
+  margin: 0;
+  background-image: url("../../assets/icon_camara.svg");
+  height: 150px;
+  width: 114px;
+  background-size: contain;
+  -webkit-transform: translateX(15%);
+          transform: translateX(15%);
+}
+
+.inner-create .shine {
+  margin: 0;
+  padding: 0;
+  background-image: url("../../assets/element-luz-camara.svg");
+  background-repeat: no-repeat;
+  height: 115px;
+  width: 75px;
+  background-size: contain;
+  -webkit-animation: blinking 5s infinite;
+          animation: blinking 5s infinite;
+  -webkit-transform: translateX(20%);
+          transform: translateX(20%);
+}
+
+@-webkit-keyframes blinking {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes blinking {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.inner-create .gif-captor-container {
+  position: relative;
+  margin: 0;
+  width: 43rem;
+  height: 390px;
+  border: 1px solid var(--fancy_border);
+  overflow: hidden;
+}
+
+.inner-create gif-captor-video-container {
+  position: absolute;
+  top: 15px;
+}
+
+.inner-create .corner-right, .inner-create .corner-left {
+  height: 25px;
+  width: 27px;
+  display: inline-block;
+  position: absolute;
+}
+
+.inner-create .corner-right {
+  border-right: 1px solid var(--green);
+  right: 1.5rem;
+}
+
+.inner-create .corner-left {
+  border-left: 1px solid var(--green);
+  left: 1.5rem;
+}
+
+.inner-create .corner-top {
+  border-top: 1px solid var(--green);
+  top: 1.5rem;
+}
+
+.inner-create .corner-bottom {
+  border-bottom: 1px solid var(--green);
+  bottom: 1.5rem;
+}
+
+.inner-create .create-text {
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  position: absolute;
+}
+
+.inner-create .create-text-subtitle {
+  font-size: 16px;
+  color: var(--small_text_color);
+  font-weight: 400;
+  line-height: 23px;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+}
+
+.film {
+  background-image: url("../../assets/icon_pelicula.svg");
+  height: 88px;
+  width: 140px;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+
+.stages {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 1.5rem auto;
+  width: 12rem;
+}
+
+.film-stage {
+  font-family: Roboto;
+  margin: 0;
+  cursor: pointer;
+  border-radius: 50%;
+  height: 2rem;
+  width: 2rem;
+  line-height: 2rem;
+  border: 1px solid;
+  border-color: var(--fancy-border);
+  margin-right: 1.5rem;
+}
+
+.film-stage:last-of-type {
+  margin-right: 0;
+}
+
+.activated {
+  color: #FFF;
+  background-color: var(--purple);
+}
+
+.start-border {
+  border: 3px solid;
+  border-color: var(--fancy-border);
+  border-radius: 3px;
+  width: 110%;
+  -webkit-transform: translateX(-5%);
+          transform: translateX(-5%);
+}
+
+#start-film {
+  border: 1px solid var(--fancy_border);
+  border-radius: 25px;
+  line-height: 50px;
+  font-size: 13px;
+  color: auto;
+  font-weight: bold;
+  line-height: auto;
+  display: block;
+  margin-top: 1.25rem;
+  width: 127px;
+  -webkit-transform: translateX(-12.5%);
+          transform: translateX(-12.5%);
 }
 
 footer {

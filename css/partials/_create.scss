@@ -1,0 +1,136 @@
+.inner-create {
+  @include behave-horizontal;
+  margin: 0;
+  justify-content: center;
+  .camera {
+    margin: 0;
+    background-image: url("../../assets/icon_camara.svg");
+    height: 150px;
+    width: 114px;
+    background-size: contain;
+    transform: translateX(15%);
+  }
+  .shine {
+    margin: 0;
+    padding: 0;
+    background-image: url("../../assets/element-luz-camara.svg");
+    background-repeat: no-repeat;
+    height: 115px;
+    width: 75px;
+    background-size: contain;
+    animation: blinking 5s infinite;
+    transform: translateX(20%);
+  }
+
+  @keyframes blinking {
+    0% {opacity: 1;}
+    50% {opacity: 0;}
+    100% {opacity: 1;}
+  }
+
+  .gif-captor-container  {
+    position: relative;
+    margin: 0;
+    width: 43rem;
+    height: 390px;
+    border: 1px solid var(--fancy_border);
+    overflow: hidden;
+  }
+
+  gif-captor-video-container {
+    position: absolute;
+    top: 15px;
+  }
+
+.corner-right, .corner-left {
+  height: 25px;
+  width: 27px;
+  display: inline-block;
+  position: absolute;
+}
+.corner-right {
+  border-right: 1px solid var(--green);
+  right: 1.5rem;
+}
+.corner-left {
+  border-left: 1px solid var(--green);
+  left: 1.5rem;
+}
+.corner-top {
+  border-top: 1px solid var(--green);
+  top: 1.5rem;
+}
+.corner-bottom {
+  border-bottom: 1px solid var(--green);
+  bottom: 1.5rem;
+}
+
+.create-text {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+}
+
+.create-text-subtitle {
+  @include word-bundle(16px, var(--small_text_color), 400, 23px) ; 
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+}
+
+}
+
+.film {
+  background-image: url("../../assets/icon_pelicula.svg");
+  height: 88px;
+    width: 140px;
+  align-self: flex-end;
+}
+
+.stages {
+  @include behave-horizontal;
+  margin: 1.5rem auto;
+  width: 12rem;
+}
+
+.film-stage {
+  font-family: Roboto;
+  margin: 0;
+  cursor: pointer;
+  border-radius: 50%;
+  height: 2rem;
+  width: 2rem;
+  line-height: 2rem;
+  border: 1px solid;
+  border-color: var(--fancy-border);
+  margin-right: 1.5rem;
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+}
+
+.activated {
+  color: #FFF;
+  background-color: var(--purple);
+}
+
+.start-border {
+  border: 3px solid;
+  border-color: var(--fancy-border);
+  border-radius: 3px;
+  width: 110%;
+  transform: translateX(-5%);
+}
+
+  #start-film {
+    @include fancy-border;
+    @include word-bundle(13px, auto, bold, auto);
+    display: block;
+    margin-top: 1.25rem;
+    width: 127px;
+    transform: translateX(-12.5%);
+  }
+
+
+

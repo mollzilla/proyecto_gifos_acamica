@@ -111,14 +111,6 @@
 
     </section>
 
-    <section class="create">
-      <div class="create">
-        <input type="submit" value="crear" id="create">
-        <video controls autoplay src=""id="gif-captor"></video>
-      </div>
-    </section>
-
-
     <section class="trending">
       <h2 class="trending-gifos">Trending GIFOS</h2>
       <h3 class="mira">Mira los últimos<br> GIFOS de nuestra comunidad</h3>
@@ -129,31 +121,54 @@
       </div>
     </section>
 
+    <section class="create container">
+      <div class="inner-create">
+        <div class="camera"></div>
+        <div class="shine"></div>
+        <div class="gif-captor">
+        <div class="gif-captor-container">
+          <span class="corner-left corner-top"></span>
+          <span class="corner-right corner-top"></span>
+          <span class="corner-left corner-bottom"></span>
+          <span class="corner-right corner-bottom"></span>
+          <div class="create-text">
+            <h2>Aquí podrás <br/> tus propios <span id="gifos-green">GIFOS</span></h2>
+            <h3 class="create-text-subtitle">¡Crea tu GIFO en sólo 3 pasos! <br/>(sólo necesitas una cámara para grabar un video)</h3>
+          </div>
+          <div class="gif-captor-video-container">
+            <video controls autoplay src=""id="gif-captor-video"></video>
+          </div>
+        </div>
+        <div class="stages">
+          <span class="film-stage film-stage-1">1</span>
+          <span class="film-stage film-stage-2">2</span>
+          <span class="film-stage film-stage-3">3</span>
+        </div>   
+        <hr class="start-border" />  
+      </div>
+        <div class="film" id="icon_pelicula"></div>  
+        
+      </div>
+        <a href="" id="start-film">COMENZAR</a>
+    </section>
+
     <footer class="container">
       <h5 class="share-width">Compatir en:</h5>
-      <div class="icons">
-
+      <div class="icons"></div>
+      <div class="social-media">
+        <a href=""><img src="assets/icon_facebook.svg" id="icon_facebook" alt="share-facebook"></a>
+        <a href=""><img src="assets/icon_twitter.svg" id="icon_twitter" alt="share-twitter"></a>
+        <a href=""><img src="assets/icon_instagram.svg" id="icon_instagram" alt="share-instagram"></a>
       </div>
+      <p class="copyright">© GIFOS 2020 All Rights Reserved.</p>
+    </footer>
 
-
-    <div class="social-media">
-      <a href=""><img src="assets/icon_facebook.svg" id="icon_facebook" alt="share-facebook"></a>
-      <a href=""><img src="assets/icon_twitter.svg" id="icon_twitter" alt="share-twitter"></a>
-      <a href=""><img src="assets/icon_instagram.svg" id="icon_instagram" alt="share-instagram"></a>
-    </div>
-
-
-
-    <p class="copyright">© GIFOS 2020 All Rights Reserved.</p>
-  </footer>
-
+  <script src="scripts/create.js"></script>
   <script src="scripts/index.js"></script>
   <script src="scripts/drawer.js"></script>
   <script src="scripts/search_results.js"></script>
-  <script src="scripts/create.js"></script>
   <script src="scripts/carousel.js"></script>
   <script src="scripts/night_mode.js"></script>
-  <script src="scripts/action_icons.js"></script>
   <script src="scripts/action_icons.js"></script>
 </body>
 </html>

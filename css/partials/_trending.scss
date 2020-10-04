@@ -21,12 +21,12 @@
     @include word-bundle(20px, auto, bold, 30px);
     margin-bottom: 7px;
   }
+}
 
-  .mira {
-    @include word-bundle(16px, var(--small_text_color), 400, 23px);
-    font-family: "Roboto", sans-serif;
-    text-align: center;
-  }
+.mira {
+  @include word-bundle(16px, var(--small_text_color), 400, 23px);
+  font-family: "Roboto", sans-serif;
+  text-align: center;
 }
 
 

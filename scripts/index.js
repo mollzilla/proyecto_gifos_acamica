@@ -25,8 +25,6 @@ async function appendTrendings() {
   let content = await getTrendings();
   let trendingStuff=document.querySelector(".trending-stuff");
 
-  console.log(content[1].data)
-
   appendSearchResults((content[1].data.splice(0,10)), carousel);
 
   content[0].data.forEach((word, i) => {

@@ -56,3 +56,10 @@ hoverIcons=hoverIcons.map(icon => {
   icon.addEventListener('mouseover', () => icon.setAttribute('src', `assets/${icon.id}_hover.svg`))
   icon.addEventListener('mouseout', () => icon.setAttribute('src', `assets/${icon.id}.svg`))
 })
+
+let anchorIcons=Array.from(document.querySelectorAll("nav a"));
+
+anchorIcons.map(function(icon)  { // escuchar si esta activo o si no, y darle el src acorde
+
+  icon.addEventListener('mouseup', () => icon.setAttribute('src', `assets/${icon.id}_hover.svg`))
+});
