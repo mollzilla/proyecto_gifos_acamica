@@ -4,7 +4,7 @@
   justify-content: center;
   .camera {
     margin: 0;
-    background-image: url("../../assets/icon_camara.svg");
+    background-image: var(--camara);
     height: 150px;
     width: 114px;
     background-size: contain;
@@ -81,7 +81,7 @@
 }
 
 .film {
-  background-image: url("../../assets/icon_pelicula.svg");
+  background-image: var(--pelicula);
   height: 88px;
     width: 140px;
   align-self: flex-end;
@@ -129,7 +129,7 @@
     display: block;
     margin-top: 1.25rem;
     width: 127px;
-    transform: translateX(-12.5%);
+    transform: translateX(-5%);
   }
 
 

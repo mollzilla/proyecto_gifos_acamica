@@ -1,4 +1,21 @@
-let carousel=document.querySelector(".carousel");
+let mainTitle=document.querySelector("h1");
+let searchSection=document.querySelector(".search");
+console.log(searchSection)
+let trending=document.querySelector(".trending");
+let viewMore=document.querySelector("#view-more");
+let createContainer = document.querySelector(".create");
+
+
+
+document.querySelector(".logo").addEventListener("click", () => {
+  console.log("mili")
+  document.querySelector(".search-results").style.display="block";
+  [mainTitle, searchSection].map(x => x.style.display="block");
+  trending.style.display="flex"
+  searchArgument.textContent="";
+  [createContainer, resultsGrid, viewMore].map(x => x.style.display="none");
+})
+
 let allIcons=Array.from(document.querySelectorAll('[id^="icon"]'));
 
 /* API */

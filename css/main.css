@@ -32,7 +32,8 @@ html {
   --ok: url("../../assets/ok.svg");
   --paso-a-paso: url("../../assets/paso-a-paso.svg");
   --paso-a-pas-o_hover: url("../../assets/paso-a-paso_hover.svg");
-  --pelicula: url("../../assets/pelicula.svg");
+  --camara: url("../../assets/icon_camara.svg");
+  --pelicula: url("../../assets/icon_pelicula.svg");
   --crear: url("../../assets/button-crear-gifo.svg");
   --crear-active: url("../../assets/CTA-crear-gifo-active.svg");
   --crear_hover: url("../../assets/CTA_crear_gifo_hover.svg");
@@ -55,10 +56,11 @@ html[data-theme='dark'] {
   --icon_search: url("../../assets/icon_search-modo-noc.svg");
   --paso-a-paso: url("../../assets/paso-a-paso.svg");
   --paso-a-paso_hover: url("../../assets/paso-a-paso_hover.svg");
-  --pelicula: url("../../assets/pelicula-modo-noc.svg");
+  --camara: url("../../assets/icon_camara_modo_noc.svg");
+  --pelicula: url("../../assets/icon_pelicula_modo_noc.svg");
   --crear: url("../../assets/CTA-crear-gifo-modo-noc.svg");
   --crear-active: url("../../assets/CTA-crear-gifo-active-modo-noc.svg");
-  --crear_hover: url("../../assets/CTA-crear-gifo_hover-modo-noc.svg");
+  --crear_hover: url("../../assets/CTA-crear-gifo-hover-modo-noc.svg");
 }
 
 html.themeTransition,
@@ -79,7 +81,10 @@ html.themeTransition *:after {
 }
 
 body {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   background-color: var(--background);
+  min-height: 100vh;
 }
 
 .container {
@@ -627,7 +632,7 @@ h1 br {
 
 .inner-create .camera {
   margin: 0;
-  background-image: url("../../assets/icon_camara.svg");
+  background-image: var(--camara);
   height: 150px;
   width: 114px;
   background-size: contain;
@@ -732,7 +737,7 @@ h1 br {
 }
 
 .film {
-  background-image: url("../../assets/icon_pelicula.svg");
+  background-image: var(--pelicula);
   height: 88px;
   width: 140px;
   -ms-flex-item-align: end;
@@ -799,8 +804,8 @@ h1 br {
   display: block;
   margin-top: 1.25rem;
   width: 127px;
-  -webkit-transform: translateX(-12.5%);
-          transform: translateX(-12.5%);
+  -webkit-transform: translateX(-5%);
+          transform: translateX(-5%);
 }
 
 footer {

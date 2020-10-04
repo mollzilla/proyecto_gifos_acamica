@@ -1,9 +1,17 @@
+createContainer.style.display="none";
 let startFilm = document.querySelector("#start-film")
 let createText= document.querySelector(".create-text");
 let textChildren=createText.childNodes;
 const video = document.getElementById("gif-captor-video");
 video.style.display="none";
 let [filmStage1, filmStage2, filmStage3] = Array.from(document.querySelectorAll(".film-stage"));
+
+document.querySelector("#crear").addEventListener("click", (e) => {
+  e.preventDefault();
+  createContainer.style.display="block";
+  
+  [mainTitle, trending, document.querySelector(".search-results"), document.querySelector(".search")].map(node => node.style.display="none")
+});
 
 async function stepOne(e) {
   e.preventDefault();

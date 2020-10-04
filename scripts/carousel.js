@@ -1,0 +1,1 @@
+let carousel=document.querySelector(".carousel");

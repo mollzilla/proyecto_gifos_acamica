@@ -2,8 +2,6 @@
 let offset=0;
 
 let submitButton=document.querySelector("#icon_search");
-let viewMore=document.querySelector("#view-more");
-
 let searchArgument=document.querySelector("#search-argument");
 
 let favoritesButtonSm=document.querySelector("#favoritos-sm");
