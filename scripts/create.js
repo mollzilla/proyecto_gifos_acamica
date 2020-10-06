@@ -69,5 +69,4 @@ function stage3() {
   video.style.display="block";
   textChildren[1].innerHTML="";
   textChildren[3].innerHTML="";
-
 }

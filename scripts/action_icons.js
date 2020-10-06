@@ -31,6 +31,11 @@ function likeAction(e) {
   }
 }
 
+function expandAction() {
+  console.log("mili")
+  console.log(resultGif)
+  resultGif.classList.add('expandable');
+}
 
 async function downloadAction() {
   //create new a element
@@ -47,7 +52,6 @@ async function downloadAction() {
   //click on element to start download
   a.click()
 }
-
 
 var hoverIcons=allIcons.filter(icon => icon.id.match(/close|search/)==null);
 

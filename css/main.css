@@ -531,6 +531,12 @@ h1 br {
   line-height: 19px;
 }
 
+.search-results .expandable {
+  -webkit-transition: width .5s;
+  transition: width .5s;
+  width: 85vw;
+}
+
 @media (min-width: 1024px) {
   .search-results #results-grid {
     -ms-grid-columns: calc(25% - 15px) calc(25% - 15px) calc(25% - 15px) calc(25% - 15px);

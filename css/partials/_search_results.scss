@@ -117,6 +117,12 @@
     }
   }
 
+  .expandable {
+      transition: width .5s;
+      width: 85vw;
+  }
+
+
 }
 
 @media(min-width: 1024px) {

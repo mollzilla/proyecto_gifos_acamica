@@ -1,19 +1,16 @@
 let mainTitle=document.querySelector("h1");
 let searchSection=document.querySelector(".search");
-console.log(searchSection)
 let trending=document.querySelector(".trending");
 let viewMore=document.querySelector("#view-more");
 let createContainer = document.querySelector(".create");
-
-
 
 document.querySelector(".logo").addEventListener("click", () => {
   console.log("mili")
   document.querySelector(".search-results").style.display="block";
   [mainTitle, searchSection].map(x => x.style.display="block");
+  [createContainer, resultsGrid, viewMore].map(x => x.style.display="none");
   trending.style.display="flex"
   searchArgument.textContent="";
-  [createContainer, resultsGrid, viewMore].map(x => x.style.display="none");
 })
 
 let allIcons=Array.from(document.querySelectorAll('[id^="icon"]'));
@@ -99,7 +96,8 @@ let suggestion=document.createElement('div');
       const elFetch = await fetch(`https://api.giphy.com/v1/gifs/search/tags?q=${this.value}?&api_key=${apiKey}`);
       laData = await elFetch.json();
 
-      searchIcon.style.display="none";
+      // searchIcon.style.display="none";
+      searchIcon.style.transform="translate(-2250%, 10%)"
       closeIcon.style.display="initial";
 
       closeIcon.addEventListener('click', function() {
