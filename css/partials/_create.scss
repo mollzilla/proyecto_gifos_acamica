@@ -42,6 +42,13 @@
     top: 15px;
   }
 
+  #gif-captor-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
 .corner-right, .corner-left {
   height: 25px;
   width: 27px;
@@ -129,8 +136,14 @@
     display: block;
     margin-top: 1.25rem;
     width: 127px;
-    transform: translateX(-5%);
   }
 
+  @media(max-width: 1443px) {
+    #start-film {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
 
 

@@ -1,7 +1,6 @@
 // const apiKey="VZ4N6ebz6BSdgrhUNiKAAU0dNYws5GSn";
 let offset=0;
 
-let submitButton=document.querySelector("#icon_search");
 let searchArgument=document.querySelector("#search-argument");
 
 let favoritesButtonSm=document.querySelector("#favoritos-sm");
@@ -11,10 +10,10 @@ viewMore.style.display="none";
 let noResults=document.querySelector("#no-results");
 
 let searchInputValue=document.querySelector("#search-input");
+let lastValue=searchInputValue.value;
+
 let resultsGrid=document.querySelector('#results-grid');
 resultsGrid.style.display="none";
-
-let lastValue=searchInputValue.value;
 
 function createOverlay(gifItem) {
 
@@ -148,7 +147,10 @@ async function search(e) {
     else
     {
       resultsGrid.innerHTML="";
-      searchArgument.textContent="Por ahora no tienes favoritos. Dale like a alguno de los GIFOS!";
+      searchInputValue.value="Favoritos";
+      let noFavorites=document.createElement("h3");
+      noFavorites.textContent="¡Guarda tu primer GIFO en Favoritos para que se muestre aquí!";
+      noFavorites.setAttribute("id", "no-favorites");
       return;
     }
   }
@@ -171,4 +173,4 @@ async function search(e) {
     ouch();
 }
 
-[submitButton, favoritesButtonSm, favoritesButtonLg, viewMore].forEach(button =>  button.addEventListener('click', e => search(e)));
+[searchIcon, favoritesButtonSm, favoritesButtonLg, viewMore].forEach(button =>  button.addEventListener('click', e => search(e)));

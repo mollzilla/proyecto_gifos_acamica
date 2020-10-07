@@ -1,4 +1,4 @@
-localStorage.removeItem('favorites')
+localStorage.removeItem('favorites'); // for testing purposes
 
 function likeAction(e) {
   e.preventDefault();
@@ -33,7 +33,6 @@ function likeAction(e) {
 
 function expandAction() {
   console.log("mili")
-  console.log(resultGif)
   resultGif.classList.add('expandable');
 }
 
@@ -57,13 +56,12 @@ var hoverIcons=allIcons.filter(icon => icon.id.match(/close|search/)==null);
 
 hoverIcons=hoverIcons.map(icon => {
 
-  icon.addEventListener('mouseover', () => icon.setAttribute('src', `assets/${icon.id}_hover.svg`))
-  icon.addEventListener('mouseout', () => icon.setAttribute('src', `assets/${icon.id}.svg`))
+  icon.addEventListener('mouseover', () => icon.setAttribute('src', `assets/${icon.id}_hover.svg`));
+  icon.addEventListener('mouseout', () => icon.setAttribute('src', `assets/${icon.id}.svg`));
 })
 
 let anchorIcons=Array.from(document.querySelectorAll("nav a"));
 
-anchorIcons.map(function(icon)  { // escuchar si esta activo o si no, y darle el src acorde
-
+anchorIcons.map(function(icon)  { // Listen if active, set src otherwise
   icon.addEventListener('mouseup', () => icon.setAttribute('src', `assets/${icon.id}_hover.svg`))
 });

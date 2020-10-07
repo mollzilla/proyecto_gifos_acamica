@@ -1,3 +1,7 @@
+let recorder;
+let gif;
+
+
 createContainer.style.display="none";
 let startFilm = document.querySelector("#start-film")
 let createText= document.querySelector(".create-text");
@@ -13,6 +17,8 @@ document.querySelector("#crear").addEventListener("click", (e) => {
   [mainTitle, trending, document.querySelector(".search-results"), document.querySelector(".search")].map(node => node.style.display="none")
 });
 
+startFilm.addEventListener('click', (e) => stepOne(e));
+
 async function stepOne(e) {
   e.preventDefault();
 
@@ -24,33 +30,27 @@ async function stepOne(e) {
   getMediaPermissions();
 }
 
-startFilm.addEventListener('click', (e) => stepOne(e));
-
 function getMediaPermissions() {
 
   navigator.getUserMedia = (navigator.getUserMedia ||
     navigator.webkitGetUserMedia ||
     navigator.mozGetUserMedia || 
     navigator.msGetUserMedia);
-  navigator.getUserMedia (
+    navigator.getUserMedia (
   
-  // constraints
   {
     audio: false,
     video: true,
     video: {
-    height: { max: 360 }
+    height: { max: 240 }
     }
   },
   
-  // successCallback
   async function(localMediaStream) {
     video.srcObject = localMediaStream;
     await stage2();
-    stage3();
   },
   
-  // errorCallback
   function(err) {
   console.log("Ocurrió el siguiente error: " + err);
   });
@@ -63,10 +63,69 @@ function stage2() {
   startFilm.style.display="block";
   startFilm.textContent="GRABAR";
   startFilm.removeEventListener("click", stepOne);
+  startFilm.addEventListener("click", stage3)
 }
 
-function stage3() {
-  video.style.display="block";
-  textChildren[1].innerHTML="";
-  textChildren[3].innerHTML="";
+function stage3(){
+
+	navigator.mediaDevices.getUserMedia({
+		video: true
+	}).then(async function(stream) {
+		recorder = RecordRTC(stream, {
+			type: 'gif',
+			frameRate: 1,
+			quality: 10,
+			width: 360,
+			hidden: 240,
+			onGifRecordingStarted: function() {
+			 console.log('started')
+			}
+		});
+    recorder.startRecording();
+    
+    video.style.display="block";
+    textChildren[1].innerHTML="";
+    textChildren[3].innerHTML="";
+
+    startFilm.textContent="FINALIZAR";
+    startFilm.removeEventListener("click", stage3);
+    startFilm.addEventListener("click", stage4)
+  });
+}
+
+function onStop() {
+  console.log("mili")
+}
+
+let myGifosArray = JSON.parse(localStorage.getItem("myGifos"));
+
+if (myGifosArray === null){
+	myGifosArray = [];
+}
+
+async function stage4() {
+	recorder.stopRecording(onStop);
+	gif = await recorder.getBlob();
+  fifthStage();
+}
+
+async function fifthStage() {
+  console.log(188)
+
+	let form = new FormData();
+	form.append('file', gif, 'newGif.gif');
+
+	let resp = await fetch(`https://upload.giphy.com/v1/gifs?=${form}&api_key=${apiKey}`, {
+		method: 'POST',
+		body: form,
+		json: true
+});
+
+	let data = await resp.json();
+	console.log(data.data);
+
+	myGifosArray.push(data.data.id);
+
+	localStorage.setItem('myGifos', JSON.stringify(myGifosArray));
+  console.log(localStorage)
 }

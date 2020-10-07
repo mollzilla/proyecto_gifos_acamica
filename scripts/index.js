@@ -67,8 +67,8 @@ let searchInput=document.querySelector("#search-input");
 let suggestion=document.createElement('div');
 
 
-  let closeIcon=document.querySelector("#icon_close");
-  let searchIcon=document.querySelector("#icon_search");
+let closeIcon=document.querySelector("#icon_close");
+let searchIcon=document.querySelector("#icon_search");
 
   let laData;
 
