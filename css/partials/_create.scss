@@ -28,6 +28,10 @@
     100% {opacity: 1;}
   }
 
+  .gif-captor {
+    position: relative;
+  }
+
   .gif-captor-container  {
     position: relative;
     margin: 0;
@@ -98,6 +102,15 @@
   @include behave-horizontal;
   margin: 1.5rem auto;
   width: 12rem;
+}
+
+.timer {
+  position: absolute;
+  right: 0;
+  bottom: 2.25rem;
+  font-size: .9375rem;
+  font-weight: bold;
+  display: none;
 }
 
 .film-stage {

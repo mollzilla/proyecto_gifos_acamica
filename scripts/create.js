@@ -8,6 +8,7 @@ let createText= document.querySelector(".create-text");
 let textChildren=createText.childNodes;
 const video = document.getElementById("gif-captor-video");
 video.style.display="none";
+let timer=document.querySelector(".timer");
 let [filmStage1, filmStage2, filmStage3] = Array.from(document.querySelectorAll(".film-stage"));
 
 document.querySelector("#crear").addEventListener("click", (e) => {
@@ -84,6 +85,7 @@ function stage3(){
     recorder.startRecording();
     
     video.style.display="block";
+    timer.style.display="block"
     textChildren[1].innerHTML="";
     textChildren[3].innerHTML="";
 

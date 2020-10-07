@@ -690,6 +690,10 @@ h1 br {
   }
 }
 
+.inner-create .gif-captor {
+  position: relative;
+}
+
 .inner-create .gif-captor-container {
   position: relative;
   margin: 0;
@@ -780,6 +784,15 @@ h1 br {
           align-items: center;
   margin: 1.5rem auto;
   width: 12rem;
+}
+
+.timer {
+  position: absolute;
+  right: 0;
+  bottom: 2.25rem;
+  font-size: .9375rem;
+  font-weight: bold;
+  display: none;
 }
 
 .film-stage {
