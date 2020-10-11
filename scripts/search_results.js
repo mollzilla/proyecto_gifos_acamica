@@ -6,6 +6,9 @@ let searchArgument=document.querySelector("#search-argument");
 let favoritesButtonSm=document.querySelector("#favoritos-sm");
 let favoritesButtonLg=document.querySelector("#favoritos-lg");
 
+let misGifosSm=document.querySelector("#mis-gifos-sm");
+let misGifosLg=document.querySelector("#mis-gifos-lg");
+
 viewMore.style.display="none";
 let noResults=document.querySelector("#no-results");
 
@@ -134,7 +137,7 @@ async function search(e) {
   }
   else if (e.path[0].id==favoritesButtonSm.id || e.path[0].id==favoritesButtonLg.id)
   {
-    if (localStorage.getItem('favorites'))
+    if (localStorage.getItem('favorites')!=null)
     {
       let queryString = localStorage.getItem("favorites").split(",").length==1  ?
                     (`https://api.giphy.com/v1/gifs/${localStorage.getItem("favorites")}?&api_key=${apiKey}`)
@@ -146,11 +149,14 @@ async function search(e) {
     }
     else
     {
+      console.log("mili")
       resultsGrid.innerHTML="";
       searchInputValue.value="Favoritos";
       let noFavorites=document.createElement("h3");
+      searchArgument.textContent="Favoritos";
       noFavorites.textContent="¡Guarda tu primer GIFO en Favoritos para que se muestre aquí!";
       noFavorites.setAttribute("id", "no-favorites");
+      document.querySelector(".find-favorites").appendChild(noFavorites);
       return;
     }
   }

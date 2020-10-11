@@ -26,7 +26,7 @@
       <hr class="drawer-line">
       <a href="" id="favoritos-sm">Favoritos</a>
       <hr class="drawer-line">
-      <a href="" id="mis-gifos">Mis GIFOS</a>
+      <a href="" id="mis-gifos-sm">Mis GIFOS</a>
       <hr class="drawer-line">
     </div>
   </div>
@@ -42,7 +42,7 @@
         <div class="links">
           <a href="" id="modo-nocturno-lg">Modo Nocturno</a>
           <a href="" id="favoritos-lg">Favoritos</a>
-          <a href="" id="mis-gifos">Mis GIFOS</a>
+          <a href="" id="mis-gifos-lg">Mis GIFOS</a>
           <a href="" id="crear"></a>
         </div>
 
@@ -94,8 +94,9 @@
 
     <section class="search-results container">
 
+      <div class="favorites-heart"></div>
       <h3 id="search-argument"></h3>
-
+      <div class="find-favorites"></div>
       <div id="no-results">
         <img src="assets/icon_busqueda_sin_resultado.svg" alt="" id="ouch-img">
         <h4 id="try-again">Intenta con otra búsqueda</h4>
@@ -137,6 +138,7 @@
             <h3 class="create-text-subtitle">¡Crea tu GIFO en sólo 3 pasos! <br/>(sólo necesitas una cámara para grabar un video)</h3>
           </div>
           <div class="gif-captor-video-container">
+            <div id="create-overlay"><img src="assets/loader.svg" class="loader hidden" alt=""> <h3 id="subiendo" class="hidden">Estamos subiendo tu GIFO</h3> </div>
             <video controls autoplay src=""id="gif-captor-video"></video>
           </div>
         </div>
@@ -145,9 +147,7 @@
           <span class="film-stage film-stage-2">2</span>
           <span class="film-stage film-stage-3">3</span>
         </div>
-        <div class="timer">
-          00:00:00
-        </div>
+        <div class="timer"></div>
         <hr class="start-border" />  
       </div>
         <div class="film" id="icon_pelicula"></div>  

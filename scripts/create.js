@@ -1,7 +1,6 @@
 let recorder;
 let gif;
 
-
 createContainer.style.display="none";
 let startFilm = document.querySelector("#start-film")
 let createText= document.querySelector(".create-text");
@@ -10,6 +9,7 @@ const video = document.getElementById("gif-captor-video");
 video.style.display="none";
 let timer=document.querySelector(".timer");
 let [filmStage1, filmStage2, filmStage3] = Array.from(document.querySelectorAll(".film-stage"));
+uploadOverlay=document.querySelector("#create-overlay");
 
 document.querySelector("#crear").addEventListener("click", (e) => {
   e.preventDefault();
@@ -69,6 +69,9 @@ function stage2() {
 
 function stage3(){
 
+  filmStage3.classList.add("activated");
+  filmStage2.classList.remove("activated");
+
 	navigator.mediaDevices.getUserMedia({
 		video: true
 	}).then(async function(stream) {
@@ -81,11 +84,14 @@ function stage3(){
 			onGifRecordingStarted: function() {
 			 console.log('started')
 			}
-		});
+	});
     recorder.startRecording();
     
     video.style.display="block";
-    timer.style.display="block"
+    timer.style.display="block";
+    timer.textContent= () => {
+
+    }
     textChildren[1].innerHTML="";
     textChildren[3].innerHTML="";
 
@@ -106,13 +112,17 @@ if (myGifosArray === null){
 }
 
 async function stage4() {
+  createText.style.display="none";
+  
 	recorder.stopRecording(onStop);
 	gif = await recorder.getBlob();
   fifthStage();
 }
 
 async function fifthStage() {
-  console.log(188)
+  console.log(118)
+
+  awaitUploadAnimation();
 
 	let form = new FormData();
 	form.append('file', gif, 'newGif.gif');
@@ -123,11 +133,34 @@ async function fifthStage() {
 		json: true
 });
 
-	let data = await resp.json();
+  let data = await resp.json();
+  
+  onUploadCompleted();
+  
 	console.log(data.data);
 
 	myGifosArray.push(data.data.id);
 
 	localStorage.setItem('myGifos', JSON.stringify(myGifosArray));
-  console.log(localStorage)
+  console.log(localStorage);
 }
+
+function awaitUploadAnimation() {
+  uploadOverlay.classList.add("create-overlay");
+  document.querySelector("#subiendo").classList.add("subiendo");
+  document.querySelector(".loader").classList.remove("hidden");
+}
+
+function onUploadCompleted() {
+  document.querySelector("#subiendo").textContent="GIFO subido con éxito";
+  document.querySelector(".loader").setAttribute("src", "assets/check.svg");
+  document.querySelector(".loader").classList.add("stopSpin");
+  addToMyGifos();
+}
+
+
+// function interval() {
+//  setInterval(() => {
+   
+//  }, intervalEnMilisegundos); 
+// };
