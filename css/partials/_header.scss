@@ -137,6 +137,7 @@ h1 {
         text-transform: uppercase;
         font-weight: bold;
         font-size: .8125rem;
+        border-bottom: 2px solid var(--background);
         &:hover {
           border-bottom: 2px solid var(--green);
         }

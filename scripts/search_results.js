@@ -38,9 +38,6 @@ function createOverlay(gifItem) {
 
     let expand=document.createElement("a");
 
-
-    
-
     [like, download, expand].forEach(a => {
 
       a.id=gifItem.id;
@@ -76,6 +73,7 @@ function createOverlay(gifItem) {
     
     overlay.appendChild(actionIcons);
     overlay.appendChild(gifTitle);
+    overlay.style.zIndex=1000;
     return overlay;
   } 
 

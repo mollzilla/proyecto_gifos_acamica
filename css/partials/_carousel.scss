@@ -1,6 +1,134 @@
+.carousel-container {
+  position: relative;
+  @include behave-horizontal;
+  flex-wrap: nowrap;
+  justify-content: center;
+  width: 60%;
+}
+
 .carousel {
-  grid-template-columns: 25% 25% 25%;
-  grid-template-rows: 100%;
-  width: 1000px;
+  position: relative;
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+  margin: 2rem auto;
   overflow: hidden;
+  position: relative;
+  max-width: 1000px;
+
+  &__images {
+    position: relative;
+    display: flex;
+    transform: translateX(0);
+    transition: transform 0.35s;
+
+    div {
+      position: relative;
+      margin-right: 30px;
+      width: 357px;
+      height: 275px;
+      background-size: contain;
+
+      .overlay { 
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: transparentize(#572EE5, .3);
+        opacity: 0;
+        transition: opacity .4s ease-in-out;
+      }
+
+      &:hover {
+        .overlay {
+          opacity: 1;
+        }
+      }
+
+      .action-icons {
+        width: 40%;
+        position: absolute;
+        margin: 0;
+        right: 0;        
+      }
+    
+      .action-icon{
+        margin: unset;
+        margin-right: 10px;
+        margin-top: 10px;
+        display: inline-block;
+        height: 32px;
+        width: 32px;
+        background-size: contain;
+    
+        &:nth-child(1) {
+          background-image: url("../../assets/icon_fav.svg");
+          &:hover {
+            background-image: url("../../assets/icon_fav_hover.svg");
+          }
+        }
+        &:nth-child(2) {
+          background-image: url("../../assets/icon_download.svg");
+          &:hover {
+            background-image: url("../../assets/icon_download_hover.svg");
+          }
+        }
+        &:nth-child(3) {
+          background-image: url("../../assets/icon_max.svg");
+          &:hover {
+            background-image: url("../../assets/icon_max_hover.svg");
+          };
+        }
+      }
+    
+      .gif-title{
+        @include overlay-baby;
+        bottom: 0;
+        height: 30%;
+    
+        .username, .title {
+          font-family: $normal;
+          text-align: left;
+          margin-left: 13px;
+        }
+    
+        .username {
+          @include word-bundle(15px, #FFF, 400, 18px);
+        }
+    
+        .title {
+          @include word-bundle(16px, #FFF, bold, 19px);
+        }
+      }
+    
+    }
+
+  }
+
+  &__button {
+    display: block;
+    background: var(--purple);
+    border: 0;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    height: 40px;
+    min-width: 40px;
+    transition: opacity 0.25s;
+    z-index: 1;
+
+    &.previous {
+      margin-right: 25px;
+    }
+
+    &.next {
+      margin-left: 25px;
+    }
+
+    &:hover {
+      opacity: .5;
+    }
+
+  }
+
 }

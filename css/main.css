@@ -333,6 +333,7 @@ h1 br {
     text-transform: uppercase;
     font-weight: bold;
     font-size: .8125rem;
+    border-bottom: 2px solid var(--background);
   }
   header .first-stripe a:hover {
     border-bottom: 2px solid var(--green);
@@ -532,8 +533,6 @@ h1 br {
 }
 
 .search-results .expandable {
-  -webkit-transition: width .5s;
-  transition: width .5s;
   width: 85vw;
 }
 
@@ -615,13 +614,173 @@ h1 br {
   max-width: 65%;
 }
 
+.carousel-container {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  justify-content: center;
+  width: 60%;
+}
+
 .carousel {
-  -ms-grid-columns: 25% 25% 25%;
-      grid-template-columns: 25% 25% 25%;
-  -ms-grid-rows: 100%;
-      grid-template-rows: 100%;
-  width: 1000px;
+  position: relative;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 2rem auto;
   overflow: hidden;
+  position: relative;
+  max-width: 1000px;
+}
+
+.carousel__images {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+  -webkit-transition: -webkit-transform 0.35s;
+  transition: -webkit-transform 0.35s;
+  transition: transform 0.35s;
+  transition: transform 0.35s, -webkit-transform 0.35s;
+}
+
+.carousel__images div {
+  position: relative;
+  margin-right: 30px;
+  width: 357px;
+  height: 275px;
+  background-size: contain;
+}
+
+.carousel__images div .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(87, 46, 229, 0.7);
+  opacity: 0;
+  -webkit-transition: opacity .4s ease-in-out;
+  transition: opacity .4s ease-in-out;
+}
+
+.carousel__images div:hover .overlay {
+  opacity: 1;
+}
+
+.carousel__images div .action-icons {
+  width: 40%;
+  position: absolute;
+  margin: 0;
+  right: 0;
+}
+
+.carousel__images div .action-icon {
+  margin: unset;
+  margin-right: 10px;
+  margin-top: 10px;
+  display: inline-block;
+  height: 32px;
+  width: 32px;
+  background-size: contain;
+}
+
+.carousel__images div .action-icon:nth-child(1) {
+  background-image: url("../../assets/icon_fav.svg");
+}
+
+.carousel__images div .action-icon:nth-child(1):hover {
+  background-image: url("../../assets/icon_fav_hover.svg");
+}
+
+.carousel__images div .action-icon:nth-child(2) {
+  background-image: url("../../assets/icon_download.svg");
+}
+
+.carousel__images div .action-icon:nth-child(2):hover {
+  background-image: url("../../assets/icon_download_hover.svg");
+}
+
+.carousel__images div .action-icon:nth-child(3) {
+  background-image: url("../../assets/icon_max.svg");
+}
+
+.carousel__images div .action-icon:nth-child(3):hover {
+  background-image: url("../../assets/icon_max_hover.svg");
+}
+
+.carousel__images div .gif-title {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 30%;
+}
+
+.carousel__images div .gif-title .username, .carousel__images div .gif-title .title {
+  font-family: "Roboto";
+  text-align: left;
+  margin-left: 13px;
+}
+
+.carousel__images div .gif-title .username {
+  font-size: 15px;
+  color: #FFF;
+  font-weight: 400;
+  line-height: 18px;
+}
+
+.carousel__images div .gif-title .title {
+  font-size: 16px;
+  color: #FFF;
+  font-weight: bold;
+  line-height: 19px;
+}
+
+.carousel__button {
+  display: block;
+  background: var(--purple);
+  border: 0;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  height: 40px;
+  min-width: 40px;
+  -webkit-transition: opacity 0.25s;
+  transition: opacity 0.25s;
+  z-index: 1;
+}
+
+.carousel__button.previous {
+  margin-right: 25px;
+}
+
+.carousel__button.next {
+  margin-left: 25px;
+}
+
+.carousel__button:hover {
+  opacity: .5;
 }
 
 .inner-create {
@@ -909,6 +1068,7 @@ h1 br {
 
 .repetir-captura {
   cursor: pointer;
+  border-bottom: 2px solid var(--background);
 }
 
 .repetir-captura:hover {

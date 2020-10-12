@@ -209,6 +209,7 @@ margin-bottom: 26px;
 
 .repetir-captura {
   cursor: pointer;
+  border-bottom: 2px solid var(--background);
   &:hover {
     border-bottom: 2px solid var(--green);
   }

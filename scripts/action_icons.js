@@ -31,7 +31,8 @@ function likeAction(e) {
   }
 }
 
-function expandAction() {
+function expandAction(e) {
+  e.preventDefault();
   console.log("mili")
   resultGif.classList.add('expandable');
 }

@@ -102,7 +102,7 @@
     height: 40%;
 
 
-    .username, .title {
+  .username, .title {
       font-family: $normal;
       text-align: left;
       margin-left: 13px;
@@ -118,7 +118,6 @@
   }
 
   .expandable {
-      transition: width .5s;
       width: 85vw;
   }
 

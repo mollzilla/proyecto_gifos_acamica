@@ -1,146 +1,182 @@
-let mainTitle=document.querySelector("h1");
-let searchSection=document.querySelector(".search");
-let trending=document.querySelector(".trending");
-let viewMore=document.querySelector("#view-more");
-let createContainer = document.querySelector(".create");
+let mainTitle = document.querySelector("h1");
+let searchSection = document.querySelector(".search");
+let trending = document.querySelector(".trending");
+let viewMore = document.querySelector("#view-more");
 
 document.querySelector(".logo").addEventListener("click", () => {
   console.log("mili")
-  document.querySelector(".search-results").style.display="block";
-  [mainTitle, searchSection].map(x => x.style.display="block");
-  [createContainer, resultsGrid, viewMore].map(x => x.style.display="none");
-  trending.style.display="flex"
-  searchArgument.textContent="";
+  document.querySelector(".search-results").style.display = "block";
+  [mainTitle, searchSection].map(x => x.style.display = "block");
+  [resultsGrid, viewMore].map(x => x.style.display = "none");
+  trending.style.display = "flex"
+  searchArgument.textContent = "";
 })
 
-let allIcons=Array.from(document.querySelectorAll('[id^="icon"]'));
+let allIcons = Array.from(document.querySelectorAll('[id^="icon"]'));
 
 /* API */
-const apiKey="VZ4N6ebz6BSdgrhUNiKAAU0dNYws5GSn";
+const apiKey = "VZ4N6ebz6BSdgrhUNiKAAU0dNYws5GSn";
 
 async function appendTrendings() {
 
-    async function getTrendings() {
-      try {
-        const [trendingKeyWords, trendingGifs] = await Promise.all([
-          fetch(`https://api.giphy.com/v1/trending/searches?&api_key=${apiKey}`),
-          fetch(`https://api.giphy.com/v1/gifs/trending?&api_key=${apiKey}`),
-        ]);
-        const trendingkeyWordsData = await trendingKeyWords.json();
-        const trendingGifsData = await trendingGifs.json();
+  async function getTrendings() {
+    try {
+      const [trendingKeyWords, trendingGifs] = await Promise.all([
+        fetch(`https://api.giphy.com/v1/trending/searches?&api_key=${apiKey}`),
+        fetch(`https://api.giphy.com/v1/gifs/trending?&api_key=${apiKey}`),
+      ]);
+      const trendingkeyWordsData = await trendingKeyWords.json();
+      const trendingGifsData = await trendingGifs.json();
 
-        return [trendingkeyWordsData, trendingGifsData]
+      return [trendingkeyWordsData, trendingGifsData]
 
-      } catch (err) {
-        console.log(err);
-      }
+    } catch (err) {
+      console.log(err);
     }
+  }
 
   let content = await getTrendings();
-  let trendingStuff=document.querySelector(".trending-stuff");
+  let trendingStuff = document.querySelector(".trending-stuff");
 
-  appendSearchResults((content[1].data.splice(0,10)), carousel);
+  let carousel = document.querySelector(".carousel__images")
+
+  function appendCarousel(data, container) {
+
+    data.forEach(result => {
+
+      let resultGif = document.createElement("div");
+      resultGif.classList.add("result-placeholder");
+      resultGif.setAttribute('id', `result-item-${offset}`);
+      resultGif.style.backgroundImage = `url("${result.images.fixed_width.url}")`;
+      resultGif.appendChild(createOverlay(result));
+      container.appendChild(resultGif);
+    });
+  }
+
+  appendCarousel((content[1].data.splice(0, 10)), carousel)
+
+  const carouselImages = document.querySelector(".carousel__images");
+  const carouselButtons = document.querySelectorAll(".carousel__button");
+
+  let imageIndex = 1;
+
+  let translateX = 0;
+
+  carouselButtons.forEach(button => {
+    button.addEventListener('click', (e) => {
+      if (e.target.id == "previous") {
+        if (imageIndex != 1) {
+          imageIndex--;
+          translateX += 357;
+        }
+      } else {
+        if (imageIndex < 9) {
+          imageIndex++;
+          translateX -= 357;
+        }
+      }
+      carouselImages.style.transform = `translateX(${translateX}px)`;
+    });
+  });
 
   content[0].data.forEach((word, i) => {
 
-    if(i>4)
+    if (i > 4)
       return
 
-    let span=document.createElement("span");
+    let span = document.createElement("span");
 
-    span.textContent = word==content[content.length-1] ? word : `${word}, `;
+    span.textContent = word == content[content.length - 1] ? word : `${word}, `;
     trendingStuff.appendChild(span);
 
-    span.addEventListener("click", (e) => { 
-      searchInput.value=span.textContent.replace(", ", "");
+    span.addEventListener("click", (e) => {
+      searchInput.value = span.textContent.replace(", ", "");
       search(e);
-    }); 
+    });
   });
 }
 
 appendTrendings();
 
-let searchContainer=document.querySelector(".search-border");
+let searchContainer = document.querySelector(".search-border");
 
-let searchInput=document.querySelector("#search-input");
+let searchInput = document.querySelector("#search-input");
 
-let suggestion=document.createElement('div');
+let suggestion = document.createElement('div');
 
 
-let closeIcon=document.querySelector("#icon_close");
-let searchIcon=document.querySelector("#icon_search");
+let closeIcon = document.querySelector("#icon_close");
+let searchIcon = document.querySelector("#icon_search");
 
-  let laData;
+let laData;
 
-  searchInput.addEventListener('keyup', async function (e) {
+searchInput.addEventListener('keyup', async function (e) {
 
-    try {
+  try {
 
-      if (e.keyCode === 13)
-      {
-        e.stopPropagation();
+    if (e.keyCode === 13) {
+      e.stopPropagation();
+      search(e);
+      return;
+    }
+
+    suggestion.innerHTML = "";
+
+    if (this.value.trim() == "") {
+      searchIcon.style.display = "inline";
+      closeIcon.style.display = "none";
+      return;
+    }
+
+
+    const elFetch = await fetch(`https://api.giphy.com/v1/gifs/search/tags?q=${this.value}?&api_key=${apiKey}`);
+    laData = await elFetch.json();
+
+    // searchIcon.style.display="none";
+    searchIcon.style.transform = "translate(-2250%, 10%)"
+    closeIcon.style.display = "initial";
+
+    closeIcon.addEventListener('click', function () {
+      searchInput.value = "";
+      searchIcon.style.display = "initial";
+      this.style.display = "none";
+      suggestion.innerHTML = "";
+    });
+
+    laData.data.forEach(data => {
+
+      let oneSuggestion = document.createElement('div');
+      oneSuggestion.classList.add("one-suggestion");
+
+      let suggestionImg = document.createElement('img');
+
+      suggestionImg.setAttribute('src', "/assets/icon_search_suggestion.svg");
+      oneSuggestion.appendChild(suggestionImg);
+
+      let suggestionName = document.createElement('p');
+      suggestionName.textContent = data.name;
+
+      oneSuggestion.appendChild(suggestionName);
+      suggestion.appendChild(oneSuggestion);
+
+      oneSuggestion.addEventListener('click', (e) => {
+        searchInput.value = suggestionName.textContent;
+        suggestion.innerHTML = "";
         search(e);
-        return;
-      }
-        
-      suggestion.innerHTML="";
-      
-      if(this.value.trim()=="")
-        {
-          searchIcon.style.display="inline";
-          closeIcon.style.display="none";
-          return;
-        }
-
-
-      const elFetch = await fetch(`https://api.giphy.com/v1/gifs/search/tags?q=${this.value}?&api_key=${apiKey}`);
-      laData = await elFetch.json();
-
-      // searchIcon.style.display="none";
-      searchIcon.style.transform="translate(-2250%, 10%)"
-      closeIcon.style.display="initial";
-
-      closeIcon.addEventListener('click', function() {
-        searchInput.value="";
-        searchIcon.style.display="initial";
-        this.style.display="none";
-        suggestion.innerHTML="";
       });
 
-      laData.data.forEach(data => {
+    })
 
-        let oneSuggestion=document.createElement('div');
-        oneSuggestion.classList.add("one-suggestion");
+    searchContainer.appendChild(suggestion);
 
-        let suggestionImg=document.createElement('img');
+  } catch (error) {
+    console.log(error)
+  }
 
-        suggestionImg.setAttribute('src', "/assets/icon_search_suggestion.svg");
-        oneSuggestion.appendChild(suggestionImg);
-
-        let suggestionName=document.createElement('p');
-        suggestionName.textContent=data.name;
-
-        oneSuggestion.appendChild(suggestionName); 
-        suggestion.appendChild(oneSuggestion);
-
-        oneSuggestion.addEventListener('click', (e) => { 
-          searchInput.value=suggestionName.textContent;
-          suggestion.innerHTML="";
-          search(e);
-        });     
-
-      })
-
-      searchContainer.appendChild(suggestion);
-
-    } catch (error) {
-      console.log(error)
-    }
-    
-  });
+});
 
 
 document.addEventListener('click', (e) => {
-  if(!searchContainer.contains(e.target))
-    suggestion.innerHTML="";
+  if (!searchContainer.contains(e.target))
+    suggestion.innerHTML = "";
 });
