@@ -53,7 +53,7 @@ h1 {
     max-width: 450px;
     background-color: var(--background);
     padding-bottom: 16px;
-    border-bottom: 1px solid #9CAFC3;
+    border-bottom: 1px solid var(--light-gray);
   }
 
   &::-webkit-input-placeholder {
@@ -93,7 +93,7 @@ h1 {
       margin: 0;
       text-align: left;
       margin-left: 13px;
-      @include word-bundle(1rem, #9CAFC3, 400, 19px);
+      @include word-bundle(1rem, var(--light-gray), 400, 19px);
       font-family: $normal;
     }
   }
@@ -143,7 +143,7 @@ h1 {
         }
 
         &:active {
-          color: #9CAFC3;
+          color: var(--light-gray);
           border-bottom: unset;
         }
 
@@ -161,13 +161,13 @@ h1 {
 
         &:active {
           background-image: var(--crear_active);
-          border: 1px solid #9CAFC3;
-          background-color: 1px solid #9CAFC3;
+          border: 1px solid var(--light-gray);
+          background-color: 1px solid var(--light-gray);
         }
         
         &:hover {
           background-image: var(--crear_hover);
-          border: 1px solid #9CAFC3;
+          border: 1px solid var(--light-gray);
         }
           
       }

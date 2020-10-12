@@ -4,10 +4,9 @@
 
 .trending-stuff {
   @include word-bundle(14px, auto, 500, 25px);
-  height: 50px;
   width: 225px;
   text-transform: capitalize;
-  margin-bottom: 50px;
+  margin-bottom: 95px;
 }
 
 

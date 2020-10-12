@@ -1,5 +1,3 @@
-// localStorage.removeItem('myGifos'); 
-
 const apiKey = "VZ4N6ebz6BSdgrhUNiKAAU0dNYws5GSn";
 
 let recorder;
@@ -24,7 +22,6 @@ repetirCaptura.addEventListener("click", stage3)
 document.querySelector("#crear").addEventListener("click", (e) => {
   e.preventDefault();
   createContainer.style.display = "block";
-  // [mainTitle, trending, document.querySelector(".search-results"), document.querySelector(".search")].map(node => node.style.display="none")
 });
 
 let state = 0; // initial state before recording
@@ -214,7 +211,7 @@ function addActionIcons(id) {
   
 
 let actionIcons=document.createElement("div");
-actionIcons.classList.add("action-icons");
+actionIcons.classList.add("create-action-icons");
 
 let download=document.createElement("a");
 download.classList.add(id);

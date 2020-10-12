@@ -1,22 +1,26 @@
 // const apiKey="VZ4N6ebz6BSdgrhUNiKAAU0dNYws5GSn";
 let offset=0;
 
-let searchArgument=document.querySelector("#search-argument");
-
 let favoritesButtonSm=document.querySelector("#favoritos-sm");
 let favoritesButtonLg=document.querySelector("#favoritos-lg");
 
 let misGifosSm=document.querySelector("#mis-gifos-sm");
 let misGifosLg=document.querySelector("#mis-gifos-lg");
 
-viewMore.style.display="none";
 let noResults=document.querySelector("#no-results");
 
 let searchInputValue=document.querySelector("#search-input");
 let lastValue=searchInputValue.value;
 
 let resultsGrid=document.querySelector('#results-grid');
-resultsGrid.style.display="none";
+
+
+[resultsGrid, viewMore].map(x => x.style.display="none");
+// viewMore.style.display="none";
+
+function hideTop() {
+  [document.querySelector("h1"), document.querySelector(".search")].forEach(x => x.style.display="none");
+}
 
 function createOverlay(gifItem) {
 
@@ -82,6 +86,8 @@ function createOverlay(gifItem) {
 function appendSearchResults(searchResults, container) {
 
   searchArgument.textContent=searchInputValue.value;
+  searchArgument.style.display = "block";
+  [document.querySelector(".trending-stuff-title"), trendingStuff].map(x => x.style.display="none");
 
   let data = []
   if (searchResults.length==undefined)
@@ -111,6 +117,8 @@ lastValue=searchInputValue.value;
 }
 
 ouch = () => {
+  resultsGrid.display="none";
+  searchArgument.style.display = "block";
   document.querySelector('#ouch-img').style.display="block";
   document.querySelector("#try-again").style.display="block";
   noResults.style.display="block";
@@ -136,22 +144,21 @@ async function search(e) {
   }
   else if (e.path[0].id==favoritesButtonSm.id || e.path[0].id==favoritesButtonLg.id)
   {
-    if (localStorage.getItem('favorites')!=null)
+    if (localStorage.getItem('favorites')!=null && localStorage.getItem('favorites')!="") // no uso falsies por seguridad
     {
       let queryString = localStorage.getItem("favorites").split(",").length==1  ?
                     (`https://api.giphy.com/v1/gifs/${localStorage.getItem("favorites")}?&api_key=${apiKey}`)
                    : (`https://api.giphy.com/v1/gifs?ids=${localStorage.getItem("favorites")}&api_key=${apiKey}`);
-
+console.log(queryString)
       searchFetch = await fetch(queryString);
       searchInputValue.value="Favoritos";
       resultsGrid.innerHTML="";
     }
     else
     {
-      resultsGrid.innerHTML="";
-      searchInputValue.value="Favoritos";
+      hideTop();
+      resultsGrid.style.display="none";
       let noFavorites=document.createElement("h3");
-      searchArgument.textContent="Favoritos";
       noFavorites.textContent="¡Guarda tu primer GIFO en Favoritos para que se muestre aquí!";
       noFavorites.setAttribute("id", "no-favorites");
       document.querySelector(".find-favorites").appendChild(noFavorites);
@@ -160,7 +167,7 @@ async function search(e) {
   }
   else if (e.path[0].id==misGifosSm.id || e.path[0].id==misGifosLg.id)
   {
-    if (localStorage.getItem('myGifos')!=null)
+    if (localStorage.getItem('myGifos')!=null && localStorage.getItem('myGifos')!="") // no uso falsies por seguridad
     {
       let queryString = localStorage.getItem("myGifos").split(",").length==1  ?
                     (`https://api.giphy.com/v1/gifs/${localStorage.getItem("myGifos")}?&api_key=${apiKey}`)
@@ -172,10 +179,9 @@ async function search(e) {
     }
     else
     {
-      resultsGrid.innerHTML="";
-      searchInputValue.value="Favoritos";
+      hideTop();
+      resultsGrid.style.display="none";
       let noFavorites=document.createElement("h3");
-      searchArgument.textContent="Favoritos";
       noFavorites.textContent="INSERTAR TEXTO DE NO TENER GIFOS";
       noFavorites.setAttribute("id", "no-favorites");
       document.querySelector(".find-favorites").appendChild(noFavorites);

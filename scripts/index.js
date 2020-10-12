@@ -1,19 +1,21 @@
+/* API KEY */
+const apiKey = "VZ4N6ebz6BSdgrhUNiKAAU0dNYws5GSn";
+
 let mainTitle = document.querySelector("h1");
 let searchSection = document.querySelector(".search");
 let trending = document.querySelector(".trending");
 let viewMore = document.querySelector("#view-more");
+let searchArgument = document.querySelector("#search-argument");
+let trendingStuff = document.querySelector(".trending-stuff");
 
 document.querySelector(".logo").addEventListener("click", () => {
-  console.log("mili")
-  document.querySelector(".search-results").style.display = "block";
-  [mainTitle, searchSection].map(x => x.style.display = "block");
-  [resultsGrid, viewMore].map(x => x.style.display = "none");
+  [mainTitle, searchSection, document.querySelector(".search-results")].map(x => x.style.display = "block");
+  [resultsGrid, viewMore, searchArgument].map(x => x.style.display = "none");
+
   trending.style.display = "flex"
   searchArgument.textContent = "";
 });
 
-/* API */
-const apiKey = "VZ4N6ebz6BSdgrhUNiKAAU0dNYws5GSn";
 
 async function appendTrendings() {
 
@@ -34,14 +36,11 @@ async function appendTrendings() {
   }
 
   let content = await getTrendings();
-  let trendingStuff = document.querySelector(".trending-stuff");
-
   let carousel = document.querySelector(".carousel__images")
 
   function appendCarousel(data, container) {
 
     data.forEach(result => {
-
       let resultGif = document.createElement("div");
       resultGif.classList.add("result-placeholder");
       resultGif.setAttribute('id', `result-item-${offset}`);
@@ -57,11 +56,10 @@ async function appendTrendings() {
   const carouselButtons = document.querySelectorAll(".carousel__button");
 
   let imageIndex = 1;
-
   let translateX = 0;
 
   carouselButtons.forEach(button => {
-    // const width = trendingCardsCtn.offsetWidth
+
     button.addEventListener('click', (e) => {
       if (e.target.id == "previous") {
         if (imageIndex != 1) {
@@ -81,13 +79,13 @@ async function appendTrendings() {
   content[0].data.forEach((word, i) => {
 
     if (i > 4)
-      return
+      return;
 
     let span = document.createElement("span");
 
-    span.textContent = word == content[content.length - 1] ? word : `${word}, `;
+    span.textContent = word == content[content.length-1] ? word : `${word}, `;
     trendingStuff.appendChild(span);
-    span.style.cursor="pointer";
+    span.style.cursor = "pointer";
 
     span.addEventListener("click", (e) => {
       searchInput.value = span.textContent.replace(", ", "");
@@ -99,14 +97,12 @@ async function appendTrendings() {
 appendTrendings();
 
 let searchContainer = document.querySelector(".search-border");
-
 let searchInput = document.querySelector("#search-input");
-
-let suggestion = document.createElement('div');
-
 
 let closeIcon = document.querySelector("#icon_close");
 let searchIcon = document.querySelector("#icon_search");
+
+let suggestion = document.createElement('div');
 
 let laData;
 
