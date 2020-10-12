@@ -1,15 +1,24 @@
+// localStorage.removeItem('myGifos'); 
+
 let recorder;
 let gif;
+let stoppedFlag=false;
 
 createContainer.style.display="none";
 let startFilm = document.querySelector("#start-film")
 let createText= document.querySelector(".create-text");
+let gifCaptor=document.querySelector(".gif-captor");
+console.log(gifCaptor)
 let textChildren=createText.childNodes;
 const video = document.getElementById("gif-captor-video");
 video.style.display="none";
 let timer=document.querySelector(".timer");
 let [filmStage1, filmStage2, filmStage3] = Array.from(document.querySelectorAll(".film-stage"));
 uploadOverlay=document.querySelector("#create-overlay");
+
+let repetirCaptura = document.querySelector(".repetir-captura");
+repetirCaptura.style.display="none";
+repetirCaptura.addEventListener("click", stage3)
 
 document.querySelector("#crear").addEventListener("click", (e) => {
   e.preventDefault();
@@ -18,12 +27,24 @@ document.querySelector("#crear").addEventListener("click", (e) => {
   [mainTitle, trending, document.querySelector(".search-results"), document.querySelector(".search")].map(node => node.style.display="none")
 });
 
-startFilm.addEventListener('click', (e) => stepOne(e));
+let state=0; // initial state before recording
 
-async function stepOne(e) {
+startFilm.addEventListener('click', (e) => {
   e.preventDefault();
 
-  console.log(e.path[0].style.display="none")
+  if(state==0)
+    stage1(e);
+  else if (state==1)
+    stage3();
+  else if (state==2)
+    stage4();
+  else if (state==3)
+    stage5();
+});
+
+async function stage1(e) {
+
+  startFilm.classList.add("disabled");
   filmStage1.classList.add("activated");
   textChildren[1].innerHTML="¿Nos das acceso <br> a tu cámara?";
   textChildren[3].innerHTML="El acceso a tu camara será válido sólo <br> por el tiempo en el que estés creando el GIFO."
@@ -38,7 +59,6 @@ function getMediaPermissions() {
     navigator.mozGetUserMedia || 
     navigator.msGetUserMedia);
     navigator.getUserMedia (
-  
   {
     audio: false,
     video: true,
@@ -49,6 +69,7 @@ function getMediaPermissions() {
   
   async function(localMediaStream) {
     video.srcObject = localMediaStream;
+    state=1;
     await stage2();
   },
   
@@ -59,18 +80,21 @@ function getMediaPermissions() {
 
 
 function stage2() {
+
   filmStage2.classList.add("activated");
   filmStage1.classList.remove("activated");
-  startFilm.style.display="block";
+
+  startFilm.classList.remove("disabled");
   startFilm.textContent="GRABAR";
-  startFilm.removeEventListener("click", stepOne);
-  startFilm.addEventListener("click", stage3)
+  
+  video.style.display="block";
+  textChildren[1].innerHTML="";
+  textChildren[3].innerHTML="";
 }
 
 function stage3(){
 
-  filmStage3.classList.add("activated");
-  filmStage2.classList.remove("activated");
+  // filmStage2.classList.remove("activated");
 
 	navigator.mediaDevices.getUserMedia({
 		video: true
@@ -88,39 +112,64 @@ function stage3(){
     recorder.startRecording();
     
     video.style.display="block";
-    timer.style.display="block";
-    timer.textContent= () => {
 
-    }
-    textChildren[1].innerHTML="";
-    textChildren[3].innerHTML="";
+    let s=0;
+    stoppedFlag=false;
+    
+    timer.style.display="block";
+    repetirCaptura.style.display="none";
+
+    let timerSet = setInterval(setTimer, 1000);
+
+    function setTimer() {
+      if (stoppedFlag==true)
+      {
+        clearInterval(timerSet)
+        s=0;
+      }
+      else
+      {
+        let timeValue=new Date(s * 1000).toISOString().substr(11, 8)
+
+        timer.textContent=timeValue;
+        s++;
+      }
+    };
 
     startFilm.textContent="FINALIZAR";
-    startFilm.removeEventListener("click", stage3);
-    startFilm.addEventListener("click", stage4)
+    state=2;
+
   });
 }
 
 function onStop() {
+  stoppedFlag=true;
   console.log("mili")
 }
 
-let myGifosArray = JSON.parse(localStorage.getItem("myGifos"));
 
-if (myGifosArray === null){
-	myGifosArray = [];
-}
 
 async function stage4() {
+
+  startFilm.textContent="SUBIR GIFO";
   createText.style.display="none";
+
+  timer.style.display="none";
+  repetirCaptura.style.display="block";
   
-	recorder.stopRecording(onStop);
-	gif = await recorder.getBlob();
-  fifthStage();
+  await recorder.stopRecording(onStop);
+  gif = await recorder.getBlob();
+  state=3;
 }
 
-async function fifthStage() {
-  console.log(118)
+async function stage5() {
+
+  startFilm.classList.add("disabled");
+
+  filmStage2.classList.remove("activated");
+  filmStage3.classList.add("activated");
+
+  repetirCaptura.style.display="none";
 
   awaitUploadAnimation();
 
@@ -136,14 +185,7 @@ async function fifthStage() {
   let data = await resp.json();
   
   onUploadCompleted();
-  
-	console.log(data.data);
 
-	myGifosArray.push(data.data.id);
-
-	localStorage.setItem('myGifos', JSON.stringify(myGifosArray));
-  console.log(localStorage);
-}
 
 function awaitUploadAnimation() {
   uploadOverlay.classList.add("create-overlay");
@@ -155,12 +197,21 @@ function onUploadCompleted() {
   document.querySelector("#subiendo").textContent="GIFO subido con éxito";
   document.querySelector(".loader").setAttribute("src", "assets/check.svg");
   document.querySelector(".loader").classList.add("stopSpin");
-  addToMyGifos();
+  
+  if(!localStorage.getItem('myGifos'))
+  {
+    let myGifo=[data.data.id]
+    localStorage.setItem("myGifos", myGifo);
+  }
+  else
+  {
+    let myGifos=localStorage.getItem('myGifos').split(",");
+    myGifos.push(data.data.id);
+    localStorage.setItem("myGifos", myGifos.toString(", "));
+  }
+
+  console.log(localStorage);
+}
 }
 
 
-// function interval() {
-//  setInterval(() => {
-   
-//  }, intervalEnMilisegundos); 
-// };

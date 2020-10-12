@@ -1,4 +1,4 @@
-localStorage.removeItem('favorites'); // for testing purposes
+// localStorage.removeItem('favorites'); // for testing purposes
 
 function likeAction(e) {
   e.preventDefault();

@@ -625,34 +625,30 @@ h1 br {
 }
 
 .inner-create {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row wrap;
-          flex-flow: row wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin: 0;
-  justify-content: center;
+  position: relative;
+  margin-bottom: 26px;
 }
 
-.inner-create .camera {
-  margin: 0;
+.inner-create .camera-shine {
+  position: absolute;
+  top: 195px;
+  height: 150px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.inner-create .camera-shine .camera {
+  position: absolute;
   background-image: var(--camara);
   height: 150px;
   width: 114px;
   background-size: contain;
-  -webkit-transform: translateX(15%);
-          transform: translateX(15%);
 }
 
-.inner-create .shine {
+.inner-create .camera-shine .shine {
+  position: absolute;
+  left: 114px;
+  top: 20px;
   margin: 0;
   padding: 0;
   background-image: url("../../assets/element-luz-camara.svg");
@@ -662,8 +658,6 @@ h1 br {
   background-size: contain;
   -webkit-animation: blinking 5s infinite;
           animation: blinking 5s infinite;
-  -webkit-transform: translateX(20%);
-          transform: translateX(20%);
 }
 
 @-webkit-keyframes blinking {
@@ -696,8 +690,8 @@ h1 br {
 
 .inner-create .gif-captor-container {
   position: relative;
-  margin: 0;
-  width: 43rem;
+  margin: 0 auto;
+  width: 688px;
   height: 390px;
   border: 1px solid var(--fancy_border);
   overflow: hidden;
@@ -828,13 +822,15 @@ h1 br {
 
 .film {
   background-image: var(--pelicula);
+  position: absolute;
+  right: 0;
+  bottom: 0;
   height: 88px;
   width: 140px;
-  -ms-flex-item-align: end;
-      align-self: flex-end;
 }
 
 .stages {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -848,17 +844,19 @@ h1 br {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  width: 688px;
   margin: 1.5rem auto;
-  width: 12rem;
 }
 
-.timer {
+.timer, .repetir-captura {
+  display: block;
   position: absolute;
-  right: 0;
-  bottom: 2.25rem;
   font-size: .9375rem;
   font-weight: bold;
-  display: none;
+  right: 0;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
 }
 
 .film-stage {
@@ -884,12 +882,11 @@ h1 br {
 }
 
 .start-border {
-  border: 3px solid;
+  border: 4px solid;
   border-color: var(--fancy-border);
   border-radius: 3px;
-  width: 110%;
-  -webkit-transform: translateX(-5%);
-          transform: translateX(-5%);
+  width: 795px;
+  margin: 0 auto;
 }
 
 #start-film {
@@ -905,13 +902,17 @@ h1 br {
   width: 127px;
 }
 
-@media (max-width: 1443px) {
-  #start-film {
-    position: absolute;
-    left: 50%;
-    -webkit-transform: translateX(-50%);
-            transform: translateX(-50%);
-  }
+#start-film.disabled {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.repetir-captura {
+  cursor: pointer;
+}
+
+.repetir-captura:hover {
+  border-bottom: 2px solid var(--green);
 }
 
 footer {

@@ -1,27 +1,33 @@
 .inner-create {
-  @include behave-horizontal;
-  margin: 0;
-  justify-content: center;
-  .camera {
-    margin: 0;
-    background-image: var(--camara);
-    height: 150px;
-    width: 114px;
-    background-size: contain;
-    transform: translateX(15%);
-  }
-  .shine {
-    margin: 0;
-    padding: 0;
-    background-image: url("../../assets/element-luz-camara.svg");
-    background-repeat: no-repeat;
-    height: 115px;
-    width: 75px;
-    background-size: contain;
-    animation: blinking 5s infinite;
-    transform: translateX(20%);
-  }
+  position: relative;
 
+  .camera-shine {
+    position: absolute;
+    top: 195px;
+    height: 150px;
+    transform: translateY(-50%);
+    .camera { 
+      position: absolute;
+      background-image: var(--camara);
+      height: 150px;
+      width: 114px;
+      background-size: contain;
+    }
+    .shine {
+      position: absolute;
+      left: 114px;
+      top: 20px;
+      margin: 0;
+      padding: 0;
+      background-image: url("../../assets/element-luz-camara.svg");
+      background-repeat: no-repeat;
+      height: 115px;
+      width: 75px;
+      background-size: contain;
+      animation: blinking 5s infinite;
+    }
+  }
+  
   @keyframes blinking {
     0% {opacity: 1;}
     50% {opacity: 0;}
@@ -34,17 +40,13 @@
 
   .gif-captor-container  {
     position: relative;
-    margin: 0;
-    width: 43rem;
+    margin: 0 auto;
+    width: 688px;
     height: 390px;
     border: 1px solid var(--fancy_border);
     overflow: hidden;
   }
 
-  // .gif-captor-video-container {
-  //   position: absolute;
-  //   top: 15px;
-  // }
 
   #gif-captor-video {
     position: absolute;
@@ -133,28 +135,33 @@
   animation: none;
 }
 
+margin-bottom: 26px;
 }
 
 .film {
   background-image: var(--pelicula);
+  position: absolute;
+  right:0;
+  bottom: 0;
   height: 88px;
-    width: 140px;
-  align-self: flex-end;
+  width: 140px;
 }
 
 .stages {
+  position: relative;
   @include behave-horizontal;
+  width: 688px;
   margin: 1.5rem auto;
-  width: 12rem;
 }
 
-.timer {
+.timer, .repetir-captura {
+  display: block;
   position: absolute;
-  right: 0;
-  bottom: 2.25rem;
   font-size: .9375rem;
   font-weight: bold;
-  display: none;
+  right: 0;
+  top:50%;
+  transform: translateY(-50%);
 }
 
 .film-stage {
@@ -180,11 +187,11 @@
 }
 
 .start-border {
-  border: 3px solid;
+  border: 4px solid;
   border-color: var(--fancy-border);
   border-radius: 3px;
-  width: 110%;
-  transform: translateX(-5%);
+  width: 795px;
+  margin: 0 auto;
 }
 
   #start-film {
@@ -193,14 +200,17 @@
     display: block;
     margin-top: 1.25rem;
     width: 127px;
-  }
 
-  @media(max-width: 1443px) {
-    #start-film {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
+    &.disabled {
+      opacity: 0;
+      pointer-events: none;
     }
   }
 
+.repetir-captura {
+  cursor: pointer;
+  &:hover {
+    border-bottom: 2px solid var(--green);
+  }
+}
 
