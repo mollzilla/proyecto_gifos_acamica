@@ -87,6 +87,19 @@ body {
   min-height: 100vh;
 }
 
+body::-webkit-scrollbar {
+  width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: var(--main_text_color);
+  border-radius: 10px;
+}
+
 .container {
   padding-left: 21px;
   padding-right: 21px;
@@ -533,7 +546,8 @@ h1 br {
 }
 
 .search-results .expandable {
-  width: 85vw;
+  background-size: contain;
+  z-index: 3000;
 }
 
 .search-results #no-favorites {
@@ -632,7 +646,7 @@ h1 br {
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
   justify-content: center;
-  width: 60%;
+  max-width: 1060px;
 }
 
 .carousel {
@@ -670,7 +684,8 @@ h1 br {
   margin-right: 30px;
   width: 357px;
   height: 275px;
-  background-size: contain;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .carousel__images div .overlay {
@@ -687,7 +702,7 @@ h1 br {
   opacity: 1;
 }
 
-.carousel__images div .action-icons {
+.carousel__images div .forced-right-action-icons {
   width: 40%;
   position: absolute;
   margin: 0;
@@ -781,6 +796,24 @@ h1 br {
 
 .carousel__button:hover {
   opacity: .5;
+}
+
+@media (max-width: 768px) {
+  .carousel-container {
+    width: 100vw;
+  }
+  .carousel {
+    overflow: scroll;
+  }
+  .carousel__button {
+    display: none;
+  }
+}
+
+@media (max-width: 1024px) {
+  .carousel-container {
+    max-width: 980px;
+  }
 }
 
 .inner-create {
@@ -1073,6 +1106,32 @@ h1 br {
 
 .repetir-captura:hover {
   border-bottom: 2px solid var(--green);
+}
+
+.create-action-icon {
+  margin: unset;
+  margin-right: 10px;
+  margin-top: 10px;
+  display: inline-block;
+  height: 32px;
+  width: 32px;
+  background-size: contain;
+}
+
+.create-action-icon:nth-child(1) {
+  background-image: url("../../assets/icon_download.svg");
+}
+
+.create-action-icon:nth-child(1):hover {
+  background-image: url("../../assets/icon_download_hover.svg");
+}
+
+.create-action-icon:nth-child(2) {
+  background-image: url("../../assets/icon_link.svg");
+}
+
+.create-action-icon:nth-child(2):hover {
+  background-image: url("../../assets/icon_link_hover.svg");
 }
 
 footer {

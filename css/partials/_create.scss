@@ -215,3 +215,25 @@ margin-bottom: 26px;
   }
 }
 
+.create-action-icon {
+  margin: unset;
+  margin-right: 10px;
+  margin-top: 10px;
+  display: inline-block;
+  height: 32px;
+  width: 32px;
+  background-size: contain;
+
+  &:nth-child(1) {
+    background-image: url("../../assets/icon_download.svg");
+    &:hover {
+      background-image: url("../../assets/icon_download_hover.svg");
+    }
+  }
+  &:nth-child(2) {
+    background-image: url("../../assets/icon_link.svg");
+    &:hover {
+      background-image: url("../../assets/icon_link_hover.svg");
+    };
+  }
+}

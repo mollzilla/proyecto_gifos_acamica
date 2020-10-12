@@ -3,7 +3,8 @@
   @include behave-horizontal;
   flex-wrap: nowrap;
   justify-content: center;
-  width: 60%;
+  max-width: 1060px;
+  
 }
 
 .carousel {
@@ -27,7 +28,8 @@
       margin-right: 30px;
       width: 357px;
       height: 275px;
-      background-size: contain;
+      background-size: cover;
+      background-repeat: no-repeat;
 
       .overlay { 
         position: absolute;
@@ -44,7 +46,7 @@
         }
       }
 
-      .action-icons {
+      .forced-right-action-icons {
         width: 40%;
         position: absolute;
         margin: 0;
@@ -98,10 +100,8 @@
         .title {
           @include word-bundle(16px, #FFF, bold, 19px);
         }
-      }
-    
+      } 
     }
-
   }
 
   &__button {
@@ -128,7 +128,24 @@
     &:hover {
       opacity: .5;
     }
-
   }
+}
 
+@media(max-width:768px) {
+
+  .carousel-container {
+    width: 100vw;
+  }
+  .carousel {
+    overflow: scroll;
+  }
+  .carousel__button {
+    display: none;
+  }
+}
+
+@media(max-width:1024px) {
+  .carousel-container {
+    max-width: 980px;
+  }
 }

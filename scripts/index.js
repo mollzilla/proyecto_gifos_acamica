@@ -10,9 +10,7 @@ document.querySelector(".logo").addEventListener("click", () => {
   [resultsGrid, viewMore].map(x => x.style.display = "none");
   trending.style.display = "flex"
   searchArgument.textContent = "";
-})
-
-let allIcons = Array.from(document.querySelectorAll('[id^="icon"]'));
+});
 
 /* API */
 const apiKey = "VZ4N6ebz6BSdgrhUNiKAAU0dNYws5GSn";
@@ -63,6 +61,7 @@ async function appendTrendings() {
   let translateX = 0;
 
   carouselButtons.forEach(button => {
+    // const width = trendingCardsCtn.offsetWidth
     button.addEventListener('click', (e) => {
       if (e.target.id == "previous") {
         if (imageIndex != 1) {
@@ -88,6 +87,7 @@ async function appendTrendings() {
 
     span.textContent = word == content[content.length - 1] ? word : `${word}, `;
     trendingStuff.appendChild(span);
+    span.style.cursor="pointer";
 
     span.addEventListener("click", (e) => {
       searchInput.value = span.textContent.replace(", ", "");

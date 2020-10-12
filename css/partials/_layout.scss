@@ -17,6 +17,20 @@ body {
   box-sizing: border-box;
   background-color: var(--background);
   min-height: 100vh;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+}
+
+&::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+
+&::-webkit-scrollbar-thumb {
+    background: var(--main_text_color); 
+    border-radius: 10px;
+}
+
 }
 
 .container {

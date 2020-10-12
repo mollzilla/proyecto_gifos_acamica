@@ -108,7 +108,9 @@ function stage3() {
       onGifRecordingStarted: function () {
         console.log('started')
       }
-    });
+    }
+  );
+    
     recorder.startRecording();
 
     video.style.display = "block";
@@ -144,8 +146,6 @@ function onStop() {
   stoppedFlag = true;
 }
 
-
-
 async function stage4() {
 
   startFilm.textContent = "SUBIR GIFO";
@@ -176,14 +176,14 @@ async function stage5() {
   let resp = await fetch(`https://upload.giphy.com/v1/gifs?=${form}&api_key=${apiKey}`, {
     method: 'POST',
     body: form,
-    json: true
+    json: true,
+    mode: 'cors'
   });
 
   let data = await resp.json();
 
   onUploadCompleted();
-
-
+  
   function awaitUploadAnimation() {
     uploadOverlay.classList.add("create-overlay");
     document.querySelector("#subiendo").classList.add("subiendo");
@@ -195,6 +195,8 @@ async function stage5() {
     document.querySelector(".loader").setAttribute("src", "assets/check.svg");
     document.querySelector(".loader").classList.add("stopSpin");
 
+    addActionIcons(data.data.id)
+
     if (!localStorage.getItem('myGifos')) {
       let myGifo = [data.data.id]
       localStorage.setItem("myGifos", myGifo);
@@ -204,10 +206,37 @@ async function stage5() {
       myGifos.push(data.data.id);
       localStorage.setItem("myGifos", myGifos.toString(", "));
     }
-
     console.log(localStorage);
   }
 }
+
+function addActionIcons(id) {
+  
+
+let actionIcons=document.createElement("div");
+actionIcons.classList.add("action-icons");
+
+let download=document.createElement("a");
+download.classList.add(id);
+download.addEventListener('click', downloadAction);
+download.classList.add("create-action-icon")
+
+let copyURL=document.createElement("a");
+// copyURL.addEventListener('click', copyURLAction);
+
+[download, copyURL].forEach(a => {
+  a.classList.add("create-action-icon")
+  actionIcons.appendChild(a)
+});
+
+// actionIcons.appendChild(download)
+
+uploadOverlay.appendChild(actionIcons);
+}
+
+
+
+
 
 let favoritesButtonSm = document.querySelector("#favoritos-sm");
 let favoritesButtonLg = document.querySelector("#favoritos-lg");
@@ -220,3 +249,8 @@ let misGifosLg = document.querySelector("#mis-gifos-lg");
   window.location.replace("index.html");
   search(e);
 }));
+
+document.querySelector(".logo").addEventListener("click", (e) => {
+  e.preventDefault()
+  window.location.replace("index.html");
+});

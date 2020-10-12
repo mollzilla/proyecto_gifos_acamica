@@ -64,7 +64,6 @@
     @include behave-horizontal;
     top: 0;
     justify-content: flex-end;
-    
   }
 
   .action-icon{
@@ -118,7 +117,8 @@
   }
 
   .expandable {
-      width: 85vw;
+      background-size: contain;
+      z-index: 3000;
   }
 
   #no-favorites {

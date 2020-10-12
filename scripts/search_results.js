@@ -37,6 +37,7 @@ function createOverlay(gifItem) {
     download.addEventListener('click', downloadAction);
 
     let expand=document.createElement("a");
+    expand.addEventListener('click', expandAction);
 
     [like, download, expand].forEach(a => {
 

@@ -1,5 +1,7 @@
 // localStorage.removeItem('favorites'); // for testing purposes
 
+let allIcons = Array.from(document.querySelectorAll('[id^="icon"]'));
+
 function likeAction(e) {
   e.preventDefault();
   this.style.backgroundImage="url(../../assets/icon_fav_active.svg)";
@@ -33,15 +35,26 @@ function likeAction(e) {
 
 function expandAction(e) {
   e.preventDefault();
+  console.log(e.path[3])
   console.log("mili")
-  resultGif.classList.add('expandable');
+  let mili=(e.path[3]).cloneNode(false)
+  console.log(mili)
+
+  mili.style.position="fixed";
+  mili.style.top=0;
+  mili.style.height="100vh"
+  mili.style.width="100vw"
+  mili.style.backgroundSize="contain"
+  mili.style.backgroundRepeat="no-repeat"
+  mili.classList.add("expandable")
+  document.querySelector("header").appendChild(mili)
 }
 
 async function downloadAction() {
-  //create new a element
+
   let a = document.createElement('a');
   // get image as blob
-  // let response = await fetch('https://media2.giphy.com/media/DvyLQztQwmyAM/giphy.gif?cid=e9ff928175irq2ybzjyiuicjuxk21vv4jyyn0ut5o0d7co50&rid=giphy.gif');
+
   let response = await fetch(`https://media2.giphy.com/media/${this.id}/giphy.gif?${apiKey}&rid=giphy.gif`);
   let file = await response.blob();
   // use download attribute https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#Attributes
@@ -51,6 +64,10 @@ async function downloadAction() {
   a.dataset.downloadurl = ['application/octet-stream', a.download, a.href].join(':');
   //click on element to start download
   a.click()
+}
+
+function copyURLAction() {
+  console.log("copy url")
 }
 
 var hoverIcons=allIcons.filter(icon => icon.id.match(/close|search/)==null);
