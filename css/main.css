@@ -389,6 +389,41 @@ h1 br {
   }
 }
 
+.mis-gifos {
+  display: none;
+}
+
+.empty-section {
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
+  margin: 2rem 2rem 4rem;
+}
+
+.empty-section img {
+  margin: 2rem;
+}
+
+.empty-section span {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  font-size: 1.4rem;
+  color: var(--secondary-color);
+  line-height: 25px;
+  text-align: center;
+}
+
+h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.25rem;
+  color: var(--primary-color);
+  text-align: center;
+  line-height: 30px;
+  margin-bottom: 2.5rem;
+}
+
 #search-argument {
   display: none;
   font-size: 25px;

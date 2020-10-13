@@ -1,0 +1,28 @@
+.mis-gifos {
+  display: none;
+}
+
+.empty-section{
+  display: none;
+  flex-flow: column wrap;
+  margin: 2rem 2rem 4rem;
+  img{
+      margin: 2rem;
+  }
+  span{
+      font-family: 'Montserrat', sans-serif;
+      font-weight: bold;
+      font-size: 1.4rem;
+      color: var(--secondary-color);
+      line-height: 25px;
+      text-align: center;
+  }
+}
+h2{
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.25rem;
+  color: var(--primary-color);
+  text-align: center;
+  line-height: 30px;
+  margin-bottom: 2.5rem;
+}

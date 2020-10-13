@@ -16,10 +16,9 @@ let resultsGrid=document.querySelector('#results-grid');
 
 
 [resultsGrid, viewMore].map(x => x.style.display="none");
-// viewMore.style.display="none";
 
 function hideTop() {
-  [document.querySelector("h1"), document.querySelector(".search")].forEach(x => x.style.display="none");
+  [document.querySelector("h1"), document.querySelector(".search"), searchArgument].forEach(x => x.style.display="none");
 }
 
 function createOverlay(gifItem) {
@@ -118,10 +117,7 @@ lastValue=searchInputValue.value;
 
 ouch = () => {
   resultsGrid.display="none";
-  searchArgument.style.display = "block";
-  document.querySelector('#ouch-img').style.display="block";
-  document.querySelector("#try-again").style.display="block";
-  noResults.style.display="block";
+  [searchArgument, document.querySelector('#ouch-img'), document.querySelector("#try-again"), noResults ].map(x => x.style.display = "block");
 }
 
 async function search(e) {
@@ -144,19 +140,17 @@ async function search(e) {
   }
   else if (e.path[0].id==favoritesButtonSm.id || e.path[0].id==favoritesButtonLg.id)
   {
+    hideTop();
     if (localStorage.getItem('favorites')!=null && localStorage.getItem('favorites')!="") // no uso falsies por seguridad
     {
       let queryString = localStorage.getItem("favorites").split(",").length==1  ?
                     (`https://api.giphy.com/v1/gifs/${localStorage.getItem("favorites")}?&api_key=${apiKey}`)
                    : (`https://api.giphy.com/v1/gifs?ids=${localStorage.getItem("favorites")}&api_key=${apiKey}`);
-console.log(queryString)
       searchFetch = await fetch(queryString);
-      searchInputValue.value="Favoritos";
       resultsGrid.innerHTML="";
     }
     else
     {
-      hideTop();
       resultsGrid.style.display="none";
       let noFavorites=document.createElement("h3");
       noFavorites.textContent="¡Guarda tu primer GIFO en Favoritos para que se muestre aquí!";
@@ -167,6 +161,8 @@ console.log(queryString)
   }
   else if (e.path[0].id==misGifosSm.id || e.path[0].id==misGifosLg.id)
   {
+    document.querySelector(".mis-gifos").style.display="block";
+    hideTop();
     if (localStorage.getItem('myGifos')!=null && localStorage.getItem('myGifos')!="") // no uso falsies por seguridad
     {
       let queryString = localStorage.getItem("myGifos").split(",").length==1  ?
@@ -174,15 +170,13 @@ console.log(queryString)
                    : (`https://api.giphy.com/v1/gifs?ids=${localStorage.getItem("myGifos")}&api_key=${apiKey}`);
 
       searchFetch = await fetch(queryString);
-      searchInputValue.value="Mis Gifos";
       resultsGrid.innerHTML="";
     }
     else
     {
-      hideTop();
       resultsGrid.style.display="none";
       let noFavorites=document.createElement("h3");
-      noFavorites.textContent="INSERTAR TEXTO DE NO TENER GIFOS";
+      document.querySelector("#empty-mis-gifos").style.display="flex";
       noFavorites.setAttribute("id", "no-favorites");
       document.querySelector(".find-favorites").appendChild(noFavorites);
       return;
