@@ -50,9 +50,7 @@
 
   #gif-captor-video {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    @include magic-center;
     z-index: -1000;
   }
 
@@ -80,23 +78,19 @@
 }
 
 .create-text {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  @include magic-center;
   position: absolute;
 }
 
 .create-text-subtitle {
-  @include word-bundle(16px, var(--small_text_color), 400, 23px) ; 
+  @include word-bundle(1rem, var(--small_text_color), 400, 23px) ; 
   font-family: "Roboto", sans-serif;
   text-align: center;
 }
 
 .create-overlay {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  @include magic-center;
   height: 240px;
   width: 424px;
   background-color: transparentize(#572EE5, .3);
@@ -123,9 +117,7 @@
 .subiendo {
   display: block;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  @include magic-center;
   color: #FFF;
   font-family: $title-fonts;
   font-size: 15px;
@@ -196,7 +188,7 @@ margin-bottom: 26px;
 
   #start-film {
     @include fancy-border;
-    @include word-bundle(13px, auto, bold, auto);
+    @include word-bundle(0.8125rem, auto, bold, auto);
     display: block;
     margin-top: 1.25rem;
     width: 127px;

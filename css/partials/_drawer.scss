@@ -27,7 +27,7 @@
     width: 100%;
 
     a {
-      @include word-bundle(15px, #FFF, bold, 60px);
+      @include word-bundle(0.9375rem, #FFF, bold, 60px);
     }
 
     .drawer-line {

@@ -167,7 +167,7 @@ a {
     width: 100%;
   }
   .drawer .links a {
-    font-size: 15px;
+    font-size: 0.9375rem;
     color: #FFF;
     font-weight: bold;
     line-height: 60px;
@@ -221,7 +221,7 @@ a {
 }
 
 h1 {
-  font-size: 25px;
+  font-size: 1.5625rem;
   color: auto;
   font-weight: medium;
   line-height: 33px;
@@ -378,7 +378,7 @@ h1 br {
     display: none;
   }
   header h1 {
-    font-size: 35px;
+    font-size: 2.1875rem;
     color: auto;
     font-weight: bold;
     line-height: 50px;
@@ -426,7 +426,7 @@ h2 {
 
 #search-argument {
   display: none;
-  font-size: 25px;
+  font-size: 1.2625rem;
   color: auto;
   font-weight: bold;
   line-height: 40px;
@@ -496,7 +496,7 @@ h2 {
   border: 1px solid var(--fancy_border);
   border-radius: 25px;
   line-height: 50px;
-  font-size: 13px;
+  font-size: 0.8125rem;
   color: auto;
   font-weight: bold;
   line-height: auto;
@@ -592,14 +592,14 @@ h2 {
 }
 
 .search-results .gif-title .username {
-  font-size: 15px;
+  font-size: 0.9375rem;
   color: #FFF;
   font-weight: 400;
   line-height: 18px;
 }
 
 .search-results .gif-title .title {
-  font-size: 16px;
+  font-size: 1rem;
   color: #FFF;
   font-weight: bold;
   line-height: 19px;
@@ -611,7 +611,7 @@ h2 {
 }
 
 .search-results #no-favorites {
-  font-size: 22px;
+  font-size: 1.375rem;
   color: var(--green);
   max-width: 430px;
 }
@@ -631,14 +631,14 @@ h2 {
 }
 
 .trending-stuff-title {
-  font-size: 16px;
+  font-size: 1rem;
   color: auto;
   font-weight: bold;
   line-height: 25px;
 }
 
 .trending-stuff {
-  font-size: 14px;
+  font-size: 0.875rem;
   color: auto;
   font-weight: 500;
   line-height: 25px;
@@ -667,7 +667,7 @@ h2 {
 }
 
 .trending .trending-gifos {
-  font-size: 20px;
+  font-size: 1.25rem;
   color: auto;
   font-weight: bold;
   line-height: 30px;
@@ -675,7 +675,7 @@ h2 {
 }
 
 .mira {
-  font-size: 16px;
+  font-size: 1rem;
   color: var(--small_text_color);
   font-weight: 400;
   line-height: 23px;
@@ -704,24 +704,19 @@ h2 {
           align-items: center;
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
-  justify-content: center;
   max-width: 1060px;
 }
 
 .carousel {
   position: relative;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin: 2rem auto;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 16px auto;
   overflow: hidden;
-  position: relative;
   max-width: 1000px;
 }
 
@@ -764,8 +759,8 @@ h2 {
 .carousel__images div .action-icons {
   width: 40%;
   position: absolute;
-  margin: 0;
-  right: 0;
+  top: 0;
+  left: 0;
 }
 
 .carousel__images div .action-icon {
@@ -817,14 +812,14 @@ h2 {
 }
 
 .carousel__images div .gif-title .username {
-  font-size: 15px;
+  font-size: 0.9375rem;
   color: #FFF;
   font-weight: 400;
   line-height: 18px;
 }
 
 .carousel__images div .gif-title .title {
-  font-size: 16px;
+  font-size: 1rem;
   color: #FFF;
   font-weight: bold;
   line-height: 19px;
@@ -836,7 +831,7 @@ h2 {
   border: 0;
   color: white;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: bold;
   height: 40px;
   min-width: 40px;
@@ -993,7 +988,7 @@ h2 {
 }
 
 .inner-create .create-text-subtitle {
-  font-size: 16px;
+  font-size: 1rem;
   color: var(--small_text_color);
   font-weight: 400;
   line-height: 23px;
@@ -1146,7 +1141,7 @@ h2 {
   border: 1px solid var(--fancy_border);
   border-radius: 25px;
   line-height: 50px;
-  font-size: 13px;
+  font-size: 0.8125rem;
   color: auto;
   font-weight: bold;
   line-height: auto;
@@ -1241,7 +1236,7 @@ a footer .social-media:hover {
 }
 
 footer .copyright {
-  font-size: 14px;
+  font-size: 0.875rem;
   color: var(--small_text_color);
   font-weight: 400;
   line-height: 20px;

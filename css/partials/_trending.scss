@@ -1,9 +1,9 @@
 .trending-stuff-title {
-  @include word-bundle(16px, auto, bold, 25px);
+  @include word-bundle(1rem, auto, bold, 25px);
 }
 
 .trending-stuff {
-  @include word-bundle(14px, auto, 500, 25px);
+  @include word-bundle(.875rem, auto, 500, 25px);
   width: 225px;
   text-transform: capitalize;
   margin-bottom: 95px;
@@ -17,13 +17,13 @@
   padding-bottom: 82px;
 
   .trending-gifos {
-    @include word-bundle(20px, auto, bold, 30px);
+    @include word-bundle(1.25rem, auto, bold, 30px);
     margin-bottom: 7px;
   }
 }
 
 .mira {
-  @include word-bundle(16px, var(--small_text_color), 400, 23px);
+  @include word-bundle(1rem, var(--small_text_color), 400, 23px);
   font-family: "Roboto", sans-serif;
   text-align: center;
 }
@@ -33,6 +33,5 @@
   img {
     max-width: 65%;
   }
-  
 }
 

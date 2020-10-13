@@ -22,7 +22,7 @@
 }
 
 h1 {
-  @include word-bundle(25px, auto, medium, 33px);
+  @include word-bundle(1.5625rem, auto, medium, 33px);
   text-align: center;
   width: 286px;
 
@@ -178,7 +178,7 @@ h1 {
     }
 
     h1 {
-      @include word-bundle(35px, auto, bold, 50px);
+      @include word-bundle(2.1875rem, auto, bold, 50px);
       width: unset;
       br  {
         display: unset;

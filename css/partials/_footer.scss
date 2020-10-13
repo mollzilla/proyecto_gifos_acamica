@@ -20,7 +20,7 @@ footer {
   }
 
   .copyright {
-    @include word-bundle(14px, var(--small_text_color), 400, 20px);
+    @include word-bundle(0.875rem, var(--small_text_color), 400, 20px);
     font-family: $normal;
   }
 
