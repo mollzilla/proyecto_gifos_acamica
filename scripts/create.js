@@ -17,7 +17,7 @@ uploadOverlay = document.querySelector("#create-overlay");
 
 let repetirCaptura = document.querySelector(".repetir-captura");
 repetirCaptura.style.display = "none";
-repetirCaptura.addEventListener("click", stage3)
+repetirCaptura.addEventListener("click", stage3);
 
 document.querySelector("#crear").addEventListener("click", (e) => {
   e.preventDefault();
@@ -44,7 +44,7 @@ async function stage1(e) {
   startFilm.classList.add("disabled");
   filmStage1.classList.add("activated");
   textChildren[1].innerHTML = "¿Nos das acceso <br> a tu cámara?";
-  textChildren[3].innerHTML = "El acceso a tu camara será válido sólo <br> por el tiempo en el que estés creando el GIFO."
+  textChildren[3].innerHTML = "El acceso a tu camara será válido sólo <br> por el tiempo en el que estés creando el GIFO.";
 
   getMediaPermissions();
 }
@@ -134,6 +134,12 @@ function stage3() {
     };
 
     startFilm.textContent = "FINALIZAR";
+
+    /* Permito la ejecución de startRecording dándole un segundo de ventaja, virtualmente imperceptible para el usuario */
+    startFilm.style.pointerEvents="none";
+    setTimeout(() => { 
+      startFilm.style.pointerEvents="unset";
+    }, 1000);
     state = 2;
 
   });
@@ -145,6 +151,8 @@ function onStop() {
 
 async function stage4() {
 
+  state = 2;
+
   startFilm.textContent = "SUBIR GIFO";
   createText.style.display = "none";
 
@@ -152,6 +160,7 @@ async function stage4() {
   repetirCaptura.style.display = "block";
 
   await recorder.stopRecording(onStop);
+
   gif = await recorder.getBlob();
   state = 3;
 }
