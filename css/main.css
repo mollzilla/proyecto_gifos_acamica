@@ -389,11 +389,11 @@ h1 br {
   }
 }
 
-.mis-gifos {
+.collection {
   display: none;
 }
 
-.empty-section {
+#empty-mis-gifos, #empty-favorites {
   display: none;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -402,11 +402,11 @@ h1 br {
   margin: 2rem 2rem 4rem;
 }
 
-.empty-section img {
+#empty-mis-gifos img, #empty-favorites img {
   margin: 2rem;
 }
 
-.empty-section span {
+#empty-mis-gifos span, #empty-favorites span {
   font-family: 'Montserrat', sans-serif;
   font-weight: bold;
   font-size: 1.4rem;
@@ -1022,6 +1022,8 @@ h2 {
   position: absolute;
   top: 30%;
   left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
 }
 
 @-webkit-keyframes spin {

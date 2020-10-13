@@ -209,14 +209,13 @@ async function stage5() {
 
 function addActionIcons(id) {
   
-
 let actionIcons=document.createElement("div");
 actionIcons.classList.add("create-action-icons");
 
 let download=document.createElement("a");
-download.classList.add(id);
+download.classList.add(id, "create-action-icon");
 download.addEventListener('click', downloadAction);
-download.classList.add("create-action-icon")
+// download.classList.add("create-action-icon")
 
 let copyURL=document.createElement("a");
 // copyURL.addEventListener('click', copyURLAction);
@@ -231,10 +230,6 @@ let copyURL=document.createElement("a");
 uploadOverlay.appendChild(actionIcons);
 }
 
-
-
-
-
 let favoritesButtonSm = document.querySelector("#favoritos-sm");
 let favoritesButtonLg = document.querySelector("#favoritos-lg");
 
@@ -243,11 +238,6 @@ let misGifosLg = document.querySelector("#mis-gifos-lg");
 
 [favoritesButtonSm, favoritesButtonLg, misGifosSm, misGifosLg].forEach(button => button.addEventListener('click', e => {
   e.preventDefault();
-  window.location.replace("index.html");
-  search(e);
+  console.log(e);
+  window.location.href = `index.html#${e.path[0].id}`;
 }));
-
-document.querySelector(".logo").addEventListener("click", (e) => {
-  e.preventDefault()
-  window.location.replace("index.html");
-});

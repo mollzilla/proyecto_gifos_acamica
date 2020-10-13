@@ -86,13 +86,7 @@
   }
 
   .action-icon{
-    margin: unset;
-    margin-right: 10px;
-    margin-top: 10px;
-    display: inline-block;
-    height: 32px;
-    width: 32px;
-    background-size: contain;
+    @include action-icon;
 
     &:nth-child(1) {
       background-image: url("../../assets/icon_fav.svg");

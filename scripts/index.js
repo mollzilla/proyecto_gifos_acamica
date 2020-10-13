@@ -17,6 +17,11 @@ document.querySelector(".logo").addEventListener("click", () => {
 });
 
 
+window.addEventListener('DOMContentLoaded', () => {
+  if (window.location.hash[0] == '#')
+  search(window.location.hash.slice(1));
+});
+
 async function appendTrendings() {
 
   async function getTrendings() {
@@ -89,7 +94,7 @@ async function appendTrendings() {
 
     span.addEventListener("click", (e) => {
       searchInput.value = span.textContent.replace(", ", "");
-      search(e);
+      search(e.path[0].id);
     });
   });
 }
@@ -112,7 +117,7 @@ searchInput.addEventListener('keyup', async function (e) {
 
     if (e.keyCode === 13) {
       e.stopPropagation();
-      search(e);
+      search(e.path[0].id);
       return;
     }
 
@@ -158,7 +163,7 @@ searchInput.addEventListener('keyup', async function (e) {
       oneSuggestion.addEventListener('click', (e) => {
         searchInput.value = suggestionName.textContent;
         suggestion.innerHTML = "";
-        search(e);
+        search(e.path[0].id);
       });
 
     })

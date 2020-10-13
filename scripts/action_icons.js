@@ -2,6 +2,24 @@
 
 let allIcons = Array.from(document.querySelectorAll('[id^="icon"]'));
 
+var hoverIcons=allIcons.filter(icon => icon.id.match(/close|search/)==null);
+
+hoverIcons=hoverIcons.map(icon => {
+  icon.addEventListener('mouseover', () => icon.setAttribute('src', `assets/${icon.id}_hover.svg`));
+  icon.addEventListener('mouseout', () => icon.setAttribute('src', `assets/${icon.id}.svg`));
+})
+
+let anchorIcons=Array.from(document.querySelectorAll("nav a"));
+
+anchorIcons.map(function(icon)  { // Listen if active, set src otherwise
+  icon.addEventListener('mouseup', () => icon.setAttribute('src', `assets/${icon.id}_hover.svg`))
+});
+
+document.querySelector(".logo").addEventListener("click", (e => {
+  window.location.replace("index.html");
+}))
+
+
 function likeAction(e) {
   e.preventDefault();
   this.style.backgroundImage="url(../../assets/icon_fav_active.svg)";
@@ -70,16 +88,3 @@ function copyURLAction() {
   console.log("copy url")
 }
 
-var hoverIcons=allIcons.filter(icon => icon.id.match(/close|search/)==null);
-
-hoverIcons=hoverIcons.map(icon => {
-
-  icon.addEventListener('mouseover', () => icon.setAttribute('src', `assets/${icon.id}_hover.svg`));
-  icon.addEventListener('mouseout', () => icon.setAttribute('src', `assets/${icon.id}.svg`));
-})
-
-let anchorIcons=Array.from(document.querySelectorAll("nav a"));
-
-anchorIcons.map(function(icon)  { // Listen if active, set src otherwise
-  icon.addEventListener('mouseup', () => icon.setAttribute('src', `assets/${icon.id}_hover.svg`))
-});

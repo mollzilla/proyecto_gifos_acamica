@@ -111,7 +111,7 @@
   position: absolute;
   top: 30%;
   left: 50%;
-  // transform: translate(-80%, -10%);
+  transform: translateX(-50%);
 }
 
 @keyframes spin {
@@ -215,7 +215,6 @@ margin-bottom: 26px;
   }
 }
 
-
 .create-action-icons {
   width: 20%;
   position: absolute;
@@ -224,13 +223,7 @@ margin-bottom: 26px;
 }
 
 .create-action-icon {
-  margin: unset;
-  margin-right: 10px;
-  margin-top: 10px;
-  display: inline-block;
-  height: 32px;
-  width: 32px;
-  background-size: contain;
+  @include action-icon;
 
   &:nth-child(1) {
     background-image: url("../../assets/icon_download.svg");

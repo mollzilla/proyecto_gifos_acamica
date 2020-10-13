@@ -11,7 +11,6 @@ document.querySelector("#burger").addEventListener("click", function () {
       this.setAttribute("src", "../assets/burger-modo-noct.svg");
   } else
   {
-    console.log("entro")
     if(document.documentElement.getAttribute("data-theme")=="light")
       this.setAttribute("src", "../assets/icon_close.svg");
     else

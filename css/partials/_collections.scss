@@ -1,8 +1,8 @@
-.mis-gifos {
+.collection {
   display: none;
 }
 
-.empty-section{
+#empty-mis-gifos, #empty-favorites{
   display: none;
   flex-flow: column wrap;
   margin: 2rem 2rem 4rem;

@@ -33,3 +33,19 @@ $normal: "Roboto";
   position: absolute;
   left: 0;
 }
+
+@mixin action-icon {
+  margin: unset;
+  margin-right: 10px;
+  margin-top: 10px;
+  display: inline-block;
+  height: 32px;
+  width: 32px;
+  background-size: contain;
+}
+
+@mixin magic-center {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
