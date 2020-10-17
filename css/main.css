@@ -13,31 +13,31 @@ html {
   --logo-mobile: url("../assets/logo-mobile.svg");
   --logo-desktop: url("../assets/logo-desktop.svg");
   --burger: url("../assets/burger.svg");
-  --close-burger: url("../../assets/close.svg");
-  --icon_facebook: url("../../assets/icon_facebook.svg");
-  --icon_facebook_hover: url("../../assets/icon_facebook_hover.svg");
-  --icon_instagram: url("../../assets/icon_instagram.svg");
-  --icon_instagram_hover: url("../../assets/icon_instagram_hover.svg");
-  --icon_link: url("../../assets/icon_max.svg");
-  --icon_link_hover: url("../../assets/icon_max_hover.svg");
-  --icon_max: url("../../assets/icon_max.svg");
-  --icon_max_hover: url("../../assets/icon_max_hover.svg");
-  --icon_mis-gifos: url("../../assets/icon_max_hover.svg");
-  --icon_mis-gifos-sin-contenido: url("../../assets/icon_max_hover.svg");
-  --icon_search: url("../../assets/icon_search.svg");
-  --icon_search-suggestion: url("../../assets/icon_search-suggestion.svg");
-  --icon_trash: url("../../assets/icon_trash.svg");
-  --icon_trash_hover: url("../../assets/icon_trash_hovers.svg");
-  --icon_trash: url("../../assets/icon_search.svg");
-  --icon_trash-suggestion: url("../../assets/icon_search-suggestion.svg");
-  --ok: url("../../assets/ok.svg");
-  --paso-a-paso: url("../../assets/paso-a-paso.svg");
-  --paso-a-pas-o_hover: url("../../assets/paso-a-paso_hover.svg");
-  --camara: url("../../assets/icon_camara.svg");
-  --pelicula: url("../../assets/icon_pelicula.svg");
-  --crear: url("../../assets/button-crear-gifo.svg");
-  --crear-active: url("../../assets/CTA-crear-gifo-active.svg");
-  --crear_hover: url("../../assets/CTA_crear_gifo_hover.svg");
+  --close-burger: url("../assets/close.svg");
+  --icon_facebook: url("../assets/icon_facebook.svg");
+  --icon_facebook_hover: url("../assets/icon_facebook_hover.svg");
+  --icon_instagram: url("../assets/icon_instagram.svg");
+  --icon_instagram_hover: url("../assets/icon_instagram_hover.svg");
+  --icon_link: url("../assets/icon_max.svg");
+  --icon_link_hover: url("../assets/icon_max_hover.svg");
+  --icon_max: url("../assets/icon_max.svg");
+  --icon_max_hover: url("../assets/icon_max_hover.svg");
+  --icon_mis-gifos: url("../assets/icon_max_hover.svg");
+  --icon_mis-gifos-sin-contenido: url("../assets/icon_max_hover.svg");
+  --icon_search: url("../assets/icon_search.svg");
+  --icon_search-suggestion: url("../assets/icon_search-suggestion.svg");
+  --icon_trash: url("../assets/icon_trash.svg");
+  --icon_trash_hover: url("../assets/icon_trash_hovers.svg");
+  --icon_trash: url("../assets/icon_search.svg");
+  --icon_trash-suggestion: url("../assets/icon_search-suggestion.svg");
+  --ok: url("../assets/ok.svg");
+  --paso-a-paso: url("../assets/paso-a-paso.svg");
+  --paso-a-pas-o_hover: url("../assets/paso-a-paso_hover.svg");
+  --camara: url("../assets/icon_camara.svg");
+  --pelicula: url("../assets/icon_pelicula.svg");
+  --crear: url("../assets/button-crear-gifo.svg");
+  --crear-active: url("../assets/CTA-crear-gifo-active.svg");
+  --crear_hover: url("../assets/CTA_crear_gifo_hover.svg");
 }
 
 html[data-theme='dark'] {
@@ -48,20 +48,20 @@ html[data-theme='dark'] {
   --drawer_background: #000;
   --body_border: #000;
   --fancy_border: #FFF;
-  --logo-mobile: url("../../assets/logo-mobile-modo-noct.svg");
-  --logo-desktop: url("../../assets/logo-modo-noc.svg");
-  --burger: url("../../assets/burger-modo-noct.svg");
-  --close-burger: url("../../assets/close-modo-noc.svg");
-  --icon_facebook: url("../../assets/icon_facebook_noc.svg");
-  --icon_instagram: url("../../assets/icon_instagram_noc.svg");
-  --icon_search: url("../../assets/icon_search-modo-noc.svg");
-  --paso-a-paso: url("../../assets/paso-a-paso.svg");
-  --paso-a-paso_hover: url("../../assets/paso-a-paso_hover.svg");
-  --camara: url("../../assets/icon_camara_modo_noc.svg");
-  --pelicula: url("../../assets/icon_pelicula_modo_noc.svg");
-  --crear: url("../../assets/CTA-crear-gifo-modo-noc.svg");
-  --crear-active: url("../../assets/CTA-crear-gifo-active-modo-noc.svg");
-  --crear_hover: url("../../assets/CTA-crear-gifo-hover-modo-noc.svg");
+  --logo-mobile: url("../assets/logo-mobile-modo-noct.svg");
+  --logo-desktop: url("../assets/logo-modo-noc.svg");
+  --burger: url("../assets/burger-modo-noct.svg");
+  --close-burger: url("../assets/close-modo-noc.svg");
+  --icon_facebook: url("../assets/icon_facebook_noc.svg");
+  --icon_instagram: url("../assets/icon_instagram_noc.svg");
+  --icon_search: url("../assets/icon_search-modo-noc.svg");
+  --paso-a-paso: url("../assets/paso-a-paso.svg");
+  --paso-a-paso_hover: url("../assets/paso-a-paso_hover.svg");
+  --camara: url("../assets/icon_camara_modo_noc.svg");
+  --pelicula: url("../assets/icon_pelicula_modo_noc.svg");
+  --crear: url("../assets/CTA-crear-gifo-modo-noc.svg");
+  --crear-active: url("../assets/CTA-crear-gifo-active-modo-noc.svg");
+  --crear_hover: url("../assets/CTA-crear-gifo-hover-modo-noc.svg");
 }
 
 html.themeTransition,
@@ -626,8 +626,8 @@ h2 {
   .search-results #results-grid {
     -ms-grid-columns: calc(25% - 15px) calc(25% - 15px) calc(25% - 15px) calc(25% - 15px);
         grid-template-columns: calc(25% - 15px) calc(25% - 15px) calc(25% - 15px) calc(25% - 15px);
-    -ms-grid-rows: 200px 200px 200px;
-        grid-template-rows: 200px 200px 200px;
+    -ms-grid-rows: (minmax(200px, 1fr))[auto-fill];
+        grid-template-rows: repeat(auto-fill, minmax(200px, 1fr));
     grid-column-gap: 20px;
     grid-row-gap: 25px;
   }

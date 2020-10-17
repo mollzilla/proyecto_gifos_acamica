@@ -151,7 +151,7 @@
   .search-results {
     #results-grid {
       grid-template-columns: calc(25% - 15px) calc(25% - 15px) calc(25% - 15px) calc(25% - 15px);
-      grid-template-rows: 200px 200px 200px; 
+      grid-template-rows: repeat(auto-fill, minmax(200px, 1fr));
       grid-column-gap: 20px;
       grid-row-gap: 25px;
     }
