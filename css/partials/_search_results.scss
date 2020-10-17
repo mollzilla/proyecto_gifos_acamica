@@ -65,7 +65,7 @@
     margin-top: 109px;
   }
 
-  #view-more {
+  #view-more, #view-more-favorites, #view-more-my-gifos {
     @include fancy-border;
     @include word-bundle(.8125rem, auto, bold, auto);
     width: 34%;
@@ -158,7 +158,7 @@
       grid-row-gap: 25px;
     }
 
-    #view-more {
+    #view-more, #view-more-favorites, #view-more-my-gifos {
       width: 127px;
     }
   }

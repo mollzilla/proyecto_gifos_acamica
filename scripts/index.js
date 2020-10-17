@@ -42,7 +42,7 @@ async function appendTrendings() {
   }
 
   let content = await getTrendings();
-  let carousel = document.querySelector(".carousel__images")
+  let carousel = document.querySelector(".carousel__images");
 
   function appendCarousel(data, container) {
 
@@ -136,8 +136,9 @@ searchInput.addEventListener('keyup', async function (e) {
     laData = await elFetch.json();
 
     // searchIcon.style.display="none";
-    searchIcon.style.transform = "translate(-2250%, 10%)"
-    searchIconSm.style.transform = "translate(-1300%, 10%)"
+    searchIcon.style.transform = "translate(-2250%, 10%)";
+    searchIconSm.style.display = "inline";
+    searchIconSm.style.transform = "translate(-1300%, 10%)";
     closeIcon.style.display = "initial";
 
     closeIcon.addEventListener('click', function () {

@@ -19,9 +19,11 @@ let repetirCaptura = document.querySelector(".repetir-captura");
 repetirCaptura.style.display = "none";
 repetirCaptura.addEventListener("click", stage3);
 
+let timerSet=null;
+
 document.querySelector("#crear").addEventListener("click", (e) => {
   e.preventDefault();
-  createContainer.style.display = "block";
+  stage0()
 });
 
 let state = 0; // initial state before recording
@@ -37,7 +39,7 @@ startFilm.addEventListener('click', (e) => {
     stage4();
   else if (state == 3)
     stage5();
-  else if(state==4)
+  else if (state == 4)
     stage6();
 });
 
@@ -108,8 +110,8 @@ function stage3() {
         console.log('started')
       }
     }
-  );
-    
+    );
+
     recorder.startRecording();
 
     video.style.display = "block";
@@ -120,7 +122,7 @@ function stage3() {
     timer.style.display = "block";
     repetirCaptura.style.display = "none";
 
-    let timerSet = setInterval(setTimer, 1000);
+    timerSet = setInterval(setTimer, 1000);
 
     function setTimer() {
       if (stoppedFlag == true) {
@@ -138,9 +140,9 @@ function stage3() {
     startFilm.textContent = "FINALIZAR";
 
     /* Permito la ejecución de startRecording dándole un segundo de ventaja, virtualmente imperceptible para el usuario */
-    startFilm.style.pointerEvents="none";
-    setTimeout(() => { 
-      startFilm.style.pointerEvents="unset";
+    startFilm.style.pointerEvents = "none";
+    setTimeout(() => {
+      startFilm.style.pointerEvents = "unset";
     }, 1000);
     state = 2;
 
@@ -166,7 +168,7 @@ async function stage4() {
   gif = await recorder.getBlob();
 
   // no funciona :(
-    // necesitamos un modo de que espere a que termine de obtener el blob
+  // necesitamos un modo de que espere a que termine de obtener el blob
   // startFilm.style.pointerEvents="none";
   // setTimeout(() => { 
   //   startFilm.style.pointerEvents="unset";
@@ -199,7 +201,7 @@ async function stage5() {
   let data = await resp.json();
 
   onUploadCompleted();
-  
+
   function awaitUploadAnimation() {
     uploadOverlay.classList.add("create-overlay");
     document.querySelector("#subiendo").classList.add("subiendo");
@@ -226,29 +228,29 @@ async function stage5() {
     }
   }
 
-  state=4;
+  state = 4;
 }
 
 function addActionIcons(id) {
-  
-let actionIcons=document.createElement("div");
-actionIcons.classList.add("create-action-icons");
 
-let download=document.createElement("a");
-download.addEventListener('click', downloadAction);
+  let actionIcons = document.createElement("div");
+  actionIcons.classList.add("create-action-icons");
 
-let copyURL=document.createElement("a");
-copyURL.id=id;
-copyURL.addEventListener('click', (e) => {copyURLAction(e)});
+  let download = document.createElement("a");
+  download.addEventListener('click', downloadAction);
 
-[download, copyURL].forEach(a => {
-  a.classList.add(id, "create-action-icon")
-  actionIcons.appendChild(a)
-});
+  let copyURL = document.createElement("a");
+  copyURL.id = id;
+  copyURL.addEventListener('click', (e) => { copyURLAction(e) });
 
-// actionIcons.appendChild(download)
+  [download, copyURL].forEach(a => {
+    a.classList.add(id, "create-action-icon")
+    actionIcons.appendChild(a)
+  });
 
-uploadOverlay.appendChild(actionIcons);
+  // actionIcons.appendChild(download)
+
+  uploadOverlay.appendChild(actionIcons);
 }
 
 let favoritesButtonSm = document.querySelector("#favoritos-sm");
@@ -265,4 +267,22 @@ let misGifosLg = document.querySelector("#mis-gifos-lg");
 
 function stage6() {
   return;
+}
+
+function stage0() {
+  video.style.display = "none";
+  uploadOverlay = document.querySelector("#create-overlay");
+  repetirCaptura.style.display = "none";
+  createContainer.style.display = "block";
+  [filmStage1, filmStage2, filmStage3].map(b => b.classList.remove("activated"));
+  startFilm.style.display="block";
+  startFilm.innerHTML="COMENZAR";
+  createText.style.display="block";
+  textChildren[1].innerHTML = "Aquí podrás <br>  tus propios <span id='gifos-green'>GIFOS</span>";
+  textChildren[3].innerHTML = "¡Crea tu GIFO en sólo 3 pasos! <br> (sólo necesitas una cámara para grabar un video)";
+  clearInterval(timerSet);
+  stoppedFlag=false;
+  timer.style.display = "none";
+  repetirCaptura.style.display = "none";
+  state=0;
 }

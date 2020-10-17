@@ -272,7 +272,7 @@ h1 br {
 }
 
 .search-border #icon_search_sm {
-  display: initial;
+  display: none;
 }
 
 .search-border #icon_close {
@@ -503,7 +503,7 @@ h2 {
   margin-top: 109px;
 }
 
-.search-results #view-more {
+.search-results #view-more, .search-results #view-more-favorites, .search-results #view-more-my-gifos {
   border: 1px solid var(--fancy_border);
   border-radius: 25px;
   line-height: 50px;
@@ -636,7 +636,7 @@ h2 {
     grid-column-gap: 20px;
     grid-row-gap: 25px;
   }
-  .search-results #view-more {
+  .search-results #view-more, .search-results #view-more-favorites, .search-results #view-more-my-gifos {
     width: 127px;
   }
 }
