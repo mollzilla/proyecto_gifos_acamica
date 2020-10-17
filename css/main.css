@@ -271,6 +271,10 @@ h1 br {
   display: initial;
 }
 
+.search-border #icon_search_sm {
+  display: initial;
+}
+
 .search-border #icon_close {
   display: none;
 }
@@ -364,6 +368,7 @@ h1 br {
     height: 54px;
     border-radius: 50px;
     border: 1px solid var(--purple);
+    background-color: var(--background);
   }
   header .first-stripe #crear:active {
     background-image: var(--crear_active);
@@ -1178,7 +1183,7 @@ h2 {
 }
 
 .create-action-icons {
-  width: 20%;
+  width: 30%;
   position: absolute;
   margin: 0;
   right: 0;
@@ -1195,19 +1200,19 @@ h2 {
 }
 
 .create-action-icon:nth-child(1) {
-  background-image: url("../../assets/icon_download.svg");
+  background-image: url("../assets/icon_download.svg");
 }
 
 .create-action-icon:nth-child(1):hover {
-  background-image: url("../../assets/icon_download_hover.svg");
+  background-image: url("../assets/icon_download_hover.svg");
 }
 
 .create-action-icon:nth-child(2) {
-  background-image: url("../../assets/icon_link.svg");
+  background-image: url("../assets/icon_link.svg");
 }
 
 .create-action-icon:nth-child(2):hover {
-  background-image: url("../../assets/icon_link_hover.svg");
+  background-image: url("../assets/icon_link_hover.svg");
 }
 
 footer {

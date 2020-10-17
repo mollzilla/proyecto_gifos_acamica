@@ -19,7 +19,7 @@ let collections = Array.from(document.querySelectorAll(".collection"));
 let emptyFavorites=document.querySelector("#empty-favorites");
 let emptyMisGifos=document.querySelector("#empty-mis-gifos");
 
-[resultsGrid, viewMore].map(x => x.style.display="none");
+[resultsGrid, viewMore, viewMoreFavorites, viewMoreMyGifos].map(x => x.style.display="none");
 
 function hideTop() {
   [document.querySelector("h1"), document.querySelector(".search"), searchArgument].forEach(x => x.style.display="none");
@@ -36,8 +36,12 @@ function createOverlay(gifItem) {
     let actionIcons=document.createElement("div");
     actionIcons.classList.add("action-icons");
 
+    let myGifosActionIcons=document.createElement("div");
+    myGifosActionIcons.classList.add("action-icons", "my-gifos-action-icons");
+
     let like=document.createElement("a");
     like.addEventListener('click', likeAction);
+    like.classList.add("like-action")
 
     let download=document.createElement("a");
     download.classList.add(gifItem.title ? gifItem.title.replaceAll(" ", "_") : "sin_titulo");
@@ -46,7 +50,21 @@ function createOverlay(gifItem) {
     let expand=document.createElement("a");
     expand.addEventListener('click', expandAction);
 
-    [like, download, expand].forEach(a => {
+    let myGIfosDownload=document.createElement("a");
+    myGIfosDownload.classList.add(gifItem.title ? gifItem.title.replaceAll(" ", "_") : "sin_titulo");
+    myGIfosDownload.addEventListener('click', downloadAction);
+
+    let myGifosExpand=document.createElement("a");
+    myGifosExpand.addEventListener('click', expandAction);
+
+    let remove=document.createElement("a");
+    remove.classList.add("remove-action")
+    remove.addEventListener('click', removeAction);
+
+    actionIcons.appendChild(like);
+    myGifosActionIcons.appendChild(remove);
+
+    [like, download, myGIfosDownload, expand, myGifosExpand, remove].forEach(a => {
 
       a.id=gifItem.id;
       a.classList.add("action-icon");
@@ -57,9 +75,10 @@ function createOverlay(gifItem) {
         a.style.width="30px";
         a.style.height="27px";
       }
-
-      actionIcons.appendChild(a);
     });
+
+    [like, download, expand].forEach(a => actionIcons.appendChild(a));
+    [remove, myGIfosDownload, myGifosExpand].forEach(a => myGifosActionIcons.appendChild(a));
 
     /* username and title*/
 
@@ -80,7 +99,9 @@ function createOverlay(gifItem) {
     gifTitle.appendChild(title);
     
     overlay.appendChild(actionIcons);
+
     overlay.appendChild(gifTitle);
+
     overlay.style.zIndex=1000;
     return overlay;
   } 
@@ -130,6 +151,7 @@ async function search(pathId) {
   // e.preventDefault();
   let searchResults;
   let searchFetch;
+  let currentSection;
 
   /* get rid of favorites and myGifos, if any */
   collections.map(x => x.style.display="none");
@@ -142,18 +164,38 @@ async function search(pathId) {
   {
     searchFetch = await fetch(`https://api.giphy.com/v1/gifs/search?q=${searchInputValue.value}?&api_key=${apiKey}&limit=12&offset=${offset}`);
   }
-  else if (pathId==favoritesButtonSm.id || pathId==favoritesButtonLg.id) /* favorites */
+  else if (pathId==favoritesButtonSm.id || pathId==favoritesButtonLg.id || pathId==viewMoreFavorites.id ) /* favorites */
   {
     document.querySelector(".favoritos").style.display="block";
     hideTop();
     searchArgument.style.display="none";
+
     if (localStorage.getItem('favorites')!=null && localStorage.getItem('favorites')!="") // no uso falsies por seguridad
     {
-      let queryString = localStorage.getItem("favorites").split(",").length==1  ?
-                    (`https://api.giphy.com/v1/gifs/${localStorage.getItem("favorites")}?&api_key=${apiKey}`)
-                   : (`https://api.giphy.com/v1/gifs?ids=${localStorage.getItem("favorites")}&api_key=${apiKey}`);
+      let favorites=localStorage.getItem("favorites").split(",");
+      let parameters;
+      
+       // need to paginate
+      viewMoreFavorites.style.display = favorites.length-offset>12 ? "block" : "none"; // show view more button in case of more than 12 remaining results
+
+      if (pathId==viewMoreFavorites.id && favorites.length-offset>0)
+      {
+        parameters=favorites.slice(offset, offset+12);
+      }
+      else
+      {
+        offset=0;
+        resultsGrid.innerHTML="";
+        if (favorites.length==1)
+          parameters=localStorage.getItem("favorites")
+        else 
+          parameters=favorites.slice(0,12);
+      }
+
+      let queryString = favorites.length==1  ?
+                    (`https://api.giphy.com/v1/gifs/${parameters}?&api_key=${apiKey}`)
+                   : (`https://api.giphy.com/v1/gifs?ids=${parameters}&api_key=${apiKey}`);
       searchFetch = await fetch(queryString);
-      resultsGrid.innerHTML="";
     }
     else
     {
@@ -164,13 +206,15 @@ async function search(pathId) {
   }
   else if (pathId==misGifosSm.id || pathId==misGifosLg.id) /* mis-gifos */
   {
+    offset=0;
+    currentSection="myGifos";
     document.querySelector(".mis-gifos").style.display="block";
     hideTop();
     if (localStorage.getItem('myGifos')!=null && localStorage.getItem('myGifos')!="") // no uso falsies por seguridad
     {
       let queryString = localStorage.getItem("myGifos").split(",").length==1  ?
                     (`https://api.giphy.com/v1/gifs/${localStorage.getItem("myGifos")}?&api_key=${apiKey}`)
-                   : (`https://api.giphy.com/v1/gifs?ids=${localStorage.getItem("myGifos")}&api_key=${apiKey}`);
+                   : (`https://api.giphy.com/v1/gifs?ids=${localStorage.getItem("myGifos")}&api_key=${apiKey}&limit=12&offset=${offset}`);
 
       searchFetch = await fetch(queryString);
       resultsGrid.innerHTML="";
@@ -184,6 +228,7 @@ async function search(pathId) {
   }
   else /* first regular search */
   {
+    currentSection="search";
     offset=0;
 
     searchFetch = await fetch(`https://api.giphy.com/v1/gifs/search?q=${searchInputValue.value}&api_key=${apiKey}&limit=12`);
@@ -197,18 +242,19 @@ async function search(pathId) {
 
   await appendSearchResults(searchResults.data, resultsGrid);
 
-  viewMore.style.display= searchResults.pagination &&
-                          searchResults.pagination.total_count>offset ?
-                          "block" : "none";
+  // console.log(localStorage.getItem("favorites").split(",").length - localStorage.getItem("favorites").split(",").slice(offset, 12).length)
 
+  if (currentSection=="search") // case of pagination provided by API response
+    viewMore.style.display = searchResults.pagination && searchResults.pagination.total_count>offset ? "block" : "none";
   
   if([favoritesButtonSm.id, favoritesButtonLg.id, misGifosSm.id, misGifosLg.id].find(x=> x==pathId)!=undefined) /* hide searchArgument and bar */
-    [searchArgument, borderBar].map(x => x.style.display=="none")
-    
+    [searchArgument, borderBar].map(x => x.style.display="none")
+ 
 }
 
-[searchIcon, favoritesButtonSm, favoritesButtonLg, misGifosSm, misGifosLg, viewMore].forEach(button =>  button.addEventListener('click', e => {
+[searchIcon, favoritesButtonSm, favoritesButtonLg, misGifosSm, misGifosLg, viewMore, viewMoreFavorites, viewMoreMyGifos].forEach(button =>  button.addEventListener('click', e => {
   e.preventDefault();
+  [resultsGrid, viewMore, viewMoreFavorites, viewMoreMyGifos].map(x => x.style.display="none");
   search(e.path[0].id);
   })
 );

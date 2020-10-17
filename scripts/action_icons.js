@@ -91,8 +91,10 @@ async function copyURLAction(e) {
     .catch(err => console.log(err))
 }
 
-function deleteAction() {
-      // myGifos=.filter(myGifoo => myGIfo!=this.id)
-      localStorage.setItem("myGifos", myGifos.toString(", "));
+function removeAction() {
+      myGifos=localStorage.getItem("myGifos").split();
+      console.log(myGifos);
+      // myGifos=myGifos.filter(myGifo => myGifo!=this.id)
+      // localStorage.setItem("myGifos", myGifos.toString(", "));
       // remover tarjeta que no se como se hace
 }

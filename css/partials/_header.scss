@@ -64,6 +64,11 @@ h1 {
     display: initial;
   }
 
+  #icon_search_sm {
+    display: initial;
+  }
+
+
   #icon_close {
     display: none;
   }
@@ -157,7 +162,7 @@ h1 {
         height: 54px;
         border-radius: 50px;
         border: 1px solid var(--purple);
-        // background-color: var(--green);
+        background-color: var(--background);
 
         &:active {
           background-image: var(--crear_active);

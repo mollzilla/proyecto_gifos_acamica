@@ -98,12 +98,14 @@
         background-image: url("../../assets/icon_fav_hover.svg");
       }
     }
+
     &:nth-child(2) {
       background-image: url("../../assets/icon_download.svg");
       &:hover {
         background-image: url("../../assets/icon_download_hover.svg");
       }
     }
+    
     &:nth-child(3) {
       background-image: url("../../assets/icon_max.svg");
       &:hover {
@@ -160,5 +162,4 @@
       width: 127px;
     }
   }
-
 }

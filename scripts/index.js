@@ -5,21 +5,22 @@ let mainTitle = document.querySelector("h1");
 let searchSection = document.querySelector(".search");
 let trending = document.querySelector(".trending");
 let viewMore = document.querySelector("#view-more");
+let viewMoreFavorites = document.querySelector("#view-more-favorites");
+let viewMoreMyGifos = document.querySelector("#view-more-my-gifos");
 let searchArgument = document.querySelector("#search-argument");
 let trendingStuff = document.querySelector(".trending-stuff");
 
 document.querySelector(".logo").addEventListener("click", () => {
-[mainTitle, searchSection, /*document.querySelector(".search-results")*/].map(x => x.style.display = "block");
-  [resultsGrid, viewMore, searchArgument].map(x => x.style.display = "none");
+  [mainTitle, searchSection, /*document.querySelector(".search-results")*/].map(x => x.style.display = "block");
+  [resultsGrid, viewMore, viewMoreFavorites, viewMoreMyGifos, searchArgument].map(x => x.style.display = "none");
 
   trending.style.display = "flex"
   searchArgument.textContent = "";
 });
 
-
-window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('DOMContentLoaded', () => { // go back to index.html with button functinality
   if (window.location.hash[0] == '#')
-  search(window.location.hash.slice(1));
+    search(window.location.hash.slice(1));
 });
 
 async function appendTrendings() {
@@ -88,7 +89,7 @@ async function appendTrendings() {
 
     let span = document.createElement("span");
 
-    span.textContent = word == content[content.length-1] ? word : `${word}, `;
+    span.textContent = word == content[content.length - 1] ? word : `${word}, `;
     trendingStuff.appendChild(span);
     span.style.cursor = "pointer";
 
@@ -106,6 +107,7 @@ let searchInput = document.querySelector("#search-input");
 
 let closeIcon = document.querySelector("#icon_close");
 let searchIcon = document.querySelector("#icon_search");
+let searchIconSm = document.querySelector("#icon_search_sm");
 
 let suggestion = document.createElement('div');
 
@@ -135,6 +137,7 @@ searchInput.addEventListener('keyup', async function (e) {
 
     // searchIcon.style.display="none";
     searchIcon.style.transform = "translate(-2250%, 10%)"
+    searchIconSm.style.transform = "translate(-1300%, 10%)"
     closeIcon.style.display = "initial";
 
     closeIcon.addEventListener('click', function () {
