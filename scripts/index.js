@@ -9,7 +9,7 @@ let searchArgument = document.querySelector("#search-argument");
 let trendingStuff = document.querySelector(".trending-stuff");
 
 document.querySelector(".logo").addEventListener("click", () => {
-  [mainTitle, searchSection, document.querySelector(".search-results")].map(x => x.style.display = "block");
+[mainTitle, searchSection, /*document.querySelector(".search-results")*/].map(x => x.style.display = "block");
   [resultsGrid, viewMore, searchArgument].map(x => x.style.display = "none");
 
   trending.style.display = "flex"

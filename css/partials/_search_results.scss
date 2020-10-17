@@ -1,12 +1,18 @@
+#border-bar {
+  display: none;
+  border-top: 1px solid var(--light-gray);
+  width: 330px;
+  height: 2px;
+}
+
 #search-argument {
   display: none;
-  @include word-bundle(1.2625rem, auto, bold, 40px);
+  @include word-bundle(2.1875rem, auto, bold, 40px);
   text-transform: capitalize;
-  border-top: 1px solid var(--light-gray);
+  text-align: center;
   box-sizing: border-box;
-  width: 330px;
-  padding-top: 84px;
   margin-top: 74px;
+  margin-bottom: 30px;
 }
 
 .search-results {
@@ -143,7 +149,6 @@
 @media(min-width: 1024px) {
 
   .search-results {
-
     #results-grid {
       grid-template-columns: calc(25% - 15px) calc(25% - 15px) calc(25% - 15px) calc(25% - 15px);
       grid-template-rows: 200px 200px 200px; 

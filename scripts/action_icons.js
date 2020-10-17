@@ -84,7 +84,15 @@ async function downloadAction() {
   a.click()
 }
 
-function copyURLAction() {
-  console.log("copy url")
+async function copyURLAction(e) {
+  
+  navigator.clipboard.writeText(`https://media2.giphy.com/media/${e.path[0].id}/giphy.gif?${apiKey}&rid=giphy.gif`).then(
+    console.log("success"))
+    .catch(err => console.log(err))
 }
 
+function deleteAction() {
+      // myGifos=.filter(myGifoo => myGIfo!=this.id)
+      localStorage.setItem("myGifos", myGifos.toString(", "));
+      // remover tarjeta que no se como se hace
+}

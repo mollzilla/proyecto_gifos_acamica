@@ -2,7 +2,7 @@
   position: relative;
   @include behave-horizontal;
   flex-wrap: nowrap;
-  max-width: 1060px;
+  max-width: 1300px;
   
 }
 
@@ -12,7 +12,7 @@
   justify-content: space-between;
   margin: 16px auto;
   overflow: hidden;
-  max-width: 1000px;
+  max-width: 1260px;
 
   &__images {
     position: relative;
@@ -131,8 +131,8 @@
   }
 }
 
-@media(max-width:1024px) {
+@media(max-width:1240px) {
   .carousel-container {
-    max-width: 980px;
+    max-width: 90vw;
   }
 }

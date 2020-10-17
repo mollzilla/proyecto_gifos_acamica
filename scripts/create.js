@@ -37,6 +37,8 @@ startFilm.addEventListener('click', (e) => {
     stage4();
   else if (state == 3)
     stage5();
+  else if(state==4)
+    stage6();
 });
 
 async function stage1(e) {
@@ -162,6 +164,14 @@ async function stage4() {
   await recorder.stopRecording(onStop);
 
   gif = await recorder.getBlob();
+
+  // no funciona :(
+    // necesitamos un modo de que espere a que termine de obtener el blob
+  // startFilm.style.pointerEvents="none";
+  // setTimeout(() => { 
+  //   startFilm.style.pointerEvents="unset";
+  // }, 3000);
+
   state = 3;
 }
 
@@ -177,7 +187,7 @@ async function stage5() {
   awaitUploadAnimation();
 
   let form = new FormData();
-  form.append('file', gif, 'newGif.gif');
+  await form.append('file', gif, 'newGif.gif');
 
   let resp = await fetch(`https://upload.giphy.com/v1/gifs?=${form}&api_key=${apiKey}`, {
     method: 'POST',
@@ -203,6 +213,8 @@ async function stage5() {
 
     addActionIcons(data.data.id)
 
+    console.log(data)
+
     if (!localStorage.getItem('myGifos')) {
       let myGifo = [data.data.id]
       localStorage.setItem("myGifos", myGifo);
@@ -212,8 +224,9 @@ async function stage5() {
       myGifos.push(data.data.id);
       localStorage.setItem("myGifos", myGifos.toString(", "));
     }
-    console.log(localStorage);
   }
+
+  state=4;
 }
 
 function addActionIcons(id) {
@@ -223,14 +236,16 @@ actionIcons.classList.add("create-action-icons");
 
 let download=document.createElement("a");
 download.classList.add(id, "create-action-icon");
+
 download.addEventListener('click', downloadAction);
-// download.classList.add("create-action-icon")
+download.classList.add(id, "create-action-icon")
 
 let copyURL=document.createElement("a");
-// copyURL.addEventListener('click', copyURLAction);
+copyURL.id=id;
+copyURL.addEventListener('click', (e) => {copyURLAction(e)});
 
 [download, copyURL].forEach(a => {
-  a.classList.add("create-action-icon")
+  a.classList.add(id, "create-action-icon")
   actionIcons.appendChild(a)
 });
 
@@ -250,3 +265,7 @@ let misGifosLg = document.querySelector("#mis-gifos-lg");
   console.log(e);
   window.location.href = `index.html#${e.path[0].id}`;
 }));
+
+function stage6() {
+  return;
+}

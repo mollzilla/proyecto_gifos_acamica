@@ -6,7 +6,7 @@
   @include word-bundle(.875rem, auto, 500, 25px);
   width: 225px;
   text-transform: capitalize;
-  margin-bottom: 95px;
+  margin-bottom: 45px;
 }
 
 
@@ -26,12 +26,19 @@
   @include word-bundle(1rem, var(--small_text_color), 400, 23px);
   font-family: "Roboto", sans-serif;
   text-align: center;
+  margin-bottom: 16px;
 }
 
 
 .carrousel-item {
   img {
     max-width: 65%;
+  }
+}
+
+@media(min-width:1024px) {
+  .trending-stuff {
+    margin-bottom: 74px;
   }
 }
 
