@@ -10,9 +10,9 @@ html {
   --drawer_background: #572EE5;
   --body_border: #572EE5;
   --fancy_border: #572EE5;
-  --logo-mobile: url("../../assets/logo-mobile.svg");
-  --logo-desktop: url("../../assets/logo-desktop.svg");
-  --burger: url("../../assets/burger.svg");
+  --logo-mobile: url("../assets/logo-mobile.svg");
+  --logo-desktop: url("../assets/logo-desktop.svg");
+  --burger: url("../assets/burger.svg");
   --close-burger: url("../../assets/close.svg");
   --icon_facebook: url("../../assets/icon_facebook.svg");
   --icon_facebook_hover: url("../../assets/icon_facebook_hover.svg");
