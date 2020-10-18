@@ -99,8 +99,6 @@ console.log(pathId)
 
     gifTitle.appendChild(username);
     gifTitle.appendChild(title);
-
-    console.log(pathId)
     
     if (pathId==misGifosSm.id || pathId==misGifosLg.id || pathId==viewMoreMyGifos.id)
       overlay.appendChild(myGifosActionIcons)

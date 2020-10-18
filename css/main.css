@@ -969,7 +969,7 @@ h2 {
   top: 20px;
   margin: 0;
   padding: 0;
-  background-image: url("../../assets/element-luz-camara.svg");
+  background-image: url("../assets/element-luz-camara.svg");
   background-repeat: no-repeat;
   height: 115px;
   width: 75px;
@@ -1202,7 +1202,7 @@ h2 {
 }
 
 .start-border {
-  border: 4px solid;
+  border: 3px solid;
   border-color: var(--fancy-border);
   border-radius: 3px;
   width: 795px;

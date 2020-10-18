@@ -22,7 +22,7 @@ document.querySelector(".logo").addEventListener("click", (e => {
 
 function likeAction(e) {
   e.preventDefault();
-  this.style.backgroundImage="url(../../assets/icon_fav_active.svg)";
+  this.style.backgroundImage="url(../assets/icon_fav_active.svg)";
   this.style.width="30px";
   this.style.height="27px";
 
@@ -44,7 +44,7 @@ function likeAction(e) {
     {
       favorites=favorites.filter(favorite => favorite!=this.id)
       localStorage.setItem("favorites", favorites.toString(", "));
-      this.style.backgroundImage="url(../../assets/icon_fav.svg)";
+      this.style.backgroundImage="url(../assets/icon_fav.svg)";
       this.style.width="32px";
       this.style.height="32px";
     }

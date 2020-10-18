@@ -24,6 +24,7 @@ let timerSet=null;
 document.querySelector("#crear").addEventListener("click", (e) => {
   e.preventDefault();
   stage0();
+  startFilm.style.display="block"
 });
 
 let state = 0; // initial state before recording
@@ -39,8 +40,6 @@ startFilm.addEventListener('click', (e) => {
     stage4();
   else if (state == 3)
     stage5();
-  else if (state == 4)
-    stage6();
 });
 
 async function stage1(e) {
@@ -139,11 +138,6 @@ function stage3() {
 
     startFilm.textContent = "FINALIZAR";
 
-    /* Permito la ejecución de startRecording dándole un segundo de ventaja, virtualmente imperceptible para el usuario */
-    // startFilm.style.pointerEvents = "none";
-    // setTimeout(() => {
-    //   startFilm.style.pointerEvents = "unset";
-    // }, 1000);
     state = 2;
 
   });
@@ -166,13 +160,6 @@ async function stage4() {
   await recorder.stopRecording(onStop);
 
   gif = await recorder.getBlob();
-
-  // no funciona :(
-  // necesitamos un modo de que espere a que termine de obtener el blob
-  // startFilm.style.pointerEvents="none";
-  // setTimeout(() => { 
-  //   startFilm.style.pointerEvents="unset";
-  // }, 3000);
 
   state = 3;
 }
@@ -259,15 +246,14 @@ let favoritesButtonLg = document.querySelector("#favoritos-lg");
 let misGifosSm = document.querySelector("#mis-gifos-sm");
 let misGifosLg = document.querySelector("#mis-gifos-lg");
 
+/* Triggers button event even after being redirected to another page thanks to location.hash */
+
 [favoritesButtonSm, favoritesButtonLg, misGifosSm, misGifosLg].forEach(button => button.addEventListener('click', e => {
   e.preventDefault();
   console.log(e);
   window.location.href = `index.html#${e.path[0].id}`;
 }));
 
-function stage6() {
-  return;
-}
 
 function stage0() {
   video.style.display = "none";
@@ -275,8 +261,6 @@ function stage0() {
   repetirCaptura.style.display = "none";
   createContainer.style.display = "block";
   [filmStage1, filmStage2, filmStage3].map(b => b.classList.remove("activated"));
-  startFilm.style.display="block";
-  startFilm.innerHTML="COMENZAR";
   createText.style.display="block";
   textChildren[1].innerHTML = "Aquí podrás <br>  tus propios <span id='gifos-green'>GIFOS</span>";
   textChildren[3].innerHTML = "¡Crea tu GIFO en sólo 3 pasos! <br> (sólo necesitas una cámara para grabar un video)";
@@ -284,5 +268,7 @@ function stage0() {
   stoppedFlag=false;
   timer.style.display = "none";
   repetirCaptura.style.display = "none";
+  startFilm.style.display="block";
+  startFilm.innerHTML="COMENZAR";
   state=0;
 }
