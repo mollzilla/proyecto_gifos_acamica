@@ -20,6 +20,7 @@ document.querySelector(".logo").addEventListener("click", (e => {
 }))
 
 
+/* checks whether favorite exists in localstorage, removes or adds, according to condition */
 function likeAction(e) {
   e.preventDefault();
   this.style.backgroundImage="url(../assets/icon_fav_active.svg)";
@@ -88,6 +89,7 @@ async function copyURLAction(e) {
   
   navigator.clipboard.writeText(`https://media2.giphy.com/media/${e.path[0].id}/giphy.gif?${apiKey}&rid=giphy.gif`).then(
     console.log("success"))
+    .then(() => alert("Link de tu GIFO copiado al portapapeles"))
     .catch(err => console.log(err))
 }
 
