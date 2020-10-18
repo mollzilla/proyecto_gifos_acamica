@@ -155,7 +155,7 @@ searchInput.addEventListener('keyup', async function (e) {
 
       let suggestionImg = document.createElement('img');
 
-      suggestionImg.setAttribute('src', "/assets/icon_search_suggestion.svg");
+      suggestionImg.setAttribute('src', "./assets/icon_search_suggestion.svg");
       oneSuggestion.appendChild(suggestionImg);
 
       let suggestionName = document.createElement('p');
