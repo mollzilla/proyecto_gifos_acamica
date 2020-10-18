@@ -23,7 +23,7 @@ let timerSet=null;
 
 document.querySelector("#crear").addEventListener("click", (e) => {
   e.preventDefault();
-  stage0()
+  stage0();
 });
 
 let state = 0; // initial state before recording
@@ -140,10 +140,10 @@ function stage3() {
     startFilm.textContent = "FINALIZAR";
 
     /* Permito la ejecución de startRecording dándole un segundo de ventaja, virtualmente imperceptible para el usuario */
-    startFilm.style.pointerEvents = "none";
-    setTimeout(() => {
-      startFilm.style.pointerEvents = "unset";
-    }, 1000);
+    // startFilm.style.pointerEvents = "none";
+    // setTimeout(() => {
+    //   startFilm.style.pointerEvents = "unset";
+    // }, 1000);
     state = 2;
 
   });
@@ -271,7 +271,7 @@ function stage6() {
 
 function stage0() {
   video.style.display = "none";
-  uploadOverlay = document.querySelector("#create-overlay");
+  uploadOverlay.style.display="none";
   repetirCaptura.style.display = "none";
   createContainer.style.display = "block";
   [filmStage1, filmStage2, filmStage3].map(b => b.classList.remove("activated"));

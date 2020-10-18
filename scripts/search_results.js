@@ -42,20 +42,19 @@ function createOverlay(gifItem, pathId) {
     let like=document.createElement("a");
     like.addEventListener('click', likeAction);
     like.classList.add("like-action")
+    
+    let expand=document.createElement("a");
+    let myGifosExpand=document.createElement("a");
+    [expand, myGifosExpand].forEach(a => {
+      a.addEventListener('click', expandAction);
+    });
 
     let download=document.createElement("a");
-    download.classList.add(gifItem.title ? gifItem.title.replaceAll(" ", "_") : "sin_titulo");
-    download.addEventListener('click', downloadAction);
-
-    let expand=document.createElement("a");
-    expand.addEventListener('click', expandAction);
-
     let myGIfosDownload=document.createElement("a");
-    myGIfosDownload.classList.add(gifItem.title ? gifItem.title.replaceAll(" ", "_") : "sin_titulo");
-    myGIfosDownload.addEventListener('click', downloadAction);
-
-    let myGifosExpand=document.createElement("a");
-    myGifosExpand.addEventListener('click', expandAction);
+    [download, myGIfosDownload].forEach(a => {
+      a.classList.add(gifItem.title ? gifItem.title.replaceAll(" ", "_") : "sin_titulo");
+      a.addEventListener('click', downloadAction);
+    });
 
     let remove=document.createElement("a");
     remove.classList.add("remove-action")

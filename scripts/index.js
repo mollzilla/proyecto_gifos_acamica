@@ -10,8 +10,10 @@ let viewMoreMyGifos = document.querySelector("#view-more-my-gifos");
 let searchArgument = document.querySelector("#search-argument");
 let trendingStuff = document.querySelector(".trending-stuff");
 
+
+
 document.querySelector(".logo").addEventListener("click", () => {
-  [mainTitle, searchSection, /*document.querySelector(".search-results")*/].map(x => x.style.display = "block");
+  [mainTitle, searchSection].map(x => x.style.display = "block");
   [resultsGrid, viewMore, viewMoreFavorites, viewMoreMyGifos, searchArgument].map(x => x.style.display = "none");
 
   trending.style.display = "flex"
@@ -89,7 +91,8 @@ async function appendTrendings() {
 
     let span = document.createElement("span");
 
-    span.textContent = word == content[content.length - 1] ? word : `${word}, `;
+    span.textContent = word == content[0].data[4] ? word : `${word}, `;
+
     trendingStuff.appendChild(span);
     span.style.cursor = "pointer";
 
@@ -131,15 +134,12 @@ searchInput.addEventListener('keyup', async function (e) {
       return;
     }
 
-
     const elFetch = await fetch(`https://api.giphy.com/v1/gifs/search/tags?q=${this.value}?&api_key=${apiKey}`);
     laData = await elFetch.json();
 
-    // searchIcon.style.display="none";
     searchIcon.style.transform = "translate(-2250%, 10%)";
-    searchIconSm.style.display = "inline";
-    searchIconSm.style.transform = "translate(-1300%, 10%)";
-    closeIcon.style.display = "initial";
+    searchIconSm.id = "icon_search_active";
+    closeIcon.style.display = "inline";
 
     closeIcon.addEventListener('click', function () {
       searchInput.value = "";

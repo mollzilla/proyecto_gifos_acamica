@@ -247,6 +247,7 @@ h1 br {
   border-radius: 25px;
   line-height: 50px;
   max-width: 550px;
+  position: relative;
 }
 
 .search-border input {
@@ -273,10 +274,19 @@ h1 br {
 
 .search-border #icon_search_sm {
   display: none;
+  position: absolute;
+  left: 0;
+}
+
+.search-border #icon_search_active {
+  display: inline;
 }
 
 .search-border #icon_close {
   display: none;
+  position: absolute;
+  right: 15px;
+  top: 15px;
 }
 
 .search-border .one-suggestion {
@@ -391,6 +401,18 @@ h1 br {
   }
   header h1 br {
     display: unset;
+  }
+}
+
+@media (max-width: 580px) {
+  .search-border #icon_search {
+    display: none;
+  }
+}
+
+@media (min-width: 590px) {
+  .search-border #icon_search_active {
+    display: none;
   }
 }
 
@@ -813,6 +835,8 @@ h2 {
   position: absolute;
   top: 0;
   left: 0;
+  right: 0;
+  margin-right: 0;
 }
 
 .carousel__images div .action-icon {
@@ -826,27 +850,27 @@ h2 {
 }
 
 .carousel__images div .action-icon:nth-child(1) {
-  background-image: url("../../assets/icon_fav.svg");
+  background-image: url("../assets/icon_fav.svg");
 }
 
 .carousel__images div .action-icon:nth-child(1):hover {
-  background-image: url("../../assets/icon_fav_hover.svg");
+  background-image: url("../assets/icon_fav_hover.svg");
 }
 
 .carousel__images div .action-icon:nth-child(2) {
-  background-image: url("../../assets/icon_download.svg");
+  background-image: url("../assets/icon_download.svg");
 }
 
 .carousel__images div .action-icon:nth-child(2):hover {
-  background-image: url("../../assets/icon_download_hover.svg");
+  background-image: url("../assets/icon_download_hover.svg");
 }
 
 .carousel__images div .action-icon:nth-child(3) {
-  background-image: url("../../assets/icon_max.svg");
+  background-image: url("../assets/icon_max.svg");
 }
 
 .carousel__images div .action-icon:nth-child(3):hover {
-  background-image: url("../../assets/icon_max_hover.svg");
+  background-image: url("../assets/icon_max_hover.svg");
 }
 
 .carousel__images div .gif-title {
