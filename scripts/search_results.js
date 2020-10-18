@@ -237,6 +237,7 @@ async function search(pathId) {
 
     searchFetch = await fetch(`https://api.giphy.com/v1/gifs/search?q=${searchInputValue.value}&api_key=${apiKey}&limit=12`);
     resultsGrid.innerHTML="";
+    borderBar.style.display="block";
   }
 
   searchResults = await searchFetch.json();
