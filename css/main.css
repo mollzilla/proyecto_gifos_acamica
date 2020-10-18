@@ -426,7 +426,7 @@ h1 br {
   -webkit-box-direction: normal;
       -ms-flex-flow: column wrap;
           flex-flow: column wrap;
-  margin: 2rem 2rem 4rem;
+  margin: 2rem 2rem 8.5rem;
 }
 
 #empty-mis-gifos img, #empty-favorites img {
@@ -437,7 +437,7 @@ h1 br {
   font-family: 'Montserrat', sans-serif;
   font-weight: bold;
   font-size: 1.4rem;
-  color: var(--secondary-color);
+  color: var(--green);
   line-height: 25px;
   text-align: center;
 }
@@ -540,7 +540,7 @@ h2 {
 .search-results .overlay {
   position: absolute;
   top: 0;
-  left: 0;
+  right: 0;
   height: 100%;
   width: 100%;
   background-color: rgba(87, 46, 229, 0.7);
@@ -570,78 +570,77 @@ h2 {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  top: 0;
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
+  margin-top: 10px;
 }
 
 .search-results .action-icon {
   margin: unset;
-  margin-right: 10px;
-  margin-top: 10px;
   display: inline-block;
   height: 32px;
   width: 32px;
   background-size: contain;
+  margin-right: 10px;
 }
 
 .search-results .action-icon:nth-child(1) {
-  background-image: url("../../assets/icon_fav.svg");
+  background-image: url("../assets/icon_fav.svg");
 }
 
 .search-results .action-icon:nth-child(1):hover {
-  background-image: url("../../assets/icon_fav_hover.svg");
+  background-image: url("../assets/icon_fav_hover.svg");
 }
 
 .search-results .action-icon:nth-child(2) {
-  background-image: url("../../assets/icon_download.svg");
+  background-image: url("../assets/icon_download.svg");
 }
 
 .search-results .action-icon:nth-child(2):hover {
-  background-image: url("../../assets/icon_download_hover.svg");
+  background-image: url("../assets/icon_download_hover.svg");
 }
 
 .search-results .action-icon:nth-child(3) {
-  background-image: url("../../assets/icon_max.svg");
+  background-image: url("../assets/icon_max.svg");
 }
 
 .search-results .action-icon:nth-child(3):hover {
-  background-image: url("../../assets/icon_max_hover.svg");
+  background-image: url("../assets/icon_max_hover.svg");
 }
 
 .search-results .action-icon.my-gifos-action-icon {
   margin: unset;
-  margin-right: 10px;
-  margin-top: 10px;
   display: inline-block;
   height: 32px;
   width: 32px;
   background-size: contain;
+  margin-right: 10px;
+  margin-right: 10px;
 }
 
 .search-results .action-icon.my-gifos-action-icon:nth-child(1) {
-  background-image: url("../../assets/icon_trash.svg");
+  background-image: url("../assets/icon_trash.svg");
 }
 
 .search-results .action-icon.my-gifos-action-icon:nth-child(1):hover {
-  background-image: url("../../assets/icon_trash_hover.svg");
+  background-image: url("../assets/icon_trash_hover.svg");
 }
 
 .search-results .action-icon.my-gifos-action-icon:nth-child(2) {
-  background-image: url("../../assets/icon_download.svg");
+  background-image: url("../assets/icon_download.svg");
 }
 
 .search-results .action-icon.my-gifos-action-icon:nth-child(2):hover {
-  background-image: url("../../assets/icon_download_hover.svg");
+  background-image: url("../assets/icon_download_hover.svg");
 }
 
 .search-results .action-icon.my-gifos-action-icon:nth-child(3) {
-  background-image: url("../../assets/icon_max.svg");
+  background-image: url("../assets/icon_max.svg");
 }
 
 .search-results .action-icon.my-gifos-action-icon:nth-child(3):hover {
-  background-image: url("../../assets/icon_max_hover.svg");
+  background-image: url("../assets/icon_max_hover.svg");
 }
 
 .search-results .gif-title {
@@ -817,9 +816,6 @@ h2 {
 }
 
 .carousel__images div .overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
   background-color: rgba(87, 46, 229, 0.7);
   opacity: 0;
   -webkit-transition: opacity .4s ease-in-out;
@@ -834,19 +830,19 @@ h2 {
   width: 40%;
   position: absolute;
   top: 0;
-  left: 0;
+  right: 0;
   right: 0;
   margin-right: 0;
+  padding-top: 10px;
 }
 
 .carousel__images div .action-icon {
   margin: unset;
-  margin-right: 10px;
-  margin-top: 10px;
   display: inline-block;
   height: 32px;
   width: 32px;
   background-size: contain;
+  margin-right: 10px;
 }
 
 .carousel__images div .action-icon:nth-child(1) {
@@ -1241,23 +1237,23 @@ h2 {
 }
 
 .create-action-icons {
-  width: 30%;
   position: absolute;
-  margin: 0;
+  top: 0;
   right: 0;
+  padding: 10px;
 }
 
 .create-action-icon {
   margin: unset;
-  margin-right: 10px;
-  margin-top: 10px;
   display: inline-block;
   height: 32px;
   width: 32px;
   background-size: contain;
+  margin-right: 10px;
 }
 
 .create-action-icon:nth-child(1) {
+  margin-right: 10px;
   background-image: url("../assets/icon_download.svg");
 }
 

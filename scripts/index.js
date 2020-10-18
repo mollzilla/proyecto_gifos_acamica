@@ -72,12 +72,12 @@ async function appendTrendings() {
       if (e.target.id == "previous") {
         if (imageIndex != 1) {
           imageIndex--;
-          translateX += 357;
+          translateX += 350;
         }
       } else {
         if (imageIndex < 9) {
           imageIndex++;
-          translateX -= 357;
+          translateX -= 350;
         }
       }
       carouselImages.style.transform = `translateX(${translateX}px)`;

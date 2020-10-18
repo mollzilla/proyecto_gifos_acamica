@@ -29,7 +29,6 @@
       background-repeat: no-repeat;
 
       .overlay { 
-        @include right-on-top;
         background-color: transparentize(#572EE5, .3);
         opacity: 0;
         transition: opacity .4s ease-in-out;
@@ -46,6 +45,7 @@
         @include right-on-top;
         right:0;
         margin-right: 0;
+        padding-top: 10px;
       }
     
       .action-icon{

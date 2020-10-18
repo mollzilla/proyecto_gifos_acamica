@@ -5,7 +5,7 @@
 #empty-mis-gifos, #empty-favorites{
   display: none;
   flex-flow: column wrap;
-  margin: 2rem 2rem 4rem;
+  margin: 2rem 2rem 8.5rem;
   img{
       margin: 2rem;
   }
@@ -13,7 +13,7 @@
       font-family: 'Montserrat', sans-serif;
       font-weight: bold;
       font-size: 1.4rem;
-      color: var(--secondary-color);
+      color: var(--green);
       line-height: 25px;
       text-align: center;
   }

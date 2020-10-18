@@ -36,12 +36,11 @@ $normal: "Roboto";
 
 @mixin action-icon {
   margin: unset;
-  margin-right: 10px;
-  margin-top: 10px;
   display: inline-block;
   height: 32px;
   width: 32px;
   background-size: contain;
+  margin-right: 10px;
 }
 
 @mixin magic-center {
@@ -53,5 +52,5 @@ $normal: "Roboto";
 @mixin right-on-top {
   position: absolute;
   top: 0;
-  left: 0;
+  right: 0;
 }

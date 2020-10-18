@@ -208,16 +208,15 @@ margin-bottom: 26px;
 }
 
 .create-action-icons {
-  width: 30%;
-  position: absolute;
-  margin: 0;
-  right: 0;        
+  @include right-on-top;
+  padding: 10px;
 }
 
 .create-action-icon {
   @include action-icon;
 
   &:nth-child(1) {
+    margin-right: 10px;
     background-image: url("../assets/icon_download.svg");
     &:hover {
       background-image: url("../assets/icon_download_hover.svg");

@@ -28,7 +28,7 @@ function hideTop() {
 function createOverlay(gifItem, pathId) {
 
   /* adds a child div to a gifItem positioned absolutely that behaves as an overlay, containing both icons and title */
-
+console.log(pathId)
     let overlay=document.createElement("div");
     overlay.classList.add("overlay");
 
@@ -70,7 +70,7 @@ function createOverlay(gifItem, pathId) {
       
       if(a==like && (localStorage.getItem('favorites') && (localStorage.getItem('favorites').split(",")).includes(gifItem.id)))
       {
-        a.style.backgroundImage="url(../../assets/icon_fav_active.svg)";
+        a.style.backgroundImage="url(../assets/icon_fav_active.svg)";
         a.style.width="30px";
         a.style.height="27px";
       }
@@ -196,7 +196,7 @@ async function search(pathId) {
     else // LocalStorage has no favorites, show empty favorites message
     {
       emptyFavorites.style.display="flex";
-      resultsGrid.style.display="none";
+      [resultsGrid, borderBar].map(x => x.style.display="none");
       return;
     }
   }
