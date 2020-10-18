@@ -91,10 +91,12 @@ async function copyURLAction(e) {
     .catch(err => console.log(err))
 }
 
-function removeAction() {
-      myGifos=localStorage.getItem("myGifos").split();
-      console.log(myGifos);
-      // myGifos=myGifos.filter(myGifo => myGifo!=this.id)
-      // localStorage.setItem("myGifos", myGifos.toString(", "));
-      // remover tarjeta que no se como se hace
+function removeAction(e) {
+
+  /* removes gif from localstorage and also card from my gifos view. there is no api meant to remove a gif */
+  console.log(this.id)
+      myGifos=localStorage.getItem("myGifos").split(",");
+      myGifos=myGifos.filter(myGifo => myGifo!=this.id)
+      localStorage.setItem("myGifos", myGifos.toString(", "));
+      e.path[3].remove()
 }

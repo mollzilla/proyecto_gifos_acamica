@@ -114,6 +114,33 @@
     }
   }
 
+  .action-icon {
+    &.my-gifos-action-icon {
+      @include action-icon;
+
+      &:nth-child(1) {
+        background-image: url("../../assets/icon_trash.svg");
+        &:hover {
+          background-image: url("../../assets/icon_trash_hover.svg");
+        }
+      }
+
+      &:nth-child(2) {
+        background-image: url("../../assets/icon_download.svg");
+        &:hover {
+          background-image: url("../../assets/icon_download_hover.svg");
+        }
+      }
+
+      &:nth-child(3) {
+        background-image: url("../../assets/icon_max.svg");
+        &:hover {
+          background-image: url("../../assets/icon_max_hover.svg");
+        };
+      }
+    }
+  }
+
   .gif-title{
     @include overlay-baby;
     bottom: 0;

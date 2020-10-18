@@ -25,7 +25,7 @@ function hideTop() {
   [document.querySelector("h1"), document.querySelector(".search"), searchArgument].forEach(x => x.style.display="none");
 }
 
-function createOverlay(gifItem) {
+function createOverlay(gifItem, pathId) {
 
   /* adds a child div to a gifItem positioned absolutely that behaves as an overlay, containing both icons and title */
 
@@ -78,7 +78,10 @@ function createOverlay(gifItem) {
     });
 
     [like, download, expand].forEach(a => actionIcons.appendChild(a));
-    [remove, myGIfosDownload, myGifosExpand].forEach(a => myGifosActionIcons.appendChild(a));
+    [remove, myGIfosDownload, myGifosExpand].forEach(a =>{
+       myGifosActionIcons.appendChild(a);
+       a.classList.add("my-gifos-action-icon")
+    });
 
     /* username and title*/
 
@@ -97,8 +100,13 @@ function createOverlay(gifItem) {
 
     gifTitle.appendChild(username);
     gifTitle.appendChild(title);
+
+    console.log(pathId)
     
-    overlay.appendChild(actionIcons);
+    if (pathId==misGifosSm.id || pathId==misGifosLg.id || pathId==viewMoreMyGifos.id)
+      overlay.appendChild(myGifosActionIcons)
+    else
+      overlay.appendChild(actionIcons);
 
     overlay.appendChild(gifTitle);
 
@@ -107,7 +115,7 @@ function createOverlay(gifItem) {
   } 
 
 
-function appendSearchResults(searchResults, container) {
+function appendSearchResults(searchResults, container, pathId) {
 
   searchArgument.textContent=searchInputValue.value;
   searchArgument.style.display = "block";
@@ -126,7 +134,7 @@ function appendSearchResults(searchResults, container) {
     resultGif.setAttribute('id', `result-item-${offset}`);
     resultGif.style.backgroundImage=`url("${result.images.fixed_width.url}")`;
     
-    resultGif.appendChild(createOverlay(result));
+    resultGif.appendChild(createOverlay(result, pathId));
     container.appendChild(resultGif);
     container.style.display="grid";
 
@@ -237,7 +245,7 @@ async function search(pathId) {
   if (searchResults.pagination && searchResults.pagination.total_count==0)
     ouch();
 
-  await appendSearchResults(searchResults.data, resultsGrid);
+  await appendSearchResults(searchResults.data, resultsGrid, pathId);
 
   // console.log(localStorage.getItem("favorites").split(",").length - localStorage.getItem("favorites").split(",").slice(offset, 12).length)
 

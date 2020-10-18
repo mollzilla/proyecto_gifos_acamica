@@ -588,6 +588,40 @@ h2 {
   background-image: url("../../assets/icon_max_hover.svg");
 }
 
+.search-results .action-icon.my-gifos-action-icon {
+  margin: unset;
+  margin-right: 10px;
+  margin-top: 10px;
+  display: inline-block;
+  height: 32px;
+  width: 32px;
+  background-size: contain;
+}
+
+.search-results .action-icon.my-gifos-action-icon:nth-child(1) {
+  background-image: url("../../assets/icon_trash.svg");
+}
+
+.search-results .action-icon.my-gifos-action-icon:nth-child(1):hover {
+  background-image: url("../../assets/icon_trash_hover.svg");
+}
+
+.search-results .action-icon.my-gifos-action-icon:nth-child(2) {
+  background-image: url("../../assets/icon_download.svg");
+}
+
+.search-results .action-icon.my-gifos-action-icon:nth-child(2):hover {
+  background-image: url("../../assets/icon_download_hover.svg");
+}
+
+.search-results .action-icon.my-gifos-action-icon:nth-child(3) {
+  background-image: url("../../assets/icon_max.svg");
+}
+
+.search-results .action-icon.my-gifos-action-icon:nth-child(3):hover {
+  background-image: url("../../assets/icon_max_hover.svg");
+}
+
 .search-results .gif-title {
   width: 100%;
   position: absolute;
