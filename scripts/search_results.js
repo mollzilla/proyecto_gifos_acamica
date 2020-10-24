@@ -70,7 +70,7 @@ console.log(pathId)
       
       if(a==like && (localStorage.getItem('favorites') && (localStorage.getItem('favorites').split(",")).includes(gifItem.id)))
       {
-        a.style.backgroundImage="url(../assets/icon_fav_active.svg)";
+        a.style.backgroundImage="url(./assets/icon_fav_active.svg)";
         a.style.width="30px";
         a.style.height="27px";
       }
