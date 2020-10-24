@@ -145,7 +145,6 @@ function stage3() {
         /* Permito la ejecución de startRecording dándole un segundo de ventaja, virtualmente imperceptible para el usuario */
     startFilm.style.opacity=".25"
     
-    console.log(startFilm.style.opacity)
     setTimeout(() => {
       startFilm.style.opacity="1"
       startFilm.textContent = "FINALIZAR";

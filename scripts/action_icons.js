@@ -64,8 +64,6 @@ function expandAction(e) {
   document.querySelector("body").classList.add("no-scroll");
   document.querySelector(".fullscreen-gif").style.backgroundImage=e.path[3].style.backgroundImage;
 
-  console.log(e.path[3].children[0].children[1])
-
   document.querySelector(".expanded-username").textContent=e.path[3].children[0].children[1].children[0].textContent;
   document.querySelector(".expanded-title").textContent=textContent=e.path[3].children[0].children[1].children[1].textContent;
 
@@ -112,7 +110,6 @@ async function copyURLAction(e) {
 function removeAction(e) {
 
   /* removes gif from localstorage and also card from my gifos view. there is no api meant to remove a gif */
-  console.log(this.id)
   myGifos = localStorage.getItem("myGifos").split(",");
   myGifos = myGifos.filter(myGifo => myGifo != this.id)
   localStorage.setItem("myGifos", myGifos.toString(", "));
