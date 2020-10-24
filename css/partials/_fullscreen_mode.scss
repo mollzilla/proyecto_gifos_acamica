@@ -2,7 +2,7 @@
 
   display: none;
 
-  background-color: #FFF;
+  background-color: var(--background);
   width: 100%;
   position: fixed;
   top: 0;
@@ -62,17 +62,8 @@
       &:hover {
         background-image: url("../assets/icon_download_hover.svg");
       }
-      margin-right:-16px;
+      margin-right: 0;
     }
-  }
-
-  .closeBtn{
-      position: absolute;
-      top: 2rem;
-      right: 3rem;
-      color: var(--green);
-      font-size: 1.5rem;
-      cursor: pointer;
   }
 
   .fullscreen-gif{
@@ -89,54 +80,15 @@
     color: red;
   }
 
-  .expanded-gif-title {
-      color: #000;
-      z-index: 1200;
+    .expanded-title {
+      @include word-bundle(1rem, var(--small_text_color), bold, auto);
+      font-family: $normal;
+    }
+    .expanded-username {
+      @include word-bundle(0.9375rem, var(--small_text_color), lighter, auto);
+      font-family: $normal;
+    }
   }
-
-      .expanded-gif-title{
-          width: 100%;
-          text-align: left;
-          line-height: 2rem;
-          color: #000;
-          h5{
-              font-family: 'Roboto', sans-serif;
-              font-size: .7rem;
-              font-weight: lighter;
-              color: var(--purple);
-              text-transform: capitalize;
-          }
-          span{
-              font-family: 'Roboto', sans-serif;
-              font-size: .9rem;
-              font-weight: bold;
-              color: var(--purple);
-              text-transform: capitalize;
-          }
-      }
-      .gifBtns{
-              display: flex;
-              justify-content: space-between;
-              max-width: 150px;
-              button{
-                  cursor: pointer;
-                  border: 1px solid #CED7E1; //ver este color
-                  border-radius: 6px;
-                  background: var(--green);
-                  height: 36px;
-                  width: 36px;
-                  margin: .5rem;
-                  .fa-heart, .fa-download, .fa-trash-alt{
-                      color: var(--purple);
-                      font-size: 1.3rem;
-                  }
-              }
-              .gifExpand{
-                  display: none;
-              }
-  
-      }
-  }     
 
   @media(min-width: 769px) and (max-width: 1439px) {
 
