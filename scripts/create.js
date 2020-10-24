@@ -236,6 +236,7 @@ function addActionIcons(id) {
   actionIcons.classList.add("create-action-icons");
 
   let download = document.createElement("a");
+  download.id=id;
   download.addEventListener('click', downloadAction);
 
   let copyURL = document.createElement("a");

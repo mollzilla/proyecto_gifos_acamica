@@ -50,10 +50,12 @@ function likeAction(e) {
 
 // bind close icon fullscreen view 
 
-document.querySelector("#close-expanded-view").addEventListener("click", () => {
-  document.querySelector(".fullscreen-view").style.display="none";
-  document.querySelector("body").classList.remove("no-scroll");
-});
+if (document.querySelector("#close-expanded-view")) {
+  document.querySelector("#close-expanded-view").addEventListener("click", () => {
+    document.querySelector(".fullscreen-view").style.display="none";
+    document.querySelector("body").classList.remove("no-scroll");
+  });
+}
 
 function expandAction(e) {
   e.preventDefault();
@@ -63,15 +65,23 @@ function expandAction(e) {
   document.querySelector(".fullscreen-gif").style.backgroundImage=e.path[3].style.backgroundImage;
 
   let like= document.querySelector(".expanded-like-action");
+
+  if((localStorage.getItem('favorites') && (localStorage.getItem('favorites').split(",")).includes(e.path[0].id)))
+  {
+    like.style.backgroundImage="url(../assets/icon_fav_active.svg)";
+    like.style.width="30px";
+    like.style.height="27px";
+  }
+
   like.addEventListener('click', likeAction);
   let download=document.querySelector(".expanded-download-action");
   download.addEventListener('click', downloadAction);
 
-  [like, download].forEach(a => a.id=e.path[0].id); // ad gif id for functions purposes avoiding parameters
+  [like, download].forEach(a => a.id=e.path[0].id); // ad gif id for function purposes avoiding parameters
   }
 
-async function downloadAction(e) {
-e.preventDefault()
+async function downloadAction() {
+// e.preventDefault()
   let a = document.createElement('a');
   // get image as blob
 
