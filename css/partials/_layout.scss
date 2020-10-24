@@ -13,6 +13,10 @@ html.themeTransition *:after {
   margin: 0 auto;
 }
 
+.no-scroll {
+  overflow: hidden;
+}
+
 body {
   box-sizing: border-box;
   background-color: var(--background);

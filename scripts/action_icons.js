@@ -2,16 +2,16 @@
 
 let allIcons = Array.from(document.querySelectorAll('[id^="icon"]'));
 
-var hoverIcons=allIcons.filter(icon => icon.id.match(/close|search/)==null);
+var hoverIcons = allIcons.filter(icon => icon.id.match(/close|search/) == null);
 
-hoverIcons=hoverIcons.map(icon => {
+hoverIcons = hoverIcons.map(icon => {
   icon.addEventListener('mouseover', () => icon.setAttribute('src', `assets/${icon.id}_hover.svg`));
   icon.addEventListener('mouseout', () => icon.setAttribute('src', `assets/${icon.id}.svg`));
 })
 
-let anchorIcons=Array.from(document.querySelectorAll("nav a"));
+let anchorIcons = Array.from(document.querySelectorAll("nav a"));
 
-anchorIcons.map(function(icon)  { // Listen if active, set src otherwise
+anchorIcons.map(function (icon) { // Listen if active, set src otherwise
   icon.addEventListener('mouseup', () => icon.setAttribute('src', `assets/${icon.id}_hover.svg`))
 });
 
@@ -23,54 +23,55 @@ document.querySelector(".logo").addEventListener("click", (e => {
 /* checks whether favorite exists in localstorage, removes or adds, according to condition */
 function likeAction(e) {
   e.preventDefault();
-  this.style.backgroundImage="url(../assets/icon_fav_active.svg)";
-  this.style.width="30px";
-  this.style.height="27px";
+  this.style.backgroundImage = "url(../assets/icon_fav_active.svg)";
+  this.style.width = "30px";
+  this.style.height = "27px";
 
-  if(!localStorage.getItem('favorites'))
-  {
-    this.id=[this.id]
+  if (!localStorage.getItem('favorites')) {
+    this.id = [this.id]
     localStorage.setItem("favorites", this.id);
   }
-  else
-  {
-    let favorites=localStorage.getItem('favorites').split(",");
-    
-    if(!favorites.includes(this.id))
-    {
+  else {
+    let favorites = localStorage.getItem('favorites').split(",");
+
+    if (!favorites.includes(this.id)) {
       favorites.push(this.id);
       localStorage.setItem("favorites", favorites.toString(", "));
     }
-    else
-    {
-      favorites=favorites.filter(favorite => favorite!=this.id)
+    else {
+      favorites = favorites.filter(favorite => favorite != this.id)
       localStorage.setItem("favorites", favorites.toString(", "));
-      this.style.backgroundImage="url(../assets/icon_fav.svg)";
-      this.style.width="32px";
-      this.style.height="32px";
+      this.style.backgroundImage = "url(../assets/icon_fav.svg)";
+      this.style.width = "32px";
+      this.style.height = "32px";
     }
   }
 }
 
+// bind close icon fullscreen view 
+
+document.querySelector("#close-expanded-view").addEventListener("click", () => {
+  document.querySelector(".fullscreen-view").style.display="none";
+  document.querySelector("body").classList.remove("no-scroll");
+});
+
 function expandAction(e) {
   e.preventDefault();
-  console.log(e.path[3])
-  console.log("mili")
-  let mili=(e.path[3]).cloneNode(false)
-  console.log(mili)
 
-  mili.style.position="fixed";
-  mili.style.top=0;
-  mili.style.height="100vh"
-  mili.style.width="100vw"
-  mili.style.backgroundSize="contain"
-  mili.style.backgroundRepeat="no-repeat"
-  mili.classList.add("expandable")
-  document.querySelector("header").appendChild(mili)
-}
+  document.querySelector(".fullscreen-view").style.display="flex";
+  document.querySelector("body").classList.add("no-scroll");
+  document.querySelector(".fullscreen-gif").style.backgroundImage=e.path[3].style.backgroundImage;
 
-async function downloadAction() {
+  let like= document.querySelector(".expanded-like-action");
+  like.addEventListener('click', likeAction);
+  let download=document.querySelector(".expanded-download-action");
+  download.addEventListener('click', downloadAction);
 
+  [like, download].forEach(a => a.id=e.path[0].id); // ad gif id for functions purposes avoiding parameters
+  }
+
+async function downloadAction(e) {
+e.preventDefault()
   let a = document.createElement('a');
   // get image as blob
 
@@ -86,7 +87,7 @@ async function downloadAction() {
 }
 
 async function copyURLAction(e) {
-  
+
   navigator.clipboard.writeText(`https://media2.giphy.com/media/${e.path[0].id}/giphy.gif?${apiKey}&rid=giphy.gif`).then(
     console.log("success"))
     .then(() => alert("Link de tu GIFO copiado al portapapeles"))
@@ -97,8 +98,8 @@ function removeAction(e) {
 
   /* removes gif from localstorage and also card from my gifos view. there is no api meant to remove a gif */
   console.log(this.id)
-      myGifos=localStorage.getItem("myGifos").split(",");
-      myGifos=myGifos.filter(myGifo => myGifo!=this.id)
-      localStorage.setItem("myGifos", myGifos.toString(", "));
-      e.path[3].remove()
+  myGifos = localStorage.getItem("myGifos").split(",");
+  myGifos = myGifos.filter(myGifo => myGifo != this.id)
+  localStorage.setItem("myGifos", myGifos.toString(", "));
+  e.path[3].remove()
 }

@@ -3,7 +3,6 @@ const apiKey = "VZ4N6ebz6BSdgrhUNiKAAU0dNYws5GSn";
 let recorder;
 let gif;
 let stoppedFlag = false;
-let activatedStage3Button=false
 
 let createContainer = document.querySelector(".create");
 let startFilm = document.querySelector("#start-film")
@@ -19,6 +18,40 @@ uploadOverlay = document.querySelector("#create-overlay");
 let repetirCaptura = document.querySelector(".repetir-captura");
 repetirCaptura.style.display = "none";
 repetirCaptura.addEventListener("click", stage3);
+
+function awaitUploadAnimation() {
+  uploadOverlay.classList.add("create-overlay");
+  document.querySelector("#subiendo").classList.add("subiendo");
+  document.querySelector(".loader").classList.remove("hidden");
+}
+
+function onUploadCompleted() {
+  document.querySelector("#subiendo").textContent = "GIFO subido con éxito";
+  document.querySelector(".loader").setAttribute("src", "assets/check.svg");
+  document.querySelector(".loader").classList.add("stopSpin");
+}
+
+  function addActionIcons(id) {
+
+    let actionIcons = document.createElement("div");
+    actionIcons.classList.add("create-action-icons");
+  
+    let download = document.createElement("a");
+    download.addEventListener('click', downloadAction);
+  
+    let copyURL = document.createElement("a");
+    copyURL.id = id;
+    copyURL.addEventListener('click', (e) => { copyURLAction(e) });
+  
+    [download, copyURL].forEach(a => {
+      a.classList.add(id, "create-action-icon")
+      actionIcons.appendChild(a)
+    });
+  
+    // actionIcons.appendChild(download)
+  
+    uploadOverlay.appendChild(actionIcons);
+  }
 
 let timerSet=null;
 
@@ -95,11 +128,6 @@ function stage2() {
 
 function stage3() {
 
-  if(startFilm.style.opacity==0.25)
-    {
-      console.log("currently recording-skipping");
-      return;
-    }
   // filmStage2.classList.remove("activated");
 
   navigator.mediaDevices.getUserMedia({
@@ -142,14 +170,11 @@ function stage3() {
       }
     };
 
-        /* Permito la ejecución de startRecording dándole un segundo de ventaja, virtualmente imperceptible para el usuario */
-    startFilm.style.opacity=".25"
-    console.log(startFilm.style.opacity)
-    setTimeout(() => {
-      startFilm.style.opacity="1"
-      startFilm.textContent = "FINALIZAR";
-      state = 2;
-    }, 2000);
+    // etapa en la que creo que acontece el primer error
+
+    startFilm.textContent = "FINALIZAR";
+
+    state = 2;
 
   });
 }
@@ -186,35 +211,38 @@ async function stage5() {
 
   awaitUploadAnimation();
 
-  let form = new FormData();
-  await form.append('file', gif, 'newGif.gif');
+  // let form = new FormData();
+  // await form.append('file', gif, 'newGif.gif');
 
-  let resp = await fetch(`https://upload.giphy.com/v1/gifs?=${form}&api_key=${apiKey}`, {
-    method: 'POST',
+  // // etapa en la que creo que acontece el segundo error, no espera que esté listo el blob para intentar subir el archivo
+
+  // let resp = await fetch(`https://upload.giphy.com/v1/gifs?=${form}&api_key=${apiKey}`, {
+  //   method: 'POST',
+  //   body: form,
+  //   json: true,
+  //   mode: 'cors'
+  // });
+
+  let form = new FormData();
+  form.append("file", recorder.getBlob(), 'newGif.gif');
+
+  fetch('https://upload.giphy.com/v1/gifs' + '?api_key=' + apiKey, {
+    method: 'POST', // or 'PUT'
     body: form,
     json: true,
     mode: 'cors'
-  });
+  })
+  .then(res => {
+    console.log(res)
+    console.log(res.json)
+    return res.json() })
 
-  let data = await resp.json();
-
+  .then(data => {
   onUploadCompleted();
+  addActionIcons(data.data.id);
+  return data })
 
-  function awaitUploadAnimation() {
-    uploadOverlay.classList.add("create-overlay");
-    document.querySelector("#subiendo").classList.add("subiendo");
-    document.querySelector(".loader").classList.remove("hidden");
-  }
-
-  function onUploadCompleted() {
-    document.querySelector("#subiendo").textContent = "GIFO subido con éxito";
-    document.querySelector(".loader").setAttribute("src", "assets/check.svg");
-    document.querySelector(".loader").classList.add("stopSpin");
-    startFilm.style.display="none";
-
-    addActionIcons(data.data.id)
-
-    console.log(data)
+  .then(data => {
 
     if (!localStorage.getItem('myGifos')) {
       let myGifo = [data.data.id]
@@ -225,32 +253,12 @@ async function stage5() {
       myGifos.push(data.data.id);
       localStorage.setItem("myGifos", myGifos.toString(", "));
     }
-  }
-
   state = 4;
+  return data;
+});
 }
 
-function addActionIcons(id) {
 
-  let actionIcons = document.createElement("div");
-  actionIcons.classList.add("create-action-icons");
-
-  let download = document.createElement("a");
-  download.addEventListener('click', downloadAction);
-
-  let copyURL = document.createElement("a");
-  copyURL.id = id;
-  copyURL.addEventListener('click', (e) => { copyURLAction(e) });
-
-  [download, copyURL].forEach(a => {
-    a.classList.add(id, "create-action-icon")
-    actionIcons.appendChild(a)
-  });
-
-  // actionIcons.appendChild(download)
-
-  uploadOverlay.appendChild(actionIcons);
-}
 
 let favoritesButtonSm = document.querySelector("#favoritos-sm");
 let favoritesButtonLg = document.querySelector("#favoritos-lg");
@@ -284,3 +292,20 @@ function stage0() {
   startFilm.innerHTML="COMENZAR";
   state=0;
 }
+
+// PRIMER Error
+// RecordRTC.js:4734 Uncaught (in promise) TypeError: Cannot read property 'stream' of undefined
+//     at GifRecorder.stop (RecordRTC.js:4734)
+//     at Object.stopRecording (RecordRTC.js:135)
+//     at stage4 (create.js:162)
+//     at HTMLAnchorElement.<anonymous> (create.js:40)
+
+
+// SEGUNDO ERROR
+// Access to fetch at 'https://upload.giphy.com/v1/gifs?=[object%20FormData]&api_key=VZ4N6ebz6BSdgrhUNiKAAU0dNYws5GSn' from origin 'http://127.0.0.1:5501' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.
+// create.js:185 POST https://upload.giphy.com/v1/gifs?=[object%20FormData]&api_key=VZ4N6ebz6BSdgrhUNiKAAU0dNYws5GSn net::ERR_FAILED
+// stage5 @ create.js:185
+// async function (async)
+// stage5 @ create.js:181
+// (anonymous) @ create.js:42
+// create.js:223 Uncaught (in promise) TypeError: Failed to fetch

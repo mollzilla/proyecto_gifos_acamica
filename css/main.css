@@ -81,6 +81,10 @@ html.themeTransition *:after {
   margin: 0 auto;
 }
 
+.no-scroll {
+  overflow: hidden;
+}
+
 body {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -939,6 +943,226 @@ h2 {
 @media (max-width: 1240px) {
   .carousel-container {
     max-width: 90vw;
+  }
+}
+
+.fullscreen-view {
+  display: none;
+  background-color: #FFF;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 1100;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+}
+
+.fullscreen-view .content-container {
+  width: 695px;
+}
+
+.fullscreen-view .info-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: 80px;
+}
+
+.fullscreen-view .expanded-gif-info {
+  margin: unset;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.fullscreen-view .expanded-gif-info h3, .fullscreen-view .expanded-gif-info h4 {
+  text-align: left;
+}
+
+.fullscreen-view .expand-close {
+  position: absolute;
+  top: -6px;
+  right: 0;
+}
+
+.fullscreen-view .action-icons {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.fullscreen-view .action-icon {
+  margin: unset;
+  display: inline-block;
+  height: 32px;
+  width: 32px;
+  background-size: contain;
+  margin-right: 10px;
+  border: 1px solid #9CAFC3;
+  border-radius: 6px;
+}
+
+.fullscreen-view .action-icon:nth-child(2) {
+  background-image: url("../assets/icon_fav.svg");
+}
+
+.fullscreen-view .action-icon:nth-child(2):hover {
+  background-image: url("../assets/icon_fav_hover.svg");
+}
+
+.fullscreen-view .action-icon:nth-child(3) {
+  background-image: url("../assets/icon_download.svg");
+  margin-right: -16px;
+}
+
+.fullscreen-view .action-icon:nth-child(3):hover {
+  background-image: url("../assets/icon_download_hover.svg");
+}
+
+.fullscreen-view .closeBtn {
+  position: absolute;
+  top: 2rem;
+  right: 3rem;
+  color: var(--green);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.fullscreen-view .fullscreen-gif {
+  margin-top: 80px;
+  width: 695px;
+  height: 385px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.fullscreen-view .expanded-action-icons {
+  position: relative;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  color: red;
+}
+
+.fullscreen-view .expanded-gif-title {
+  color: #000;
+  z-index: 1200;
+}
+
+.fullscreen-view .expanded-gif-title {
+  width: 100%;
+  text-align: left;
+  line-height: 2rem;
+  color: #000;
+}
+
+.fullscreen-view .expanded-gif-title h5 {
+  font-family: 'Roboto', sans-serif;
+  font-size: .7rem;
+  font-weight: lighter;
+  color: var(--purple);
+  text-transform: capitalize;
+}
+
+.fullscreen-view .expanded-gif-title span {
+  font-family: 'Roboto', sans-serif;
+  font-size: .9rem;
+  font-weight: bold;
+  color: var(--purple);
+  text-transform: capitalize;
+}
+
+.fullscreen-view .gifBtns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  max-width: 150px;
+}
+
+.fullscreen-view .gifBtns button {
+  cursor: pointer;
+  border: 1px solid #CED7E1;
+  border-radius: 6px;
+  background: var(--green);
+  height: 36px;
+  width: 36px;
+  margin: .5rem;
+}
+
+.fullscreen-view .gifBtns button .fa-heart, .fullscreen-view .gifBtns button .fa-download, .fullscreen-view .gifBtns button .fa-trash-alt {
+  color: var(--purple);
+  font-size: 1.3rem;
+}
+
+.fullscreen-view .gifBtns .gifExpand {
+  display: none;
+}
+
+@media (min-width: 769px) and (max-width: 1439px) {
+  .fullscreen-view .expand-close {
+    top: 150px;
+    right: 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  .fullscreen-view .container {
+    width: calc(100% - 42px);
+  }
+  .fullscreen-view .content-container {
+    width: 90%;
+    position: relative;
+  }
+  .fullscreen-view .content-container .fullscreen-gif {
+    max-width: 318px !important;
+    height: 245px;
+  }
+  .fullscreen-view .content-container .expand-close {
+    top: -78px;
+    right: -15px;
   }
 }
 
