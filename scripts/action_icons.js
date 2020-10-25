@@ -62,11 +62,24 @@ function expandAction(e) {
 
   document.querySelector(".fullscreen-view").style.display="flex";
   document.querySelector("body").classList.add("no-scroll");
-  document.querySelector(".fullscreen-gif").style.backgroundImage=e.path[3].style.backgroundImage;
 
-  document.querySelector(".expanded-username").textContent=e.path[3].children[0].children[1].children[0].textContent;
-  document.querySelector(".expanded-title").textContent=textContent=e.path[3].children[0].children[1].children[1].textContent;
+  console.log(e.path[0].classList[0])
 
+  if(e.path[0].classList[0]=="action-icon") // another option would bt if(getComputedStyle(e.path[0], null).display=="block")
+  {
+    document.querySelector(".fullscreen-gif").style.backgroundImage=e.path[3].style.backgroundImage;
+
+    document.querySelector(".expanded-username").textContent=e.path[3].children[0].children[1].children[0].textContent;
+    document.querySelector(".expanded-title").textContent=textContent=e.path[3].children[0].children[1].children[1].textContent;
+  }
+  else{
+    
+    document.querySelector(".fullscreen-gif").style.backgroundImage=e.path[1].style.backgroundImage;
+
+    document.querySelector(".expanded-username").textContent=e.path[1].children[0].children[1].children[0].textContent;
+    document.querySelector(".expanded-title").textContent=textContent=e.path[1].children[0].children[1].children[1].textContent;
+  }
+  
   let like= document.querySelector(".expanded-like-action");
 
   if((localStorage.getItem('favorites') && (localStorage.getItem('favorites').split(",")).includes(e.path[0].id)))

@@ -28,10 +28,15 @@
       background-size: cover;
       background-repeat: no-repeat;
 
-      .overlay { 
+      .overlay {
+        display: block;
         background-color: transparentize(#572EE5, .3);
         opacity: 0;
         transition: opacity .4s ease-in-out;
+      }
+
+      .expand-overlay {
+        display: none;
       }
 
       &:hover {
@@ -127,9 +132,35 @@
   }
   .carousel {
     overflow: scroll;
-  }
+  
   .carousel__button {
     display: none;
+  }
+  
+  &__images {
+    position: relative;
+    display: flex;
+    transform: translateX(0);
+    transition: transform 0.35s;
+
+    div {
+      position: relative;
+      margin-right: 30px;
+      width: 357px;
+      height: 275px;
+      background-size: cover;
+      background-repeat: no-repeat;
+
+        .overlay {
+          display:none;
+        }
+        .expand-overlay {
+          display: block;
+        }
+
+      
+    }
+  }
   }
 }
 

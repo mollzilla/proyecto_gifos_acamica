@@ -25,10 +25,11 @@ function hideTop() {
   [document.querySelector("h1"), document.querySelector(".search"), searchArgument].forEach(x => x.style.display="none");
 }
 
-function createOverlay(gifItem, pathId) {
 
+
+function createOverlay(gifItem, pathId) {
+  
   /* adds a child div to a gifItem positioned absolutely that behaves as an overlay, containing both icons and title */
-console.log(pathId)
     let overlay=document.createElement("div");
     overlay.classList.add("overlay");
 
@@ -131,6 +132,13 @@ function appendSearchResults(searchResults, container, pathId) {
     resultGif.setAttribute('id', `result-item-${offset}`);
     resultGif.style.backgroundImage=`url("${result.images.fixed_width.url}")`;
     
+    resultGif.appendChild(createOverlay(result, pathId));
+
+    let expandOverlay=document.createElement("div")
+    expandOverlay.addEventListener("click", expandAction);
+    expandOverlay.classList.add("expand-overlay");
+
+    resultGif.appendChild(expandOverlay)
     resultGif.appendChild(createOverlay(result, pathId));
     container.appendChild(resultGif);
     container.style.display="grid";
@@ -283,3 +291,5 @@ const getQueryParameters = (key, offset) => {
 
   return queryString;
 }
+
+

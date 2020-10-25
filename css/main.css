@@ -542,6 +542,7 @@ h2 {
 }
 
 .search-results .overlay {
+  display: none;
   position: absolute;
   top: 0;
   right: 0;
@@ -555,6 +556,16 @@ h2 {
   transition: opacity .6s ease-in-out, -webkit-transform .4s ease-in-out;
   transition: transform .4s ease-in-out, opacity .6s ease-in-out;
   transition: transform .4s ease-in-out, opacity .6s ease-in-out, -webkit-transform .4s ease-in-out;
+}
+
+.search-results .expand-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  color: #000;
+  opacity: 0;
 }
 
 .search-results .action-icons {
@@ -695,6 +706,12 @@ h2 {
     grid-column-gap: 20px;
     grid-row-gap: 25px;
   }
+  .search-results #results-grid .result-placeholder .overlay {
+    display: block;
+  }
+  .search-results #results-grid .expand-overlay {
+    display: none;
+  }
   .search-results #view-more, .search-results #view-more-favorites, .search-results #view-more-my-gifos {
     width: 127px;
   }
@@ -820,10 +837,15 @@ h2 {
 }
 
 .carousel__images div .overlay {
+  display: block;
   background-color: rgba(87, 46, 229, 0.7);
   opacity: 0;
   -webkit-transition: opacity .4s ease-in-out;
   transition: opacity .4s ease-in-out;
+}
+
+.carousel__images div .expand-overlay {
+  display: none;
 }
 
 .carousel__images div:hover .overlay {
@@ -935,8 +957,34 @@ h2 {
   .carousel {
     overflow: scroll;
   }
-  .carousel__button {
+  .carousel .carousel__button {
     display: none;
+  }
+  .carousel__images {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    -webkit-transition: -webkit-transform 0.35s;
+    transition: -webkit-transform 0.35s;
+    transition: transform 0.35s;
+    transition: transform 0.35s, -webkit-transform 0.35s;
+  }
+  .carousel__images div {
+    position: relative;
+    margin-right: 30px;
+    width: 357px;
+    height: 275px;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .carousel__images div .overlay {
+    display: none;
+  }
+  .carousel__images div .expand-overlay {
+    display: block;
   }
 }
 

@@ -72,7 +72,9 @@
     margin-bottom: 79px;
   }
 
+    // media query menos de 1024 display none
   .overlay {
+    display: none;
     @include right-on-top;
     height: 100%;
     width: 100%;
@@ -81,6 +83,23 @@
     opacity: 0;
     transition: transform .4s ease-in-out, opacity .6s ease-in-out;
   }
+
+  // media query menos de 1024 display block
+  .expand-overlay {
+    @include right-on-top;
+    // top: 0;
+    // left: 0;
+    height: 100%;
+    width: 100%;
+    // background-color: transparentize(#572EE5, .3);
+    // transform: translate(-100%, -100%);
+    color: #000;
+    opacity: 0;
+    // z-index: 1100;
+    // transition: transform .4s ease-in-out, opacity .6s ease-in-out;
+  }
+
+
 
   .action-icons {
     @include overlay-baby;
@@ -184,6 +203,22 @@
       grid-template-rows: repeat(auto-fill, minmax(200px, 1fr));
       grid-column-gap: 20px;
       grid-row-gap: 25px;
+
+      // #results-grid {
+        .result-placeholder {
+          .overlay {
+            display:block;
+          }
+        }
+      // }
+      
+
+      
+
+      
+      .expand-overlay {
+        display:none;
+      }
     }
 
     #view-more, #view-more-favorites, #view-more-my-gifos {

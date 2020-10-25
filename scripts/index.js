@@ -1,3 +1,30 @@
+// const mq = window.matchMedia( "(min-width: 768px)" );
+
+// `mq.addListener(WidthChange);`
+// WidthChange(mq);
+
+
+// // const widthMediaQuery = window.matchMedia(`(min-width: ${breakpoint})`);
+// console.log(window.innerWidth)
+  
+// function WidthChange(mq) {
+
+//   // const overlays=Array.from(document.querySelectorAll(".result-placeholder")).map(gif => gif.children[0]);
+//   // console.log(overlays);
+
+//   // if (mq.matches) {
+//   // console.log("si")// window widtch is at least 500px
+//   // console.log(mq)
+
+//   // overlays.forEach(o => o.style.display="block");
+//   // } else {
+//   //   console.log("no")// window width is less than 500px
+//   //   console.log(mq)
+//   //   overlays.forEach(o => o.style.display="none");
+//   // }
+ 
+//   // }
+
 /* API KEY */
 const apiKey = "VZ4N6ebz6BSdgrhUNiKAAU0dNYws5GSn";
 
@@ -53,6 +80,12 @@ async function appendTrendings() {
       resultGif.classList.add("result-placeholder");
       resultGif.setAttribute('id', `result-item-${offset}`);
       resultGif.style.backgroundImage = `url("${result.images.fixed_width.url}")`;
+
+      let expandOverlay=document.createElement("div")
+      expandOverlay.addEventListener("click", expandAction);
+      expandOverlay.classList.add("expand-overlay");
+
+      resultGif.appendChild(expandOverlay)
       resultGif.appendChild(createOverlay(result));
       container.appendChild(resultGif);
     });
