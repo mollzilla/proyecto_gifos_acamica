@@ -19,6 +19,7 @@
 
   .info-container {
       @include behave-horizontal;
+      flex-wrap: nowrap;
       justify-content: space-between;
       height: 80px;
   }
@@ -49,6 +50,7 @@
     @include action-icon;
     border: 1px solid #9CAFC3;
     border-radius: 6px;
+    background-repeat: no-repeat;
 
     &:nth-child(2) {
       background-image: url("../assets/icon_fav.svg");

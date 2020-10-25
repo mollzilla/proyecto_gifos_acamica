@@ -84,9 +84,8 @@ async function appendTrendings() {
       let expandOverlay=document.createElement("div")
       expandOverlay.addEventListener("click", expandAction);
       expandOverlay.classList.add("expand-overlay");
-
-      resultGif.appendChild(expandOverlay)
       resultGif.appendChild(createOverlay(result));
+      resultGif.appendChild(expandOverlay)
       container.appendChild(resultGif);
     });
   }

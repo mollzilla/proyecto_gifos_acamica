@@ -51,7 +51,7 @@ function likeAction(e) {
 // bind close icon fullscreen view 
 
 if (document.querySelector("#close-expanded-view")) {
-  document.querySelector("#close-expanded-view").addEventListener("click", () => {
+    document.querySelector("#close-expanded-view").addEventListener("click", () => {
     document.querySelector(".fullscreen-view").style.display="none";
     document.querySelector("body").classList.remove("no-scroll");
   });
@@ -63,17 +63,15 @@ function expandAction(e) {
   document.querySelector(".fullscreen-view").style.display="flex";
   document.querySelector("body").classList.add("no-scroll");
 
-  console.log(e.path[0].classList[0])
-
   if(e.path[0].classList[0]=="action-icon") // another option would bt if(getComputedStyle(e.path[0], null).display=="block")
   {
+    console.log(e.path[3])
     document.querySelector(".fullscreen-gif").style.backgroundImage=e.path[3].style.backgroundImage;
 
     document.querySelector(".expanded-username").textContent=e.path[3].children[0].children[1].children[0].textContent;
     document.querySelector(".expanded-title").textContent=textContent=e.path[3].children[0].children[1].children[1].textContent;
   }
   else{
-    
     document.querySelector(".fullscreen-gif").style.backgroundImage=e.path[1].style.backgroundImage;
 
     document.querySelector(".expanded-username").textContent=e.path[1].children[0].children[1].children[0].textContent;
@@ -96,8 +94,8 @@ function expandAction(e) {
   [like, download].forEach(a => a.id=e.path[0].id); // ad gif id for function purposes avoiding parameters
   }
 
-async function downloadAction() {
-// e.preventDefault()
+async function downloadAction(e) {
+e.preventDefault()
   let a = document.createElement('a');
   // get image as blob
 

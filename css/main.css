@@ -1033,6 +1033,8 @@ h2 {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -1088,6 +1090,7 @@ h2 {
   margin-right: 10px;
   border: 1px solid #9CAFC3;
   border-radius: 6px;
+  background-repeat: no-repeat;
 }
 
 .fullscreen-view .action-icon:nth-child(2) {
