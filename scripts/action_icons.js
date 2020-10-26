@@ -23,7 +23,7 @@ document.querySelector(".logo").addEventListener("click", (e => {
 /* checks whether favorite exists in localstorage, removes or adds, according to condition */
 function likeAction(e) {
   e.preventDefault();
-  this.style.backgroundImage = "url(./assets/icon_fav_active.svg)";
+  this.style.backgroundImage = "url(./assets/icon_fav_active1.svg)";
   this.style.width = "30px";
   this.style.height = "27px";
 
@@ -82,7 +82,7 @@ function expandAction(e) {
 
   if((localStorage.getItem('favorites') && (localStorage.getItem('favorites').split(",")).includes(e.path[0].id)))
   {
-    like.style.backgroundImage="url(./assets/icon_fav_active.svg)";
+    like.style.backgroundImage="url(./assets/icon_fav_active1.svg)";
     like.style.width="30px";
     like.style.height="27px";
   }
